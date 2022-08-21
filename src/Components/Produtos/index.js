@@ -126,8 +126,6 @@ export default function RegisterProducts() {
 // TIPO - TENIS- BLUSAS - CAMISETAS - CASACOS - MEIAS
 // PREÇO
 // PREÇO_ANTIGO NULO
-
-
 // TAMANHO - PP - P - M - G - GG - XG - XGG
 // QUANTIDADE - NULO
 // COR = ARRAY
