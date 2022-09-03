@@ -29,12 +29,21 @@ export default function Register() {
     validateInput();
     console.log(error);
     try {
-      await axios.post('/client/', {
+      await axios.post('/users/', {
         name,
         cpf,
         email,
         gender,
         password,
+      }).then((res) => {
+        const { id } = res.data;
+        if (!id) {
+          return;
+        }
+        axios.post('/endereco', {
+
+        });
+        console.log(id);
       });
     } catch (err) {
       return console.log(err);
@@ -91,6 +100,13 @@ export default function Register() {
               Gênero:
               <select value={gender} onChange={(e) => setGender(e.target.value)}>
                 <option
+                  defaultChecked
+                  hidden
+                  value=" "
+                >
+                  selecionar
+                </option>
+                <option
                   value="Masculino"
                 >
                   Masculino
@@ -111,14 +127,16 @@ export default function Register() {
               Telefone:
               <input type="text" name="telefone" />
             </label>
-            <label htmlFor="endereco">
-              Endereço:
-              <input type="text" name="sobrenome" />
-            </label>
-            <label htmlFor="estado">
-              Estado:
-              <input type="text" name="estado" />
-            </label>
+            <div>
+              <label htmlFor="endereco">
+                Endereço:
+                <input type="text" name="sobrenome" />
+              </label>
+              <label htmlFor="estado">
+                Estado:
+                <input type="text" name="estado" />
+              </label>
+            </div>
           </div>
           <button type="submit">Criar Conta</button>
         </Form>

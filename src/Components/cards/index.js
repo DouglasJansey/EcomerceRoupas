@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import {
   ContainerCard, Image, Text, ColorShirt, ContainerImg,
-  BoxPrice, ButtonBuy,
+  BoxPrice, ButtonBuy, Cart,
 } from './styled';
 
 export default function Cards() {
@@ -17,6 +17,9 @@ export default function Cards() {
       <ContainerImg>
         <button type="button" onClick={() => setFav(!fav)}>
           {fav ? <BsHeartFill size={22} color="red" /> : <BsHeart size={22} /> }
+        </button>
+        <button type="button">
+          <Cart />
         </button>
         <BoxPrice>
           <p>R$: 450,00</p>

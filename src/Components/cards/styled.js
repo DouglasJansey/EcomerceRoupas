@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { BsCart3 } from 'react-icons/bs';
 
 import { bgColor, grayColor, bgColorSecondary } from '../../style/colors';
 
 export const ContainerCard = styled.div`
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,12 +57,20 @@ export const ContainerImg = styled.div`
     height: 60%;
     background: #f6f6f6;
     position: relative;
-    button{
+    button:nth-child(1){
         background: none;
         border: none;
         position: absolute;
         right: 15px;
-        top: 15px;
+        top: 13px;
+        cursor: pointer;
+    }
+    button:nth-child(2){
+        background: none;
+        border: none;
+        position: absolute;
+        left: 10px;
+        top: 10px;
         cursor: pointer;
     }
 
@@ -126,4 +136,9 @@ export const BoxPrice = styled.div`
     position: absolute;
     bottom: 0;
     right: 0;
+`;
+export const Cart = styled(BsCart3)`
+    font-size: 25px;
+    color: ${bgColor};
+   
 `;

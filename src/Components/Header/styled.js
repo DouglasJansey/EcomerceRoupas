@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BsCart3 } from 'react-icons/bs';
 
 import {
   bgColor, primaryColor, grayColor, bgColorSecondary, secondaryColor,
@@ -6,15 +7,29 @@ import {
 
 //   rgba(75, 61, 143, 0.3);
 
+const OpacityNavColor = (props) => {
+  if (props) {
+    return (
+      `background: linear-gradient(to bottom, rgba(75, 61, 143, 0.8), rgba(75, 61, 143, 0.4), rgba(75, 61, 143, 0));
+      nav > a, p{
+        color: ${bgColorSecondary};
+      }`
+    );
+  }
+  return (
+    `background:${bgColor};
+    nav > a, p{
+        color: ${grayColor};
+      }
+  `);
+};
+
 export const Container = styled.div`
   max-width: 100%;
   position: fixed;
   width:100%;
   height: 60px;
-  ${(props) => (props.opacityNav
-    ? 'background: linear-gradient(to top, rgba(75, 61, 143, 0) 0%, rgba(75, 61, 143, 0.7)70%, rgba(75, 61, 143, 10.8)100%)'
-    : `background:${bgColor}`)};
-  color: ${primaryColor};
+  ${({ opacityNav }) => OpacityNavColor(opacityNav)};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,13 +72,15 @@ margin-left: 15px;
 z-index: 10;
 
 a{
-  color: ${grayColor};
   margin-right: 20px;
   font-size: 0.9rem;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   :hover{
-  opacity: 0.8;
-  color:${primaryColor}
+  color:${primaryColor};      
+ 
   }
 }
 `;
@@ -78,9 +95,8 @@ export const LoginContainer = styled.div`
         margin-left: 10px;
         font-size: 11px;
         font-weight: bold;
-        color: ${grayColor};
         :hover{
-            color: ${secondaryColor};
+            color: ${primaryColor};
 
         }
     }
@@ -91,4 +107,30 @@ export const LoginContainer = styled.div`
         justify-content: space-between;
         align-items: center;
     }
+`;
+export const Cart = styled(BsCart3)`
+    font-size: 30px;
+    color: white;
+`;
+export const CartContainer = styled.div`
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+`;
+export const CartCount = styled.div`
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 5px;
+    top: 8px;
+    right: -5px;
+    z-index: 5;
+    width: 10px;
+    height: 14px;
+    background: ${primaryColor};
+    padding: 2.5px;
+    color: ${bgColorSecondary};    
 `;
