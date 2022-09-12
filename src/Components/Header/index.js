@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { BsSearch, BsPersonCircle } from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs';
+import { MdLogin } from 'react-icons/md';
 
 import {
   Container, NavBar, CartContainer, LoginContainer,
@@ -9,6 +11,7 @@ import {
 
 export default function Header() {
   const [NavOpaci, setNavOpaci] = useState(false);
+  const quantity = useSelector((state) => state.quantity);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -31,7 +34,7 @@ export default function Header() {
           <div />
         </Link>
         <Link to="/contato"> Contato</Link>
-        <a opacityColor={NavOpaci} href="/"> Galeria</a>
+        <a href="/"> Galeria</a>
       </NavBar>
       <InputContainer>
         <input type="text" name="search" placeholder=" Pesquisar..." />
@@ -40,23 +43,25 @@ export default function Header() {
         </button>
       </InputContainer>
       <CartContainer>
-        <CartCount><p>0</p></CartCount>
+        <CartCount>
+          <p>
+            { quantity }
+          </p>
+        </CartCount>
         <Cart />
       </CartContainer>
       <LoginContainer>
-        <BsPersonCircle size={30} color="#f9f9f9" />
-        <div>
-          <Link to="/register">
-            <p>
-              Cadastrar
-            </p>
-          </Link>
-          <Link to="/login">
-            <p>
-              Login
-            </p>
-          </Link>
-        </div>
+        <Link to="/register">
+          <p>
+            Cadastrar
+          </p>
+        </Link>
+        <Link to="/login">
+          <MdLogin size={20} color="#fff" />
+          <p>
+            Login
+          </p>
+        </Link>
       </LoginContainer>
     </Container>
   );

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
+import { FaUserCircle } from 'react-icons/fa';
 
 import { bgColor, grayColor, bgColorSecondary } from '../../style/colors';
 
@@ -19,16 +20,13 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     height: 100vh;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: ${grayColor};
-    p{
-        margin-bottom: 10px;
-    }
+    background: ${grayColor}; 
 
 `;
-export const Login = styled.div`
-    margin-top: 50px;
+export const RegisterContainer = styled.div` 
     animation: ${fadeIn} 1s ease forwards;
     display: flex;
     flex-direction: column;
@@ -42,7 +40,7 @@ export const Login = styled.div`
     background-color: #d9d9d9;
     border-radius: 5%;
     overflow: hidden;
-
+     
     span{
         display: flex;
         align-items: center;
@@ -50,14 +48,10 @@ export const Login = styled.div`
         background-color: ${bgColor};
         width: 100%;
         position: relative;
-        height: 20%;
+        height: 10%;
         color: #f9f9f9;
     }
-    p{
-    margin-top: 40px;
-    color: gray;
-    margin-bottom: 20px;
-    }
+     
     button{
     width: 250px;
     height: 45px;
@@ -69,51 +63,147 @@ export const Login = styled.div`
     background: ${bgColor};
     color: ${grayColor};
     cursor: pointer;
-    bottom: 55px;
+    bottom: 50px;
     :hover{
         background: ${bgColorSecondary};
     }
 
   }
 `;
+export const TextLogin = styled.p`
+ margin-top: 70px;
+`;
 
 export const Form = styled.form`
+margin-top : 10px ;
 display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
-margin-bottom: 20px;
-div{
-        padding: 15px;
+#password{
+    width: 250px;
+}
+ div{
+        padding:  5px;
         font-weight: bold;
-        font-size: 25px;
-        margin-top: 25px;
+        font-size: 15px; 
         display: flex;
         flex-direction: column;
-        width: 350px;
+        width: 100%;
+      
 }
+ 
 label{
   display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
+  padding: 5px;
+  flex-direction: column; 
+  margin-left: 5px;
   font-weight: bold;
   font-size: 15px;
-  color: ${bgColorSecondary};
+  color: ${bgColorSecondary}; 
 }
+ 
 
-input, select {
+input, select { 
   height: 30px;
   width: 100%;
-  font-size: 18px;
-  border: 1px solid #ddd;
-  padding: 0;
+  font-size: 15px;
+  border: 1px solid #ddd; 
   border-radius: 10px;
   margin-top: 5px;
+  justify-content:center;
+  align-items: center;
+  text-align: left;
+  padding-left: 10px;
 
   &:focus{
     border: 1px solid ${bgColorSecondary};
-    outline: none;
+    outline: none; 
   }
 }
 
+`;
+export const EndForm = styled.div` 
+        padding: 15px;
+        font-weight: bold;
+        position: relative; 
+        display: flex;
+        flex-direction: column; 
+         div:nth-child(2){
+            max-width: 95%; 
+            font-weight: bold; 
+            display: flex;
+            flex-direction: row ; 
+            label:nth-child(1){ 
+                width: 50px;  
+            }
+   
+         }
+         div:nth-child(1) { 
+            max-width: 95%; 
+            display: flex;  
+            flex-direction: row;
+            flex-wrap: wrap;
+            label:nth-child(1){ 
+                width: 100%;   
+            }
+            label:nth-child(2){ 
+                width: 90px;   
+            }
+            label:nth-child(3){ 
+                width: 250px; 
+            }
+            label:nth-child(4){
+            width: 120px;
+         }
+         }
+      
+          
+`;
+export const PhotoContainer = styled.div` 
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    height: 80px; 
+    margin-bottom: 10px;
+    margin-top: 10px;
+    img{
+        max-width: 115px;
+        max-height: 115px;
+    }
+    div { 
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center; 
+    }  
+    div > div{
+        height: 95px;
+        width: 95px;   
+        border-radius: 50%;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center; 
+        flex: none; 
+    } 
+    div > label{
+        padding: 15px 25px; 
+        display: block; 
+        margin-left: 5px;
+        margin-right: 5px;
+        background-color: ${bgColor};
+        border-radius: 10px; 
+        color:  ${grayColor};
+        text-align: center; 
+         cursor: pointer;   
+        
+    }
+    label > input {  
+        display: none; 
+    } 
+`;
+export const DefaultImage = styled(FaUserCircle)`
+        font-size: 100px;
+        max-width: 100px;
+        max-height: 100px;
 `;

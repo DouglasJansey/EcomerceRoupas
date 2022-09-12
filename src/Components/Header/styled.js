@@ -47,7 +47,7 @@ export const Container = styled.div`
       outline: none;
     }
   }
-  
+
   button{
     margin-left: -35px;
     text-decoration: none;
@@ -79,58 +79,60 @@ a{
   justify-content: center;
   align-items: center;
   :hover{
-  color:${primaryColor};      
- 
+  color:${primaryColor};
+
   }
 }
 `;
 export const LoginContainer = styled.div`
     display: flex;
     height: 100% ;
-    margin-left: 25px;
+    width: 100px;
+    margin-right: 35px;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 15px;
     p{
-        margin-left: 10px;
-        font-size: 11px;
+         font-size: 11px;
         font-weight: bold;
         :hover{
             color: ${primaryColor};
-
         }
     }
-    div{
-        height: 55%;
+
+   a{
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
+        margin-right: 10px;
     }
 `;
 export const Cart = styled(BsCart3)`
-    font-size: 30px;
+    font-size: 25px;
     color: white;
 `;
 export const CartContainer = styled.div`
     display: flex;
+    flex-direction: column;
     height: 100%;
     align-items: center;
     justify-content: center;
     position: relative;
-    
 `;
 export const CartCount = styled.div`
-    display: flex;
     align-items: center;
-    position: absolute;
+    display: flex;
+    justify-content: center;
     border-radius: 5px;
-    top: 8px;
-    right: -5px;
     z-index: 5;
-    width: 10px;
-    height: 14px;
+    right: -5px;
+    top: 7px;
+    position: absolute;
     background: ${primaryColor};
-    padding: 2.5px;
-    color: ${bgColorSecondary};    
+    color: ${bgColorSecondary};
+    p:nth-child(1) {
+        color: ${bgColorSecondary};
+        text-align: center;
+        padding: 2.5px;
+    }
 `;
