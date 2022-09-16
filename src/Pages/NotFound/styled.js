@@ -5,13 +5,13 @@ import bg from '../../img/bg.jpg';
 
 const space = keyframes`
     0%{
-        transform: translateX(-340px) 
+        transform: translateX(-340px)
         rotate(0deg)
     }
     100%{
         transform: translateX(calc(100vw - 360px))
          rotate(360deg)
-        
+
     }
 `;
 const fadeIn = keyframes`
@@ -24,7 +24,7 @@ const fadeIn = keyframes`
 `;
 export const Blackout = styled.div`
     background: rgba(0,0,0,0.6);
-    height: calc(100vh - 60px);
+    height: 100vh ;
     width: 100%;
 `;
 
@@ -32,7 +32,7 @@ export const ContainerBg = styled.div`
     background-image: url(${bg});
     background-repeat: no-repeat;
     background-size: cover;
-    height: calc(100vh - 60px);
+    height: 100vh ;
     width: 100%;
     overflow-x: hidden;
         p:nth-child(3){
@@ -55,7 +55,7 @@ export const ContainerImg = styled.img`
     filter: drop-shadow(0 0 10px #00ffff);
     position: relative;
     z-index: 10;
-        
+
     `;
 const fade = keyframes`
     0%{

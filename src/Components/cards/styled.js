@@ -4,17 +4,18 @@ import { BsCart3 } from 'react-icons/bs';
 import { bgColor, grayColor, bgColorSecondary } from '../../style/colors';
 
 export const ContainerCard = styled.div`
-    margin-top: 70px;
+    margin: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:220px;
-    height: 340px;
+    width:190px;
+    height: 250px;
     position: relative;
     background: white;
     border-radius: 10px;
     text-align: center;
     overflow: hidden;
+    flex: none;
     table, th, tr{
         border: 1px solid gray;
         border-collapse: collapse;
@@ -29,7 +30,7 @@ export const ContainerCard = styled.div`
         button{
             visibility: visible;
         }
-       
+
         box-sizing: border-box;
         border: 1px solid rgba(0,0,0,0.2);
     }
@@ -90,7 +91,7 @@ export const ColorShirt = styled.div`
     input:nth-child(3){
         background: #A5ACAF;
     }
-  
+
     input{
         display: flex;
         justify-content: center;
@@ -140,5 +141,5 @@ export const BoxPrice = styled.div`
 export const Cart = styled(BsCart3)`
     font-size: 25px;
     color: ${bgColor};
-   
+
 `;

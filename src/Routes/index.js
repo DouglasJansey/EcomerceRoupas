@@ -6,6 +6,7 @@ import NotFound from '../Pages/NotFound';
 import Register from '../Pages/Register';
 import Login from '../Pages/login';
 import RegisterProducts from '../Components/Produtos';
+import Cart from '../Components/Cart';
 
 export default function RoutePages() {
   return (
@@ -16,6 +17,7 @@ export default function RoutePages() {
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="produtos" element={<RegisterProducts />} />
+        <Route path="cart" element={<Cart />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -11,7 +11,7 @@ import {
 
 export default function Header() {
   const [NavOpaci, setNavOpaci] = useState(false);
-  const quantity = useSelector((state) => state.quantity);
+  const length = useSelector((state) => state.reducers.produtos.length);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -43,12 +43,14 @@ export default function Header() {
         </button>
       </InputContainer>
       <CartContainer>
-        <CartCount>
-          <p>
-            { quantity }
-          </p>
-        </CartCount>
-        <Cart />
+        <Link to="/cart">
+          <CartCount>
+            <p>
+              {length}
+            </p>
+          </CartCount>
+          <Cart />
+        </Link>
       </CartContainer>
       <LoginContainer>
         <Link to="/register">

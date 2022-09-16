@@ -42,7 +42,6 @@ export const Register = styled.div`
     button{
     width: 250px;
     height: 45px;
-    position:absolute;
     font-weight: bold;
     border-style: none;
     font-size: 15px;
@@ -70,11 +69,33 @@ export const Form = styled.form`
     }
     textarea{
         width:100% ;
+        padding-left: 5px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        &:focus{
+           box-shadow: 1px 1px 8px ${bgColorSecondary};
+           outline: none;
+        }
+    }
+    input {
+        height: 20px;
+        width: 100%;
+        padding-left: 5px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 5px;
+
+         &:focus{
+            box-shadow: 1px 1px 8px ${bgColorSecondary};
+            outline: none;
+         }
     }
 `;
 export const LabelPic = styled.label`
         height: 55px;
-        width: 100%;
+        width: 80%;
         justify-content: center;
         align-items: center;
         margin-left: 5px;
@@ -96,11 +117,22 @@ export const ContainerPic = styled.div`
     height: 250px;
     width: 100%;
     `;
+export const ContainerLabel = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    `;
 export const ContainerImg = styled.div`
     display: flex;
     flex: none;
-    height: 250px;
-    width: 250px;
+    overflow: hidden;
+    border-radius: 20px;
+    height: 200px;
+    width: 200px;
     img{
         width: 100%;
         height: 100%;

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import axios from '../../services/axios';
 import {
   Container, Register, Form, ContainerPic,
-  ContainerImg, LabelPic, DefaultImage,
+  ContainerImg, LabelPic, DefaultImage, ContainerLabel,
 } from './styled';
 
 export default function RegisterProducts() {
@@ -16,19 +16,42 @@ export default function RegisterProducts() {
   const [category, setCategory] = useState('');
   const [sub_category, setSubCategory] = useState('');
   const [type, setType] = useState('');
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState();
   const [old_price, setOldPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState();
 
   const [photo, setPhoto] = useState();
   const [profilePic, setProfilePic] = useState();
-  const hiddenInput = useRef();
 
+  const hiddenInput = useRef(null);
+  const form = useRef(null);
+  const error = false;
   async function handleSubmit(e) {
     e.preventDefault();
-
+    const formData = new FormData();
     try {
-      await axios.post();
+      await axios.post('/produtos', {
+        name,
+        description,
+        category,
+        sub_category,
+        type,
+        price,
+        old_price,
+        quantity,
+      }).then(async (res) => {
+        const { id } = res.data;
+        console.log(id);
+        formData.append('photoProduct', photo);
+        formData.append('product_id', id);
+        if (!error) {
+          await axios.post('/produtos/fotos', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+        }
+      });
     } catch (err) {
       return console.log(err);
     }
@@ -49,7 +72,7 @@ export default function RegisterProducts() {
   return (
     <Container>
       <Register>
-        <Form onSubmit={handleSubmit} id="formRegister">
+        <Form onSubmit={handleSubmit} id="formRegister" ref={form}>
           <ContainerPic>
             <ContainerImg>
               {profilePic
@@ -61,20 +84,22 @@ export default function RegisterProducts() {
                 )
                 : <DefaultImage />}
             </ContainerImg>
-            <LabelPic
-              htmlFor="foto"
-              onClickCapture={(e) => handleClick(e)}
-            >
-              Foto
-              <input
-                type="file"
-                name="foto"
-                accept="image/png, image/jpeg"
-                ref={hiddenInput}
-                onChange={(e) => validateImage(e)}
-              />
-              {photo.name}
-            </LabelPic>
+            <ContainerLabel>
+              <LabelPic
+                htmlFor="foto"
+                onClickCapture={(e) => handleClick(e)}
+              >
+                Foto
+                <input
+                  type="file"
+                  name="foto"
+                  accept="image/png, image/jpeg"
+                  ref={hiddenInput}
+                  onChange={(e) => validateImage(e)}
+                />
+              </LabelPic>
+              {photo ? photo.name : 'Nenhuma arquivo selecionado!' }
+            </ContainerLabel>
           </ContainerPic>
           <label htmlFor="nome">
             Nome:
@@ -115,7 +140,7 @@ export default function RegisterProducts() {
           <label htmlFor="price">
             preço:
             <input
-              type="text"
+              type="number"
               name="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -124,7 +149,7 @@ export default function RegisterProducts() {
           <label htmlFor="oldPrice">
             Preço antigo:
             <input
-              type="text"
+              type="number"
               name="oldPrice"
               value={old_price}
               onChange={(e) => setOldPrice(e.target.value)}
@@ -133,10 +158,10 @@ export default function RegisterProducts() {
           <label htmlFor="quantity">
             quantidade:
             <input
-              type="text"
+              type="number"
               name="quantity"
               value={quantity}
-              onChange={(e) => setOldPrice(e.target.value)}
+              onChange={(e) => setQuantity(e.target.value)}
             />
           </label>
           <label htmlFor="description">
@@ -145,8 +170,11 @@ export default function RegisterProducts() {
               name="description"
               rows="5"
               cols="50"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </label>
+          <button type="submit"> Cadastrar </button>
         </Form>
       </Register>
     </Container>

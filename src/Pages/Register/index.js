@@ -56,7 +56,6 @@ export default function Register() {
     e.preventDefault();
     validateInput();
     const formData = new FormData();
-    if (error) return alert('Error');
     try {
       await axios.post('/users/', {
         name,

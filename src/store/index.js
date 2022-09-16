@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import reducer from './reducers';
+import combinereducer from './modules/rootReducer';
 
-const store = createStore(reducer);
+const store = createStore(combinereducer);
 
 export default store;

@@ -2,13 +2,12 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable prefer-const */
 import { Container } from './styled';
-import Card from '../../Components/cards';
+import List from '../../Components/List';
 
 export default function Home() {
   return (
     <Container>
-      <Card />
-      {/* <img alt="" src="https://www.akamai.com/site/im-demo/perceptual-standard.jpg?imbypass=true" /> */}
+      <List />
     </Container>
   );
 }
