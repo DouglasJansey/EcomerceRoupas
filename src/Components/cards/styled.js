@@ -129,14 +129,15 @@ export const BoxPrice = styled.div`
     display: flex;
     justify-content:center;
     align-items: center;
+    flex-wrap: nowrap;
     background: white;
     font-weight: bold;
-    padding: 2px;
-    width: 90px;
-    height: 25px;
+    padding: 4px;
+    height: 20px;
     position: absolute;
     bottom: 0;
     right: 0;
+    font-size: 14px;
 `;
 export const Cart = styled(BsCart3)`
     font-size: 25px;

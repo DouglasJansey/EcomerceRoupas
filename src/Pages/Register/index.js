@@ -9,6 +9,7 @@ import {
   Container, RegisterContainer, Form, EndForm,
   PhotoContainer, DefaultImage, TextLogin,
 } from './styled';
+import inputMask from '../../Util';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -19,8 +20,8 @@ export default function Register() {
   const [street, setStreet] = useState('');
   const [street_number, setStreetNumber] = useState('');
   const [city, setCity] = useState('');
-  const [ddd_cel, setDdd] = useState();
-  const [cel_number, setCelPhone] = useState();
+  const [ddd_cel, setDdd] = useState('');
+  const [cel_number, setCelPhone] = useState('');
   const [photo, setPhoto] = useState();
   const [profilePic, setProfilePic] = useState();
   const hiddenInput = useRef(null);
@@ -221,7 +222,7 @@ export default function Register() {
                   <input
                     type="text"
                     name="cpf"
-                    value={cpf}
+                    value={inputMask(cpf, 'cpf')}
                     onChange={(e) => setCpf(e.target.value)}
                   />
                 </label>
@@ -239,9 +240,9 @@ export default function Register() {
                 <label htmlFor="celular">
                   Celular:
                   <input
-                    type="tel"
+                    type="text"
                     name="celular"
-                    value={cel_number}
+                    value={inputMask(cel_number, 'cel')}
                     onChange={(e) => setCelPhone(e.target.value)}
                   />
                 </label>

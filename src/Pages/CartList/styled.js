@@ -2,21 +2,23 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: #fdfd96;
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 export const Container2 = styled.div`
-  width: 100%;
-  height: 250px;
+  width: 90%;
+  height: 500px;
   display: flex;
+  border-radius: 10px;
+  background: #FAFAFA;
+  justify-content: flex-start;
+  padding: 5px;
+  align-items: center;
   flex-direction: column;
-  background: red;
   overflow-x: hidden;
-
 `;

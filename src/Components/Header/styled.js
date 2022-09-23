@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { BsCart3 } from 'react-icons/bs';
+import { BsCart4, BsPersonCheckFill } from 'react-icons/bs';
 
 import {
   bgColor, primaryColor, grayColor, bgColorSecondary, secondaryColor,
 } from '../../style/colors';
+import Login from '../../Pages/login';
 
 //   rgba(75, 61, 143, 0.3);
 
@@ -25,14 +26,14 @@ const OpacityNavColor = (props) => {
 };
 
 export const Container = styled.div`
-  max-width: 100%;
+   width: 100%;
   position: fixed;
   width:100%;
   height: 60px;
   ${({ opacityNav }) => OpacityNavColor(opacityNav)};
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   z-index: 11;
   transition: all 0.5s ease;
 
@@ -41,42 +42,29 @@ export const Container = styled.div`
     border: none;
     height: 100%;
     width: 100%;
-    z-index: 10;
     :focus{
       border: none;
       outline: none;
     }
   }
-
-  button{
-    margin-left: -35px;
-    text-decoration: none;
-    border-radius: 100%;
-    border: none;
-    background: none;
-    padding: 5px;
-    cursor: pointer;
-  }
 `;
 export const InputContainer = styled.div`
     display: flex;
-    width: 70vmin;
+    width: 50%;
     height: 30px;
 `;
 
 export const NavBar = styled.nav`
 display: flex;
-min-width: 40%;
-width: 40vmax;
-margin-left: 15px;
-z-index: 10;
+max-width: 30%;
+min-width: 250px;
+justify-content: space-evenly;
+padding: 5px;
 
 a{
-  margin-right: 20px;
   font-size: 0.9rem;
   font-weight: bold;
   display: flex;
-  justify-content: center;
   align-items: center;
   :hover{
   color:${primaryColor};
@@ -86,30 +74,46 @@ a{
 `;
 export const LoginContainer = styled.div`
     display: flex;
-    height: 100% ;
-    width: 100px;
-    margin-right: 35px;
+    height: 25px;
+    width: 70px;
+    border-radius: 2px;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px;
+    justify-content: space-around;
+    padding: 5px;
+    &:hover{
+        opacity: 0.8;
+    }
+    background: ${grayColor};
     p{
-         font-size: 11px;
+         font-size: 15px;
         font-weight: bold;
-        :hover{
-            color: ${primaryColor};
-        }
+        color: ${bgColorSecondary} ;
     }
 
    a{
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 10px;
+
     }
 `;
-export const Cart = styled(BsCart3)`
+export const UserLogin = styled(BsPersonCheckFill)`
+    font-size: 20px;
+    color: ${bgColorSecondary};
+`;
+export const Cart = styled(BsCart4)`
     font-size: 25px;
     color: white;
+    margin-top: 15px;
+`;
+export const SubContainer = styled.div`
+    display: flex;
+    height: 100%;
+    width: 180px;
+    min-width: 135px;
+    align-items: center;
+    justify-content: space-evenly;
+
 `;
 export const CartContainer = styled.div`
     display: flex;
@@ -121,18 +125,23 @@ export const CartContainer = styled.div`
 `;
 export const CartCount = styled.div`
     align-items: center;
-    display: flex;
     justify-content: center;
-    border-radius: 5px;
+    width: 10px;
+    height: 11px;
+    display: flex;
+    border-radius: 100%;
+    padding: 3px;
     z-index: 5;
-    right: -5px;
-    top: 7px;
+    right: -6px;
+    top: 12px;
     position: absolute;
     background: ${primaryColor};
     color: ${bgColorSecondary};
     p:nth-child(1) {
         color: ${bgColorSecondary};
         text-align: center;
-        padding: 2.5px;
+        font-size: 15px;
+        margin-left: 1px;
+        font-weight: bold;
     }
 `;

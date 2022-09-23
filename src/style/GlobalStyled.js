@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
   *{
@@ -14,5 +15,12 @@ export default createGlobalStyle`
     text-decoration: none;
 
   }
-  
+  body .Toastify .Toastify__toast-container .Toastify__toast--success  {
+
+      background: #008000;
+    color: white;
+    font-weight: bold;
+  }
+
+
 `;

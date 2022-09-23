@@ -1,4 +1,4 @@
-import * as types from './types';
+import * as types from '../types';
 
 export function addProducts(produtos) {
   return {
@@ -9,6 +9,14 @@ export function addProducts(produtos) {
 export function addCart(payload) {
   return {
     type: types.ADD_CART,
+    payload,
+  };
+}
+
+export function removeCart(payload) {
+  console.log(payload);
+  return {
+    type: types.REMOVE_CART,
     payload,
   };
 }

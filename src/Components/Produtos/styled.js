@@ -38,35 +38,19 @@ export const Register = styled.div`
     border-radius: 5%;
     overflow: hidden;
     padding: 5px;
-
-    button{
-    width: 250px;
-    height: 45px;
-    font-weight: bold;
-    border-style: none;
-    font-size: 15px;
-    border-radius: 15px;
-    background: ${bgColor};
-    color: ${grayColor};
-    cursor: pointer;
-    bottom: 55px;
-    :hover{
-        background: ${bgColorSecondary};
-    }
-
-  }
+`;
+export const Label = styled.label`
+        display: flex;
+        flex-direction: column;
 `;
 export const Form = styled.form`
     display: flex;
     flex-wrap: wrap;
     padding: 5px;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: space-around;
 
-    label{
-        display: flex;
-        flex-direction: column;
-        margin-left: 10px;
-    }
+
     textarea{
         width:100% ;
         padding-left: 5px;
@@ -96,14 +80,13 @@ export const Form = styled.form`
 export const LabelPic = styled.label`
         height: 55px;
         width: 80%;
+        display:flex;
+        font-weight: bold ;
         justify-content: center;
         align-items: center;
-        margin-left: 5px;
-        margin-right: 5px;
         background-color: ${bgColor};
         border-radius: 10px;
         color:  ${grayColor};
-        text-align: center;
          cursor: pointer;
     input{
         display: none;
@@ -114,7 +97,7 @@ export const ContainerPic = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 250px;
+    height: 200px;
     width: 100%;
     `;
 export const ContainerLabel = styled.div`
@@ -122,7 +105,7 @@ export const ContainerLabel = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     height: 100%;
     width: 100%;
     `;
@@ -145,3 +128,28 @@ export const DefaultImage = styled.img`
 DefaultImage.defaultProps = {
   src: defaultImage,
 };
+export const ContainerCol = styled.div`
+        display: flex;
+        height: 90px;
+        flex-direction: column;
+        justify-content: space-between;
+        label{
+            width: 90%;
+        }
+
+`;
+export const ButtonSubmit = styled.button`
+    width: 250px;
+    height: 45px;
+    font-weight: bold;
+    border-style: none;
+    font-size: 15px;
+    border-radius: 15px;
+    background: ${bgColor};
+    color: ${grayColor};
+    cursor: pointer;
+    bottom: 55px;
+    :hover{
+        background: ${bgColorSecondary};
+    }
+`;

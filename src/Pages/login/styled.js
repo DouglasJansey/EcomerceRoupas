@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
-
+import { BsCheckCircleFill, BsXCircleFill } from 'react-icons/bs';
 import { bgColor, grayColor, bgColorSecondary } from '../../style/colors';
 
 const fadeIn = keyframes`
@@ -25,12 +26,10 @@ export const Container = styled.div`
     p{
         margin-bottom: 10px;
     }
-
 `;
-export const Login = styled.div`
-    margin-top: 50px;
+export const LoginContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
-    display: flex;
+    display: flex; 
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -42,6 +41,12 @@ export const Login = styled.div`
     background-color: #d9d9d9;
     border-radius: 5%;
     overflow: hidden;
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    margin: auto;
 
     span{
         display: flex;
@@ -71,7 +76,7 @@ export const Login = styled.div`
     background: ${bgColor};
     color: ${grayColor};
     cursor: pointer;
-    bottom: 55px;
+    bottom: 35px;
     :hover{
         background: ${bgColorSecondary};
     }
@@ -112,11 +117,30 @@ input {
   padding: 0;
   border-radius: 10px;
   margin-top: 5px;
+  padding-left: 10px;
 
   &:focus{
     border: 1px solid ${bgColorSecondary};
     outline: none;
   }
 }
-
 `;
+export const CheckSuccess = styled(BsCheckCircleFill)`
+    font-size: 30px;
+    color: white;
+`;
+const CheckFailure = styled(BsXCircleFill)`
+    font-size: 30px;
+    color: blue;
+`;
+const LoginCheked = ({ cheked }) => {
+  switch (cheked) {
+    case 'success': {
+      return `background: green; visibility:visible; &:after{content: "LOGIN SUCCESS" ; margin-left: 15px;}; &:before{content: " "; ${CheckFailure}} ; `;
+    }
+    case 'failure': {
+      return `background: red; visibility:visible; &:after{content: "LOGIN FAILURE" ; margin-left: 15px;}; &:before{content: " "; ${CheckFailure}} ; `;
+    }
+    default: return console.log(cheked);
+  }
+};

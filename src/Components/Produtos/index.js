@@ -1,13 +1,11 @@
 /* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-bind */
-import validator from 'validator';
 import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import axios from '../../services/axios';
 import {
-  Container, Register, Form, ContainerPic,
-  ContainerImg, LabelPic, DefaultImage, ContainerLabel,
+  Container, Register, ContainerCol, Form, ContainerPic, ButtonSubmit,
+  ContainerImg, Label, LabelPic, DefaultImage, ContainerLabel,
 } from './styled';
 
 export default function RegisterProducts() {
@@ -17,8 +15,9 @@ export default function RegisterProducts() {
   const [sub_category, setSubCategory] = useState('');
   const [type, setType] = useState('');
   const [price, setPrice] = useState();
-  const [old_price, setOldPrice] = useState(0);
+  const [old_price, setOldPrice] = useState();
   const [quantity, setQuantity] = useState();
+  const [color, setColor] = useState('');
 
   const [photo, setPhoto] = useState();
   const [profilePic, setProfilePic] = useState();
@@ -44,6 +43,7 @@ export default function RegisterProducts() {
         console.log(id);
         formData.append('photoProduct', photo);
         formData.append('product_id', id);
+        formData.append('color', color);
         if (!error) {
           await axios.post('/produtos/fotos', formData, {
             headers: {
@@ -101,7 +101,7 @@ export default function RegisterProducts() {
               {photo ? photo.name : 'Nenhuma arquivo selecionado!' }
             </ContainerLabel>
           </ContainerPic>
-          <label htmlFor="nome">
+          <Label htmlFor="nome">
             Nome:
             <input
               type="text"
@@ -109,8 +109,8 @@ export default function RegisterProducts() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-          </label>
-          <label htmlFor="category">
+          </Label>
+          <Label htmlFor="category">
             Categoria:
             <input
               type="text"
@@ -118,8 +118,8 @@ export default function RegisterProducts() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
-          </label>
-          <label htmlFor="subCategory">
+          </Label>
+          <Label htmlFor="subCategory">
             Sub-Categoria:
             <input
               type="text"
@@ -127,8 +127,8 @@ export default function RegisterProducts() {
               value={sub_category}
               onChange={(e) => setSubCategory(e.target.value)}
             />
-          </label>
-          <label htmlFor="type">
+          </Label>
+          <Label htmlFor="type">
             Tipo:
             <input
               type="text"
@@ -136,17 +136,17 @@ export default function RegisterProducts() {
               value={type}
               onChange={(e) => setType(e.target.value)}
             />
-          </label>
-          <label htmlFor="price">
-            preço:
+          </Label>
+          <Label htmlFor="price">
+            Preço:
             <input
               type="number"
               name="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
-          </label>
-          <label htmlFor="oldPrice">
+          </Label>
+          <Label htmlFor="oldPrice">
             Preço antigo:
             <input
               type="number"
@@ -154,27 +154,39 @@ export default function RegisterProducts() {
               value={old_price}
               onChange={(e) => setOldPrice(e.target.value)}
             />
-          </label>
-          <label htmlFor="quantity">
-            quantidade:
-            <input
-              type="number"
-              name="quantity"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-            />
-          </label>
-          <label htmlFor="description">
+          </Label>
+          <ContainerCol>
+            <Label htmlFor="quantity">
+              Cor:
+              <input
+                type="text"
+                name="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              />
+            </Label>
+            <Label htmlFor="quantity">
+              Quantidade:
+              <input
+                type="number"
+                name="quantity"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+            </Label>
+          </ContainerCol>
+          <Label htmlFor="descricao">
             Descrição:
             <textarea
-              name="description"
               rows="5"
               cols="50"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-          </label>
-          <button type="submit"> Cadastrar </button>
+
+          </Label>
+
+          <ButtonSubmit type="submit"> Cadastrar </ButtonSubmit>
         </Form>
       </Register>
     </Container>
