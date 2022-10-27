@@ -3,7 +3,10 @@
 /* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
 import { BsCheckCircleFill, BsXCircleFill } from 'react-icons/bs';
-import { bgColor, grayColor, bgColorSecondary } from '../../style/colors';
+import {
+  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkGrayColor,
+} from '../../style/colors';
 
 const fadeIn = keyframes`
     0%{
@@ -22,63 +25,55 @@ export const Container = styled.div`
     height: 100vh;
     align-items: center;
     justify-content: center;
-    background: ${grayColor};
-    p{
-        margin-bottom: 10px;
-    }
 `;
 export const LoginContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 35vw;
-    height: 75vh;
-    max-width: 90vmax;
-    max-height: 85vmax;
+    width: 30%;
+    height: 50%;
+    min-width: 250px;
+    max-width: 350px;
+    min-height: 350px;
+    max-height: 450px;
     box-shadow: 0 0 5px rgba(0,0,0,0.6) ;
     background-color: #d9d9d9;
     border-radius: 5%;
     overflow: hidden;
-    position: absolute;
-    top:0;
-    bottom:0;
-    right:0;
-    left:0;
-    margin: auto;
 
     span{
         display: flex;
+        padding: 15px;
         align-items: center;
         justify-content: center;
-        background-color: ${bgColor};
+        background-color: ${darkRedColor};
         width: 100%;
         position: relative;
         height: 20%;
-        font-size: 15px;
+        font-size: 10px;
         color: #f9f9f9;
     }
     p{
-    margin-top: 10px;
+    margin-top: 5px;
     color: gray;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
     }
     button{
-    width: 250px;
-    height: 45px;
-    position:absolute;
+    width: 150px;
+    height: 35px;
     font-weight: bold;
     border-style: none;
     font-size: 15px;
     border-radius: 15px;
-    background: ${bgColor};
-    color: ${grayColor};
+    background: ${darkRedColor};
+    color: #fff;
     cursor: pointer;
-    bottom: 35px;
+
     :hover{
-        background: ${bgColorSecondary};
+        background: ${darkRedColor};
     }
 
   }
@@ -90,7 +85,7 @@ justify-content: center;
 align-items: center;
 width: 100%;
 margin-bottom: 5px;
-
+flex-wrap: wrap;
 div{
         padding: 15px;
         font-weight: bold;
@@ -103,10 +98,10 @@ div{
 label{
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: bold;
   font-size: 15px;
-  color: ${bgColorSecondary};
+  color: ${darkRedColor};
 }
 
 input {
@@ -117,30 +112,10 @@ input {
   padding: 0;
   border-radius: 10px;
   margin-top: 5px;
-  padding-left: 10px;
 
   &:focus{
-    border: 1px solid ${bgColorSecondary};
+    border: 1px solid ${darkRedColor};
     outline: none;
   }
 }
 `;
-export const CheckSuccess = styled(BsCheckCircleFill)`
-    font-size: 30px;
-    color: white;
-`;
-const CheckFailure = styled(BsXCircleFill)`
-    font-size: 30px;
-    color: blue;
-`;
-const LoginCheked = ({ cheked }) => {
-  switch (cheked) {
-    case 'success': {
-      return `background: green; visibility:visible; &:after{content: "LOGIN SUCCESS" ; margin-left: 15px;}; &:before{content: " "; ${CheckFailure}} ; `;
-    }
-    case 'failure': {
-      return `background: red; visibility:visible; &:after{content: "LOGIN FAILURE" ; margin-left: 15px;}; &:before{content: " "; ${CheckFailure}} ; `;
-    }
-    default: return console.log(cheked);
-  }
-};

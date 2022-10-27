@@ -1,77 +1,177 @@
 import styled from 'styled-components';
-import { BsCart4, BsPersonCheckFill } from 'react-icons/bs';
-
+import { BsCart4, BsPersonCheckFill, BsHeartFill } from 'react-icons/bs';
 import {
-  bgColor, primaryColor, grayColor, bgColorSecondary, secondaryColor,
+  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkGrayColor,
 } from '../../style/colors';
-import Login from '../../Pages/login';
 
-//   rgba(75, 61, 143, 0.3);
+const ChildBorder = (props) => {
+  switch (props) {
+    case '/': return `:nth-child(1){border-bottom: 5px solid ${darkRedColor};}`;
+    case '/home': return `:nth-child(1){border-bottom: 5px solid ${darkRedColor};}`;
+    case '/info': return `:nth-child(2){border-bottom: 5px solid ${darkRedColor};}`;
+    case '/contato': return `:nth-child(3){border-bottom: 5px solid ${darkRedColor};}`;
+    case '/login': return `:nth-child(4){border-bottom: 5px solid ${darkRedColor};}`;
+    case '/conta': return `:nth-child(4){border-bottom: 5px solid ${darkRedColor};}`;
 
-const OpacityNavColor = (props) => {
-  if (props) {
-    return (
-      `background: linear-gradient(to bottom, rgba(75, 61, 143, 0.8), rgba(75, 61, 143, 0.4), rgba(75, 61, 143, 0));
-      nav > a, p{
-        color: ${bgColorSecondary};
-      }`
-    );
+    default: return `border-bottom: 5px solid ${darkGrayColor};`;
   }
-  return (
-    `background:${bgColor};
-    nav > a, p{
-        color: ${grayColor};
-      }
-  `);
+};
+const ChildBg = (props) => {
+  switch (props) {
+    case 0: return `:nth-child(${props + 1}){background: ${darkRedColor};}`;
+    case 1: return `:nth-child(${props + 1}){background: ${darkRedColor};}`;
+    case 2: return `:nth-child(${props + 1}){background: ${darkRedColor};}`;
+    case 3: return `:nth-child(${props + 1}){background: ${darkRedColor};}`;
+    case 4: return `:nth-child(${props + 1}){background: ${darkRedColor};}`;
+    case 5: return `:nth-child(${props + 1}){background: ${darkRedColor};}`;
+
+    default: return '';
+  }
 };
 
 export const Container = styled.div`
-   width: 100%;
+  width: 100%;
+  height: 120px;
   position: fixed;
-  width:100%;
-  height: 60px;
-  ${({ opacityNav }) => OpacityNavColor(opacityNav)};
+  background: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
+  flex-direction: column;
+  top: 0;
   z-index: 11;
-  transition: all 0.5s ease;
-
-  input{
-    border-radius: 7px;
-    border: none;
-    height: 100%;
-    width: 100%;
-    :focus{
-      border: none;
-      outline: none;
+`;
+export const ContainerTitle = styled.div`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img{
+        max-height: 60%;
+        min-width: 10%;
+        margin-left: 10px;
     }
-  }
+`;
+export const SubContainerTitle = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    width: auto;
+    height: 50%;
+    margin-right: 20px;
+    ${({ borderColor }) => ChildBorder(borderColor)}
+    border-bottom: 5px solid ${lightGrayColor};
+
+    :hover{
+        border-bottom: 5px solid ${darkRedColor};
+    }
+
+    a{
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    color: ${darkGrayColor};
+    }
+`;
+export const SubContainer1 = styled.div`
+  width: 100%;
+  height: 30px;
+  background: ${darkBlueColor};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  a{
+    font-size: 0.9rem;
+    display: flex;
+    color: #fff;
+    }
+`;
+export const SubContainer = styled.div`
+    display: flex;
+    height: 100%;
+    width: auto;
+    margin-left: 20px;
+    align-items: center;
+    margin-right: 15px;
+    justify-content: flex-end;
+`;
+export const SubContainerNav = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    width: auto;
+    height: 100%;
+    padding: 5px;
+    ${({ bgColor }) => ChildBg(bgColor)};
+    :hover{
+        background: ${darkRedColor};
+    }
 `;
 export const InputContainer = styled.div`
     display: flex;
-    width: 50%;
-    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 300px;
+    height: 23px;
+    margin-right: 50px;
+    overflow: hidden;
+    input{
+        width: 100%;
+        height: 100%;
+    }
+`;
+export const CartContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 150px;
+    padding: 5px;
+    font-weight: bold;
+    background: ${yellowColor};
+    color: ${darkRedColor};
+    position: relative;
+`;
+export const Cart = styled(BsCart4)`
+    font-size: 20px;
+    color: ${darkRedColor};
+    margin-bottom: 5px;
+    margin-left: 5px;
+`;
+export const CartCount = styled.div`
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 5px;
+    background: #fff;
+
+    p:nth-child(1) {
+        text-align: center;
+        font-size: 15px;
+        margin-right: 0.5px;
+        font-weight: bold;
+    }
 `;
 
 export const NavBar = styled.nav`
 display: flex;
-max-width: 30%;
-min-width: 250px;
-justify-content: space-evenly;
-padding: 5px;
-
-a{
-  font-size: 0.9rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  :hover{
-  color:${primaryColor};
-
-  }
-}
+align-items: center;
+height: 100%;
+width: auto;
+overflow: hidden;
 `;
+
 export const LoginContainer = styled.div`
     display: flex;
     height: 25px;
@@ -83,11 +183,11 @@ export const LoginContainer = styled.div`
     &:hover{
         opacity: 0.8;
     }
-    background: ${grayColor};
+    background: ${darkBlueColor};
     p{
-         font-size: 15px;
+         font-size: 12px;
         font-weight: bold;
-        color: ${bgColorSecondary} ;
+        color: ${darkBlueColor} ;
     }
 
    a{
@@ -99,49 +199,16 @@ export const LoginContainer = styled.div`
 `;
 export const UserLogin = styled(BsPersonCheckFill)`
     font-size: 20px;
-    color: ${bgColorSecondary};
+    margin-left: 5px;
+    color: ${darkBlueColor};
 `;
-export const Cart = styled(BsCart4)`
-    font-size: 25px;
-    color: white;
-    margin-top: 15px;
-`;
-export const SubContainer = styled.div`
-    display: flex;
-    height: 100%;
-    width: 180px;
-    min-width: 135px;
-    align-items: center;
-    justify-content: space-evenly;
-
-`;
-export const CartContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-`;
-export const CartCount = styled.div`
-    align-items: center;
-    justify-content: center;
-    width: 10px;
-    height: 11px;
-    display: flex;
+export const ImageUser = styled.img`
+    width: 45px;
+    height: 45px;
     border-radius: 100%;
-    padding: 3px;
-    z-index: 5;
-    right: -6px;
-    top: 12px;
-    position: absolute;
-    background: ${primaryColor};
-    color: ${bgColorSecondary};
-    p:nth-child(1) {
-        color: ${bgColorSecondary};
-        text-align: center;
-        font-size: 15px;
-        margin-left: 1px;
-        font-weight: bold;
-    }
+    margin-left: 5px;
+`;
+export const Favorit = styled(BsHeartFill)`
+    font-size: 20px;
+    color: white;
 `;

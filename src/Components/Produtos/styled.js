@@ -1,10 +1,15 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
 
-import { bgColor, grayColor, bgColorSecondary } from '../../style/colors';
+import {
+  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkGrayColor,
+}
+  from '../../style/colors';
 
-const defaultImage = 'https://wegoboard.com/img/p/fr-default-large_default.jpg';
+const defaultImage = '';
 
 const fadeIn = keyframes`
     0%{
@@ -22,7 +27,7 @@ export const Container = styled.div`
     height: 100vh;
     align-items: center;
     justify-content: center;
-    background: ${grayColor};
+    background: ${darkRedColor};
     p{
         margin-bottom: 10px;
     }
@@ -59,22 +64,9 @@ export const Form = styled.form`
         margin-top: 5px;
         margin-bottom: 10px;
         &:focus{
-           box-shadow: 1px 1px 8px ${bgColorSecondary};
+           box-shadow: 1px 1px 8px ${darkRedColor};
            outline: none;
         }
-    }
-    input {
-        height: 20px;
-        width: 100%;
-        padding-left: 5px;
-        border-radius: 5px;
-        border: none;
-        margin-top: 5px;
-
-         &:focus{
-            box-shadow: 1px 1px 8px ${bgColorSecondary};
-            outline: none;
-         }
     }
 `;
 export const LabelPic = styled.label`
@@ -84,9 +76,9 @@ export const LabelPic = styled.label`
         font-weight: bold ;
         justify-content: center;
         align-items: center;
-        background-color: ${bgColor};
+        background-color: ${darkRedColor};
         border-radius: 10px;
-        color:  ${grayColor};
+        color:  ${darkRedColor};
          cursor: pointer;
     input{
         display: none;
@@ -145,11 +137,24 @@ export const ButtonSubmit = styled.button`
     border-style: none;
     font-size: 15px;
     border-radius: 15px;
-    background: ${bgColor};
-    color: ${grayColor};
+    background: ${darkRedColor};
+    color: ${darkRedColor};
     cursor: pointer;
     bottom: 55px;
     :hover{
-        background: ${bgColorSecondary};
+        background: ${darkRedColor};
     }
+`;
+export const InputForm = styled.input`
+    height: 20px;
+    width: 100%;
+    padding-left: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: none;
+
+     &:focus{
+        box-shadow: 1px 1px 8px ${darkRedColor};
+        outline: none;
+     }
 `;

@@ -25,51 +25,49 @@ export default function Login() {
     e.preventDefault();
     validateInput();
     if (error) {
-      toast.error('LOGIN FAILURE', {
+      return toast.error('LOGIN FAILURE', {
         position: toast.POSITION.TOP_CENTER,
       });
-      return this;
     }
-    dispatch(action.LoginRequest({ email, password }));
-    toast.success('LOGIN SUCCESS', {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    dispatch(action.loginRequest({ email, password }));
   }
 
   return (
-    <LoginContainer>
-      <span>
-        <h1>Faça seu Login</h1>
-      </span>
-      <Form onSubmit={handleSubmit} id="formRegister">
-        <div>
-          <label htmlFor="email">
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <button type="submit">Entrar</button>
-      </Form>
-      <p>
-        Se você não tem uma conta,
-        <br />
-        <Link to="/register"> Registre-se </Link>
-        agora!
-      </p>
-    </LoginContainer>
+    <Container>
+      <LoginContainer>
+        <span>
+          <h1>Faça seu Login</h1>
+        </span>
+        <Form onSubmit={handleSubmit} id="formRegister">
+          <div>
+            <label htmlFor="email">
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+            <label htmlFor="password">
+              Password:
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <button type="submit">Entrar</button>
+        </Form>
+        <p>
+          Se você não tem uma conta,
+          <br />
+          <Link to="/register"> Registre-se </Link>
+          agora!
+        </p>
+      </LoginContainer>
+    </Container>
   );
 }

@@ -3,7 +3,10 @@
 import styled, { keyframes } from 'styled-components';
 import { FaUserCircle } from 'react-icons/fa';
 
-import { bgColor, grayColor, bgColorSecondary } from '../../style/colors';
+import {
+  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkGrayColor,
+} from '../../style/colors';
 
 const fadeIn = keyframes`
     0%{
@@ -16,17 +19,17 @@ const fadeIn = keyframes`
     }
 `;
 
-export const Container = styled.div`
+export const Container = styled.section`
     display: flex;
     width: 100%;
     height: 100vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: ${grayColor}; 
+    background: ${darkRedColor};
 
 `;
-export const RegisterContainer = styled.div` 
+export const RegisterContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
     display: flex;
     flex-direction: column;
@@ -40,18 +43,18 @@ export const RegisterContainer = styled.div`
     background-color: #d9d9d9;
     border-radius: 5%;
     overflow: hidden;
-     
+
     span{
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: ${bgColor};
+        background-color: ${darkRedColor};
         width: 100%;
         position: relative;
         height: 10%;
         color: #f9f9f9;
     }
-     
+
     button{
     width: 250px;
     height: 45px;
@@ -60,12 +63,12 @@ export const RegisterContainer = styled.div`
     border-style: none;
     font-size: 15px;
     border-radius: 15px;
-    background: ${bgColor};
-    color: ${grayColor};
+    background: ${darkRedColor};
+    color: ${darkRedColor};
     cursor: pointer;
-    bottom: 50px;
+    bottom: 70px;
     :hover{
-        background: ${bgColorSecondary};
+        background: ${darkRedColor};
     }
 
   }
@@ -86,29 +89,29 @@ width: 100%;
  div{
         padding:  5px;
         font-weight: bold;
-        font-size: 15px; 
+        font-size: 15px;
         display: flex;
         flex-direction: column;
         width: 100%;
-      
+
 }
- 
+
 label{
   display: flex;
   padding: 5px;
-  flex-direction: column; 
+  flex-direction: column;
   margin-left: 5px;
   font-weight: bold;
   font-size: 15px;
-  color: ${bgColorSecondary}; 
+  color: ${darkRedColor};
 }
- 
 
-input, select { 
+
+input, select {
   height: 30px;
   width: 100%;
   font-size: 15px;
-  border: 1px solid #ddd; 
+  border: 1px solid #ddd;
   border-radius: 10px;
   margin-top: 5px;
   justify-content:center;
@@ -117,90 +120,91 @@ input, select {
   padding-left: 10px;
 
   &:focus{
-    border: 1px solid ${bgColorSecondary};
-    outline: none; 
+    border: 1px solid ${darkRedColor};
+    outline: none;
   }
 }
 
 `;
-export const EndForm = styled.div` 
+export const EndForm = styled.div`
         padding: 15px;
         font-weight: bold;
-        position: relative; 
+        position: relative;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
          div:nth-child(2){
-            max-width: 95%; 
-            font-weight: bold; 
+            max-width: 95%;
+            font-weight: bold;
             display: flex;
-            flex-direction: row ; 
-            label:nth-child(1){ 
-                width: 50px;  
+            flex-direction: row ;
+            label:nth-child(1){
+                width: 50px;
             }
-   
+
          }
-         div:nth-child(1) { 
-            max-width: 95%; 
-            display: flex;  
+         div:nth-child(1) {
+            max-width: 95%;
+            display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            label:nth-child(1){ 
-                width: 100%;   
+            label:nth-child(1){
+                width: 100%;
             }
-            label:nth-child(2){ 
-                width: 90px;   
+            label:nth-child(2){
+                width: 90px;
             }
-            label:nth-child(3){ 
-                width: 250px; 
+            label:nth-child(3){
+                width: 250px;
             }
             label:nth-child(4){
             width: 120px;
          }
          }
-      
-          
+
+
 `;
-export const PhotoContainer = styled.div` 
-    display: flex;  
+export const PhotoContainer = styled.div`
+    display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    height: 80px; 
+    height: 80px;
     margin-bottom: 10px;
     margin-top: 10px;
     img{
         max-width: 115px;
         max-height: 115px;
     }
-    div { 
+    div {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      align-items: center; 
-    }  
+      align-items: center;
+    }
     div > div{
         height: 95px;
-        width: 95px;   
+        width: 95px;
         border-radius: 50%;
         overflow: hidden;
         justify-content: center;
-        align-items: center; 
-        flex: none; 
-    } 
+        align-items: center;
+        flex: none;
+    }
     div > label{
-        padding: 15px 25px; 
-        display: block; 
+        padding: 15px 25px;
+        display: block;
         margin-left: 5px;
         margin-right: 5px;
-        background-color: ${bgColor};
-        border-radius: 10px; 
-        color:  ${grayColor};
-        text-align: center; 
-         cursor: pointer;   
-        
+        background-color: ${darkRedColor};
+        border-radius: 10px;
+        color:  ${darkRedColor};
+        text-align: center;
+         cursor: pointer;
+
     }
-    label > input {  
-        display: none; 
-    } 
+    label > input {
+        display: none;
+    }
 `;
 export const DefaultImage = styled(FaUserCircle)`
         font-size: 100px;

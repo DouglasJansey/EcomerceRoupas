@@ -2,7 +2,8 @@
 import styled from 'styled-components';
 import { BsXSquareFill } from 'react-icons/bs';
 import {
-  bgColor, primaryColor, grayColor, bgColorSecondary, secondaryColor,
+  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkGrayColor,
 } from '../../style/colors';
 
 export const Container = styled.div`
@@ -10,15 +11,13 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center ;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     `;
 export const ContainerCart = styled.div`
     display: flex;
-    border-radius: 5px;
     margin-bottom: 10px;
-    width: 90%;
-    height: 30%;
-    border: 1px solid ${grayColor};
+    width: 100%;
+    height: auto;
     background: white;
     padding: 5px;
 
@@ -29,14 +28,14 @@ width: 100%;
 height: 100%;
 justify-content: flex-start;
 align-items: center ;
-border-top: 1px solid ${grayColor};
+border-top: 1px solid ${darkRedColor};
 `;
 export const ProductContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px solid ${grayColor};
+    border-right: 1px solid ${darkRedColor};
     `;
 export const QuantContainer = styled.div`
     width: 10%;
@@ -44,7 +43,7 @@ export const QuantContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px solid ${grayColor};
+    border-right: 1px solid ${darkRedColor};
     div{
         justify-content: space-evenly;
     }
@@ -55,7 +54,7 @@ export const PriceContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px solid ${grayColor};
+    border-right: 1px solid ${darkRedColor};
     div{
         justify-content: space-evenly;
     }
@@ -66,7 +65,7 @@ export const SubTotalContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 1px solid ${grayColor};
+    border-right: 1px solid ${darkRedColor};
     div{
         justify-content: space-evenly;
     }
@@ -79,7 +78,7 @@ export const ContainerInfo = styled.div`
     height: 100%;
 `;
 export const ContainerImage = styled.div`
-    width: 110px;
+    width: 140px;
     height: 110px;
     justify-content: center;
     align-items: center;
@@ -89,18 +88,22 @@ export const ContainerImage = styled.div`
     }
 `;
 export const NameConainer = styled.div`
-    font-size: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
     width: 100%;
     height: 30px;
     margin: 5px;
     `;
-export const DescConainer = styled.div`
+export const DescContainer = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       width: 100%;
       height: 100%;
       margin-left : 10px;
+      h5{
+        font-weight: bold;
+      }
 
 `;
 export const ConainerButtons = styled.div`
@@ -119,14 +122,13 @@ export const Title = styled.p`
     text-align: center;
     font-weight: bold;
     width: 100%;
-    color: ${bgColorSecondary};
+    color: ${darkBlueColor};
 `;
 export const NameProduct = styled.p`
     font-size: 1rem;
-    flex-wrap: nowrap;
     width: 100%;
     font-weight: bold;
-    color: ${bgColorSecondary};
+    color: ${darkBlueColor};
 `;
 export const Button = styled.button`
     font-size: 1rem;
@@ -137,11 +139,11 @@ export const Button = styled.button`
     border-radius: 2px;
     width: 15px;
     height: 15px;
-    color: ${grayColor};
+    color: ${lightGrayColor};
     border: none;
     margin: 5px;
     padding: 3px;
-    background-color: ${bgColorSecondary};
+    background-color: ${darkBlueColor};
     &:hover{
         opacity: 0.4;
     }

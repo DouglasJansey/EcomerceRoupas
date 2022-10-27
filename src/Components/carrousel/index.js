@@ -1,52 +1,55 @@
+/* eslint-disable max-len */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/no-array-index-key */
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
+import { set } from 'lodash';
 import {
   Container, ContainerImg, ButtonDesc, ContainerDesc,
-  ImagenWidth, Titulo, Description,
+  ImageWidth, Titulo, Description, ContainerButtons,
 } from './styled';
+import banner1 from '../../img/banner1.jpg';
+import banner2 from '../../img/banner2.jpg';
 
-export default function Home() {
+export default function Carrousel() {
   const carrousel = useRef(0);
-  const banner = 'https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/seahawks/adsesbdweoucrlip2vvy';
+  const banners = [
+    { image: banner1, titulo: 'Jerseys Oficiais', subTitle: 'tenha sua jersey a um click de distância' },
+    { image: banner2, titulo: 'Jerseys Oficiais', subTitle: 'todas as divisões estão aqui' },
+  ];
   const [scrollX, setScrollX] = useState(0);
+  const [bannerPos, setBanner] = useState(0);
   const imageWidth = carrousel.current.offsetWidth;
-
   const containerWidth = 1 * imageWidth;
+  setTimeout(() => {
+    if (bannerPos <= banners.length - 1) {
+      bannerPos === 1 ? setBanner(0) : setBanner(bannerPos + 1);
+    }
+  }, 5000);
 
-  function handleScrollRight() {
-    let x = scrollX - imageWidth;
-    if ((imageWidth - containerWidth) > x) {
-      x = (imageWidth - containerWidth);
-    }
-    setScrollX(x);
-  }
-  function handleScrollLeft() {
-    let x = scrollX + imageWidth;
-    if (x > 0) {
-      x = 0;
-    }
-    setScrollX(x);
-  }
   return (
     <Container>
       <ContainerImg directionX={scrollX} containerWidth={containerWidth}>
-        <ContainerDesc>
-          <Titulo>
-            <p>
-              Jersey Action Green
-            </p>
-          </Titulo>
-          <Description>
-            CONHEÇA A LINHA DE JERSEY!
-          </Description>
-          <ButtonDesc>
-            <p>CLIQUE E CONFIRA!</p>
-          </ButtonDesc>
-        </ContainerDesc>
-        <ImagenWidth src={banner} alt="" />
+        <ImageWidth imageBg={banners[bannerPos].image}>
+          <ContainerDesc>
+            <Titulo>
+              {banners[bannerPos].titulo}
+            </Titulo>
+            <Description>
+              {banners[bannerPos].subTitle}
+            </Description>
+            <ButtonDesc>
+              Saiba mais &gt;&gt;
+            </ButtonDesc>
+          </ContainerDesc>
+        </ImageWidth>
       </ContainerImg>
-
+      <ContainerButtons>
+        {/* {banners.map((item, index) => {
+          if (index === 0) return <input type="radio" key={index} name="button1" value={index} defaultChecked checked={bannerPos} />;
+          return <input type="radio" key={index} name="button1" value={index} checked={bannerPos} />;
+        })} */}
+      </ContainerButtons>
     </Container>
   );
 }

@@ -1,15 +1,37 @@
 import {
   call, put, all, takeLatest,
 } from 'redux-saga/effects';
-import * as action from './actions';
-import * as types from '../types';
+import { toast } from 'react-toastify';
+import { get } from 'lodash';
 
-function* LoginRequest() {
+import * as types from '../types';
+import * as action from './actions';
+import axios from '../../../services/axios';
+
+function* loginRequest({ payload }) {
   try {
-    yield call();
-    yield put(action.LoginRequest);
+    const res = yield call(axios.post, '/tokens', payload);
+    const { email, id } = res.data.user;
+    const user = yield call(axios.get, `/users/${id}`);
+    if (email === process.env.REACT_APP_BASE_ADM) yield put(action.loginAdmin({ ...res.data }));
+    yield put(action.loginSuccess({ ...res.data }));
+    yield put(action.userUpdate({ ...user.data }));
+    axios.defaults.headers.Authorization = `Bearer ${res.data.token}`;
   } catch (e) {
-    yield put(action.LoginRequest);
+    toast.error('Usuário ou senha inválidos');
+    yield put(action.loginFailure());
   }
 }
-export default all([takeLatest(types.LOGIN_REQUEST, LoginRequest())]);
+function* userRequest({ payload }) {
+  yield put(action.userUpdate(payload));
+}
+function persistRehydrate({ payload }) {
+  const token = get(payload, 'auth.token');
+  if (!token) return;
+  axios.defaults.headers.Authorization = `Bearer ${token}`;
+}
+export default all([
+  takeLatest(types.LOGIN_REQUEST, loginRequest),
+  takeLatest(types.USER_REQUEST, userRequest),
+  takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
+]);

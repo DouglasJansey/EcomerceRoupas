@@ -1,11 +1,13 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-bind */
 import { useState, useRef } from 'react';
+import { toast } from 'react-toastify';
 import axios from '../../services/axios';
 import {
   Container, Register, ContainerCol, Form, ContainerPic, ButtonSubmit,
-  ContainerImg, Label, LabelPic, DefaultImage, ContainerLabel,
+  ContainerImg, Label, LabelPic, DefaultImage, ContainerLabel, InputForm,
 } from './styled';
 
 export default function RegisterProducts() {
@@ -14,9 +16,9 @@ export default function RegisterProducts() {
   const [category, setCategory] = useState('');
   const [sub_category, setSubCategory] = useState('');
   const [type, setType] = useState('');
-  const [price, setPrice] = useState();
-  const [old_price, setOldPrice] = useState();
-  const [quantity, setQuantity] = useState();
+  const [price, setPrice] = useState('');
+  const [old_price, setOldPrice] = useState(0);
+  const [quantity, setQuantity] = useState('');
   const [color, setColor] = useState('');
 
   const [photo, setPhoto] = useState();
@@ -24,10 +26,33 @@ export default function RegisterProducts() {
 
   const hiddenInput = useRef(null);
   const form = useRef(null);
-  const error = false;
+  let error = false;
+  console.log(hiddenInput, form);
+  function validateInput() {
+    if (name.length < 4 || !name) {
+      error = true;
+    }
+    if (!category) error = true;
+    if (!sub_category) error = true;
+    if (!type) error = true;
+    // eslint-disable-next-line max-len
+  }
+
+  function validateImage(e) {
+    const reader = new FileReader();
+    const imagePic = e.target.files[0];
+    if (!imagePic || imagePic.length > 0) return;
+    setPhoto(imagePic);
+    reader.onload = () => {
+      setProfilePic(reader.result);
+    };
+    reader.readAsDataURL(imagePic);
+  }
   async function handleSubmit(e) {
     e.preventDefault();
+    validateInput();
     const formData = new FormData();
+    if (error) return console.log('error');
     try {
       await axios.post('/produtos', {
         name,
@@ -40,33 +65,22 @@ export default function RegisterProducts() {
         quantity,
       }).then(async (res) => {
         const { id } = res.data;
-        console.log(id);
         formData.append('photoProduct', photo);
         formData.append('product_id', id);
         formData.append('color', color);
-        if (!error) {
-          await axios.post('/produtos/fotos', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          });
-        }
+
+        await axios.post('/produtos/fotos', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
       });
+      toast.success('SUCCESS!');
     } catch (err) {
-      return console.log(err);
+      console.log(err);
     }
   }
-  function validateImage(e) {
-    const reader = new FileReader();
-    const imagePic = e.target.files[0];
-    if (!imagePic || imagePic.length > 0) return;
-    setPhoto(imagePic);
-    reader.onload = () => {
-      setProfilePic(reader.result);
-    };
-    reader.readAsDataURL(imagePic);
-  }
-  function handleClick(e) {
+  function handleClick() {
     hiddenInput.current.click();
   }
   return (
@@ -92,8 +106,8 @@ export default function RegisterProducts() {
                 Foto
                 <input
                   type="file"
+                  accept="image/png, image/jpeg, image/jpg"
                   name="foto"
-                  accept="image/png, image/jpeg"
                   ref={hiddenInput}
                   onChange={(e) => validateImage(e)}
                 />
@@ -103,7 +117,7 @@ export default function RegisterProducts() {
           </ContainerPic>
           <Label htmlFor="nome">
             Nome:
-            <input
+            <InputForm
               type="text"
               name="nome"
               value={name}
@@ -112,7 +126,7 @@ export default function RegisterProducts() {
           </Label>
           <Label htmlFor="category">
             Categoria:
-            <input
+            <InputForm
               type="text"
               name="category"
               value={category}
@@ -121,7 +135,7 @@ export default function RegisterProducts() {
           </Label>
           <Label htmlFor="subCategory">
             Sub-Categoria:
-            <input
+            <InputForm
               type="text"
               name="subCategory"
               value={sub_category}
@@ -130,7 +144,7 @@ export default function RegisterProducts() {
           </Label>
           <Label htmlFor="type">
             Tipo:
-            <input
+            <InputForm
               type="text"
               name="type"
               value={type}
@@ -139,7 +153,7 @@ export default function RegisterProducts() {
           </Label>
           <Label htmlFor="price">
             Preço:
-            <input
+            <InputForm
               type="number"
               name="price"
               value={price}
@@ -148,7 +162,7 @@ export default function RegisterProducts() {
           </Label>
           <Label htmlFor="oldPrice">
             Preço antigo:
-            <input
+            <InputForm
               type="number"
               name="oldPrice"
               value={old_price}
@@ -158,7 +172,7 @@ export default function RegisterProducts() {
           <ContainerCol>
             <Label htmlFor="quantity">
               Cor:
-              <input
+              <InputForm
                 type="text"
                 name="color"
                 value={color}
@@ -167,7 +181,7 @@ export default function RegisterProducts() {
             </Label>
             <Label htmlFor="quantity">
               Quantidade:
-              <input
+              <InputForm
                 type="number"
                 name="quantity"
                 value={quantity}

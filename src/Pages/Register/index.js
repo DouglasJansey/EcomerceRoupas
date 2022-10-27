@@ -4,6 +4,7 @@
 import validator from 'validator';
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from '../../services/axios';
 import {
   Container, RegisterContainer, Form, EndForm,
@@ -38,7 +39,7 @@ export default function Register() {
     if (cpf.length > 0 && cpf.length < 11) error = true;
     if (!street || !street_number || !city) error = true;
     if (!cel_number || !ddd_cel) error = true;
-    if ((photo.type !== 'image/png') || (photo.type !== 'image/jpeg')) error = true;
+    if (photo && (photo.type !== 'image/png' || photo.type !== 'image/jpeg')) error = true;
   }
   function validateImage(e) {
     const reader = new FileReader();
@@ -57,6 +58,7 @@ export default function Register() {
     e.preventDefault();
     validateInput();
     const formData = new FormData();
+    if (error) return toast.error('FAIULURE REGISTER');
     try {
       await axios.post('/users/', {
         name,
@@ -90,9 +92,11 @@ export default function Register() {
           });
         });
       });
+      toast.success('SUCCESS!');
     //   alert('Usuário criado com sucesso!');
     } catch (err) {
-      return console.log(err);
+      toast.error('FAIULURE REGISTER');
+      console.log(err);
     }
   }
 

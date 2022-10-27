@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background: #fdfd96;
-  display: flex;
   justify-content: center;
   align-items: center;
 `;

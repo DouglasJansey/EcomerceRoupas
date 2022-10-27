@@ -1,6 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { BsCaretLeftFill } from 'react-icons/bs';
 
+const fadeIn = keyframes`
+    0%{
+        opacity: 0;
+        transform: translateX(400px)
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(${window.screen.width})
+    }
+`;
 export const ArrowRight = styled(BsCaretLeftFill)`
 font-size: 50px;
 color: #fff;
@@ -25,75 +35,91 @@ z-index: 10;
 `;
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height:  100%;
-`;
+  max-width: 1080px;
+  height: 500px;
+  max-height: 550px;
+  `;
 export const ContainerDesc = styled.div`
-  position: absolute;
+  animation: ${fadeIn} 1.5s ease forwards;
   display: flex;
   flex-direction: column;
-  width: 450px;
-  max-height: 30%;
-  z-index: 11;
-  top: 300px;
-  left: 30px;
-  bottom: 0;
+  border-radius: 10px;
+  width: 350px;
+  padding: 10px;
+  height: 120px;
+  background: rgba(132,9,41,0.7);
+  margin-bottom: 10px;
+  position: absolute;
+  right: -15px;
   `;
 export const Description = styled.p`
-    font-size: 20px;
+    font-size: 1rem;
+    color: #fff;
+    margin-left: 15px;
+`;
+export const Titulo = styled.div`
+    color: #fff;
+    font-size: 2.5rem;
     font-weight: bold;
-      margin: 10px;
-      color: white;
-`;
-export const Titulo = styled.p`
     width: 100%;
-    p{
-      font-weight: bold;
-      font-size: 40px;
-      color: white;
-    }
-`;
+    `;
 
 export const ButtonDesc = styled.button`
-  min-width: 190px;
-  min-height: 60px;
-  flex-wrap: nowrap;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: green;
-  margin-left: 25px;
-  position: relative;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background: none;
   border: none;
   cursor: pointer;
-   &:after{
-    content: '';
-    border: 2px solid green;
-    position: absolute;
-    width: 100%;
-    height:  100%;
-    left: 5px;
-    top: 6px;
-   }
-  p{
-    font-size: 1.5rem;
-    font-family: 'Rubik Dirt', cursive;
-    color: white;
-  }
-
+  color: white;
+  font-weight: bold;
+  margin-right: 20px;
+  margin-top: 25px;
 `;
 export const ContainerImg = styled.div`
-    width:  100%;
+    width:  80%;
     height: 100%;
-    position: relative;
     display: flex;
     transform: translateX(${(props) => props.directionX}px);
     transition: all 0.5s ease ;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 `;
-export const ImagenWidth = styled.img`
-      min-width: 100%;
-      opacity: 0.9;
+export const ImageWidth = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-image: url(${(props) => props.imageBg});
+    background-repeat: none;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+`;
+export const ContainerButtons = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label{
+        background: red;
+        width:10px;
+        height:10px;
+    }
+    input{
+        margin: 5px;
+        &:before{
+            content: '';
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+    }
 
 `;

@@ -1,59 +1,74 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable quotes */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-restricted-syntax */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import {
-  ContainerCard, Image, Text, ContainerImg,
-  BoxPrice, ButtonBuy, Cart,
+  ContainerCard, Image, Text, ContainerImg, ContainerDesc,
+  BoxPrice, ButtonBuy, Cart, Description, DeleteProduct,
 } from './styled';
 import * as action from '../../store/modules/cart/actions';
+import * as actionProducts from '../../store/modules/products/actions';
+import axios from '../../services/axios';
 
-export default function Cards({ product, addCart }) {
+export default function Cards({ product, cartItem }) {
   const dispatch = useDispatch();
+  const isLoggedAdmin = useSelector((state) => state.auth.admin);
   const cart = useSelector((state) => state.cart.produtos);
-  const [fav, setFav] = useState(false);
-  const price = parseFloat(product.price);
+  const price = parseFloat(product.price).toFixed(2);
   let error = false;
-  // eslint-disable-next-line guard-for-in
+
+  const subInfo = {
+    quantity: 1,
+    subTotal: cartItem.price,
+  };
+
   function validaItemCart() {
     cart.forEach((item) => {
-      if (item.id === addCart.id) error = true;
+      if (item.cartItem.id === cartItem.id) error = true;
     });
   }
   function handleClickCart(e) {
     e.preventDefault();
     validaItemCart();
-    if (!error) dispatch(action.addCart(addCart));
+    if (!error) dispatch(action.addCart({ cartItem, subInfo }));
   }
-  function handleFavorit(e) {
-    e.preventDefault();
-    setFav(!fav);
+  async function deleteProduct(e) {
+    dispatch(actionProducts.removeProduct(product.id));
+    await axios.delete(`/produtos/${product.id}`);
   }
   return (
     <ContainerCard>
       <ContainerImg>
-        <button type="button" onClick={(e) => handleFavorit(e)}>
-          {fav ? <BsHeartFill size={22} color="red" /> : <BsHeart size={22} /> }
-        </button>
-        <button type="button" onClick={(e) => handleClickCart(e)}>
-          <Cart />
-        </button>
-        <BoxPrice>
-          <p>
-            R$:
-            { price.toFixed(2)}
-          </p>
-        </BoxPrice>
+        {isLoggedAdmin ? (
+          <button type="button" onClick={(e) => deleteProduct(e)}>
+            <DeleteProduct />
+          </button>
+        ) : '' }
         <Image src={product.PhotoProducts[0] ? product.PhotoProducts[0].url : "https://quickbooks.intuit.com/oidam/intuit/sbseg/en_row/quickbooks/web/content/default-placeholder.png"} alt="foto produto" />
       </ContainerImg>
-      <Text>
-        {product.name}
-      </Text>
-      <h5>{product.description}</h5>
-      <h6>{product.type}</h6>
-      <ButtonBuy type="button">Comprar</ButtonBuy>
+      <ContainerDesc>
+        <Text>
+          {product.name}
+        </Text>
+        <Description>
+          {product.sub_category}
+          {' '} - {' '}
+          {product.type}
+        </Description>
+        <input type="radio" name="rate" />
+        <BoxPrice>
+          <p>R$: {price}</p>
+          <p> ou 4x de {(price / 4).toFixed(2)} </p>
+        </BoxPrice>
+        <Description />
+      </ContainerDesc>
+      <ButtonBuy type="button" onClick={(e) => handleClickCart(e)}>
+        Adicionar
+        <Cart />
+      </ButtonBuy>
     </ContainerCard>
   );
 }
