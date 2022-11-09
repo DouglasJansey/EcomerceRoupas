@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case types.ADD_PRODUCTS: {
       const newState = { ...state };
-      newState.produtos = action.payload;
+      newState.produtos = action.payload.rows;
       return newState;
     }
     case types.ORDER_PRICE_DOWN: {

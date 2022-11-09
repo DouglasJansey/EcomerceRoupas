@@ -7,10 +7,11 @@ import { Container } from './styled';
 import List from '../../Components/List';
 import Carrousel from '../../Components/carrousel';
 import Banner from '../../Components/Banner';
+import Rating from '../../Components/Rating';
+import Loading from '../../Components/Loading';
+import AllProducts from '../AllProducts';
 
 export default function Home() {
-  const List1 = '../../components/List';
-
   return (
     <Container>
       <Carrousel />

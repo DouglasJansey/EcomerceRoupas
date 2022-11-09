@@ -6,18 +6,14 @@ export function loginRequest(payload) {
     payload,
   };
 }
-export function userRequest(payload) {
+
+export function userLogout(payload) {
   return {
-    type: types.USER_REQUEST,
+    type: types.USER_LOGOUT,
     payload,
   };
 }
-export function userUpdate(payload) {
-  return {
-    type: types.USER_UPDATE,
-    payload,
-  };
-}
+
 export function loginFailure() {
   return {
     type: types.LOGIN_FAILURE,

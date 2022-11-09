@@ -22,10 +22,9 @@ export default function List() {
 
   useEffect(() => {
     setPriceOrder(priceOrder);
-    console.log(priceOrder);
   }, [priceOrder]);
 
-  getProducts();
+  getProducts.getParcialProducts();
   function handleClickRight() {
     let x = scrollX - cardWidth;
     if ((imageWidth - containerWidth) >= x) {
@@ -55,37 +54,43 @@ export default function List() {
 
   return (
     <Container>
-      <ContainerSelect>
-        <ContainerOrder>
-          <p>Ordernar:</p>
-          <select value={priceOrder} onChange={(e) => SortByPrice(e)}>
-            <option value="" defaultChecked hidden>
-              Selecionar
-            </option>
-            <option value="menor">
-              Menor preço
-            </option>
-            <option value="maior">
-              Maior preço
-            </option>
-          </select>
-        </ContainerOrder>
-      </ContainerSelect>
-      <ContainerArrow>
-        <ContainerList ref={carrousel}>
-          <ContainerImages directionX={scrollX} containerW={containerWidth}>
-            {products.map((item) => (
-              <Card
-                product={item}
-                key={item.id}
-                cartItem={item}
-              />
-            ))}
-          </ContainerImages>
-        </ContainerList>
-        <ArrowLeft onClick={() => handleScrollLeft()} />
-        <ArrowRight onClick={() => handleClickRight()} />
-      </ContainerArrow>
+      {products.length > 0
+        ? (
+          <>
+            <ContainerSelect>
+              <ContainerOrder>
+                <p>Ordernar:</p>
+                <select value={priceOrder} onChange={(e) => SortByPrice(e)}>
+                  <option value="" defaultChecked hidden>
+                    Selecionar
+                  </option>
+                  <option value="menor">
+                    Menor preço
+                  </option>
+                  <option value="maior">
+                    Maior preço
+                  </option>
+                </select>
+              </ContainerOrder>
+            </ContainerSelect>
+
+            <ContainerArrow>
+              <ContainerList ref={carrousel}>
+                <ContainerImages directionX={scrollX} containerW={containerWidth}>
+                  {products.map((item) => (
+                    <Card
+                      product={item}
+                      key={item.id}
+                      cartItem={item}
+                    />
+                  ))}
+                </ContainerImages>
+              </ContainerList>
+              <ArrowLeft onClick={() => handleScrollLeft()} />
+              <ArrowRight onClick={() => handleClickRight()} />
+            </ContainerArrow>
+          </>
+        ) : ''}
     </Container>
   );
 }

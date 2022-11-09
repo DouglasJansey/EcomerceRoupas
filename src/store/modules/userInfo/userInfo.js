@@ -8,39 +8,41 @@ import localStorage from 'redux-persist/es/storage';
 import * as types from '../types';
 
 const INITIAL_STATE = {
-  isLoggedIn: false,
-  token: false,
   user: {},
-  isLoading: false,
-  admin: false,
 };
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case types.LOGIN_SUCCESS: {
+    case types.USER_UPDATE: {
       const newState = { ...state };
-      newState.isLoggedIn = true;
-      newState.token = action.payload.token;
-      newState.user = action.payload.user;
+      newState.user = action.payload;
+      console.log('update', newState);
       return newState;
     }
-    case types.LOGIN_ADMIN: {
+    case types.USER_UPDATE_PHOTO: {
       const newState = { ...state };
-      newState.isLoggedIn = true;
-      newState.token = action.payload.token;
-      newState.user = action.payload.user;
-      newState.admin = true;
+      newState.user.Photo = action.payload;
       return newState;
     }
-
-    case types.LOGIN_FAILURE: {
-      const newState = { ...INITIAL_STATE };
+    case types.USER_UPDATE_PROFILE: {
+      const newState = { ...state };
+      newState.user = action.payload;
+      return newState;
+    }
+    case types.USER_UPDATE_ADDRESS: {
+      const newState = { ...state };
+      newState.user.Addresses[0] = action.payload;
+      console.log(newState);
+      return newState;
+    }
+    case types.USER_UPDATE_PHONES: {
+      const newState = { ...state };
+      newState.user.Phones[0] = action.payload;
       return newState;
     }
     case types.USER_LOGOUT: {
       const newState = { ...INITIAL_STATE };
       return newState;
     }
-
     default:
       return state;
   }

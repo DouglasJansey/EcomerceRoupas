@@ -10,6 +10,7 @@ import CartFinish from '../../Components/Cart/CartFinish';
 
 export default function CartList() {
   const produtos = useSelector((state) => state.cart.produtos);
+
   return (
     <Container>
       <ContainerCartList>

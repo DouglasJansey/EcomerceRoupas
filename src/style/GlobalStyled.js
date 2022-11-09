@@ -1,6 +1,9 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
-import backgroundBody from '../img/background.png';
+import {
+  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkGrayColor,
+} from './colors';
 
 export default createGlobalStyle`
   *{
@@ -9,10 +12,10 @@ export default createGlobalStyle`
     font-family: sans-serif;
   }
   html, body{
-    width: 100%;
-    height: 100%;
     section{
-        padding-top: 140px;
+        padding-top: 150px;
+    }
+    footer{
     }
   }
   a{

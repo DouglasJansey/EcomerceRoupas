@@ -8,7 +8,7 @@ import Register from '../Pages/Register';
 import Login from '../Pages/login';
 import RegisterProducts from '../Components/Produtos';
 import CartList from '../Pages/CartList';
-import UpdateUser from '../Pages/updateUser';
+import Account from '../Pages/Account';
 import PrivateRoute from './PrivateRoutes';
 
 export default function RoutePages() {
@@ -22,7 +22,7 @@ export default function RoutePages() {
         {/* Rotas fechadas */}
         <Route element={<PrivateRoute isClosed />}>
           <Route path="produtos" element={AdminLoggedIn ? <RegisterProducts /> : <Navigate to="/home" />} />
-          <Route path="conta" element={<UpdateUser />} />
+          <Route path="conta" element={AdminLoggedIn ? <Account /> : <Navigate to="/home" />} />
         </Route>
         <Route path="register" element={isLoggedIn ? <Navigate to="/home" /> : <Register />} />
         <Route path="login" element={isLoggedIn ? <Navigate to="/home" /> : <Login />} />

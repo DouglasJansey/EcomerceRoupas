@@ -85,6 +85,7 @@ export default function RegisterProducts() {
   }
   return (
     <Container>
+
       <Register>
         <Form onSubmit={handleSubmit} id="formRegister" ref={form}>
           <ContainerPic>

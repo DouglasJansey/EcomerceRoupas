@@ -15,6 +15,7 @@ export default function (state = initialState, action) {
     case types.ADD_CART: {
       const newState = { ...state };
       newState.produtos.push(action.payload);
+      console.log(newState);
       return newState;
     }
     case types.REMOVE_CART: {

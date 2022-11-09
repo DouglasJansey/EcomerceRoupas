@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BsCart4, BsPersonCheckFill, BsHeartFill } from 'react-icons/bs';
 import {
-  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
   darkGrayColor,
 } from '../../style/colors';
 
@@ -32,24 +32,23 @@ const ChildBg = (props) => {
 
 export const Container = styled.div`
   width: 100%;
-  height: 120px;
+  height: 130px;
   position: fixed;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
-  top: 0;
   z-index: 11;
 `;
 export const ContainerTitle = styled.div`
   width: 100%;
-  height: 70px;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   img{
-        max-height: 60%;
+        max-height: 70%;
         min-width: 10%;
         margin-left: 10px;
     }
@@ -78,12 +77,11 @@ export const SubContainerTitle = styled.div`
 `;
 export const SubContainer1 = styled.div`
   width: 100%;
-  height: 30px;
+  height: 30%;
   background: ${darkBlueColor};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
   overflow: hidden;
   a{
     font-size: 0.9rem;
@@ -99,6 +97,33 @@ export const SubContainer = styled.div`
     align-items: center;
     margin-right: 15px;
     justify-content: flex-end;
+`;
+export const UserInfo = styled.div`
+    display: flex;
+    width: 100%;
+    height:20px;
+    align-items: center;
+    padding-right: 10px;
+    padding-top: 5px;
+    justify-content: flex-end;
+    color: ${darkGrayColor};
+    font-size: 0.8rem;
+    button{
+        border: none;
+        background: ${darkGrayColor};
+        border-radius: 5px;
+        padding: 3px 5px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        color: #fff;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+        :hover{
+            background: ${darkRedColor};
+            transition: 1s all;
+        }
+    }
 `;
 export const SubContainerNav = styled.div`
     display: flex;

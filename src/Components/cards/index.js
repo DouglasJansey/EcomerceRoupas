@@ -2,9 +2,7 @@
 /* eslint-disable quotes */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-restricted-syntax */
-import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import {
   ContainerCard, Image, Text, ContainerImg, ContainerDesc,
   BoxPrice, ButtonBuy, Cart, Description, DeleteProduct,
@@ -12,6 +10,7 @@ import {
 import * as action from '../../store/modules/cart/actions';
 import * as actionProducts from '../../store/modules/products/actions';
 import axios from '../../services/axios';
+import Rating from '../Rating';
 
 export default function Cards({ product, cartItem }) {
   const dispatch = useDispatch();
@@ -24,7 +23,6 @@ export default function Cards({ product, cartItem }) {
     quantity: 1,
     subTotal: cartItem.price,
   };
-
   function validaItemCart() {
     cart.forEach((item) => {
       if (item.cartItem.id === cartItem.id) error = true;
@@ -58,7 +56,7 @@ export default function Cards({ product, cartItem }) {
           {' '} - {' '}
           {product.type}
         </Description>
-        <input type="radio" name="rate" />
+        <Rating />
         <BoxPrice>
           <p>R$: {price}</p>
           <p> ou 4x de {(price / 4).toFixed(2)} </p>

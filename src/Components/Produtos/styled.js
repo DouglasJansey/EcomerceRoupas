@@ -24,23 +24,17 @@ const fadeIn = keyframes`
 export const Container = styled.div`
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     align-items: center;
     justify-content: center;
-    background: ${darkRedColor};
-    p{
-        margin-bottom: 10px;
-    }
-
+    background: #fff;
 `;
 export const Register = styled.div`
     animation: ${fadeIn} 1s ease forwards;
     display: flex;
-    max-width: 600px;
-    height: 75vh;
-    box-shadow: 0 0 5px rgba(0,0,0,0.6) ;
-    background-color: #d9d9d9;
-    border-radius: 5%;
+    max-width: 98%;
+    height: 98%;
+    background-color: #fff;
     overflow: hidden;
     padding: 5px;
 `;
@@ -52,8 +46,9 @@ export const Form = styled.form`
     display: flex;
     flex-wrap: wrap;
     padding: 5px;
-    justify-content: space-around;
-    align-items: space-around;
+    width: 100%;
+    justify-content: center;
+    align-items: space-between;
 
 
     textarea{
@@ -62,23 +57,23 @@ export const Form = styled.form`
         border-radius: 5px;
         border: none;
         margin-top: 5px;
-        margin-bottom: 10px;
+        padding-bottom: 20px;
+        background: ${lightGrayColor};
         &:focus{
-           box-shadow: 1px 1px 8px ${darkRedColor};
-           outline: none;
+           outline: 1px solid ${darkRedColor};
         }
     }
 `;
 export const LabelPic = styled.label`
         height: 55px;
-        width: 80%;
+        width: 60%;
         display:flex;
         font-weight: bold ;
         justify-content: center;
         align-items: center;
         background-color: ${darkRedColor};
         border-radius: 10px;
-        color:  ${darkRedColor};
+        color: #fff;
          cursor: pointer;
     input{
         display: none;
@@ -91,6 +86,7 @@ export const ContainerPic = styled.div`
     justify-content: center;
     height: 200px;
     width: 100%;
+    padding-left: 50px;
     `;
 export const ContainerLabel = styled.div`
     display: flex;
@@ -138,7 +134,7 @@ export const ButtonSubmit = styled.button`
     font-size: 15px;
     border-radius: 15px;
     background: ${darkRedColor};
-    color: ${darkRedColor};
+    color: #fff;
     cursor: pointer;
     bottom: 55px;
     :hover{
@@ -146,15 +142,15 @@ export const ButtonSubmit = styled.button`
     }
 `;
 export const InputForm = styled.input`
-    height: 20px;
-    width: 100%;
-    padding-left: 5px;
+    height: 30px;
+    width: 80%;
+    padding-left: 25px;
     border-radius: 5px;
     margin-top: 5px;
     border: none;
+    background: ${lightGrayColor};
 
      &:focus{
-        box-shadow: 1px 1px 8px ${darkRedColor};
-        outline: none;
+        outline: 1px solid ${darkRedColor};
      }
 `;

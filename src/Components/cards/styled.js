@@ -11,14 +11,12 @@ export const ContainerCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 190px;
-    height: 270px;
-    position: relative;
+    width: 170px;
+    height: 300px;
     background: white;
     border-radius: 10px;
     text-align: center;
     overflow: hidden;
-    flex: none;
     border: 1px solid${darkGrayColor};
 
 `;
@@ -31,14 +29,15 @@ export const DeleteProduct = styled(BsXSquareFill)`
 `;
 
 export const ContainerImg = styled.div`
-    width: 100%;
+    width: 80%;
     height: 55%;
-    background: #f6f6f6;
+    background: none;
     position: relative;
     button{
         position: absolute;
         border: none;
         top: 10px;
+        left: -5px;
     }
 `;
 export const Image = styled.img`
@@ -53,8 +52,9 @@ export const Text = styled.div`
 export const Description = styled.div`
     font-weight: bold;
     font-size: 10px;
-    width: 100%;
+    width: 90%;
     justify-content: center;
+    align-items: center;
     color: ${darkGrayColor};
     display: flex;
     flex-wrap: wrap;
@@ -96,7 +96,8 @@ export const ButtonBuy = styled.button`
     background: ${darkBlueColor};
     color: ${lightGrayColor};
     cursor: pointer;
-    margin-bottom: 2px;
+    padding: 2px;
+    margin-bottom: 5px;
     :hover{
         opacity: 0.5;
     }
