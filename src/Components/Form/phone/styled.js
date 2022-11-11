@@ -74,7 +74,7 @@ export const ButtonSubmitForm = styled.button`
     background: ${darkRedColor};
     color: #fff;
     cursor: pointer;
-    
+
     position: relative;
     bottom: -50px;
     left: 0;

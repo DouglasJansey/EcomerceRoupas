@@ -96,7 +96,6 @@ export default function Register() {
     //   alert('Usuário criado com sucesso!');
     } catch (err) {
       toast.error('FAIULURE REGISTER');
-      console.log(err);
     }
   }
 

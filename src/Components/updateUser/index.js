@@ -49,7 +49,9 @@ export default function UpdateUser() {
           ))}
         </SubContainer>
         <ContainerForm>
+          {/*
           <ComponentsRender />
+          */}
         </ContainerForm>
       </UpdateContainer>
     </Container>

@@ -10,7 +10,7 @@ import {
   ContainerImg, Label, LabelPic, DefaultImage, ContainerLabel, InputForm,
 } from './styled';
 
-export default function RegisterProducts() {
+export default function ShowCase() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');

@@ -15,7 +15,6 @@ export default function (state = INITIAL_STATE, action) {
     case types.USER_UPDATE: {
       const newState = { ...state };
       newState.user = action.payload;
-      console.log('update', newState);
       return newState;
     }
     case types.USER_UPDATE_PHOTO: {
@@ -31,7 +30,6 @@ export default function (state = INITIAL_STATE, action) {
     case types.USER_UPDATE_ADDRESS: {
       const newState = { ...state };
       newState.user.Addresses[0] = action.payload;
-      console.log(newState);
       return newState;
     }
     case types.USER_UPDATE_PHONES: {

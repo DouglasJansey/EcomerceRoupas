@@ -7,7 +7,7 @@ import {
 } from '../../style/colors';
 
 const SelectStar = (item) => {
-  if (item > 0) return `:nth-child(-n + ${item}){ color: yellow;}`;
+  if (item > 0) return `:nth-child(-n + ${item}){ color: #F7D917;}`;
   return '';
 };
 

@@ -10,7 +10,6 @@ import * as action from './actions';
 import axios from '../../../services/axios';
 
 function* updateUser(payload) {
-  console.log(payload);
   try {
     if (payload.userPhoto) {
       const photo = yield call(axios.put, '/fotos/', payload.userPhoto, {
@@ -25,14 +24,12 @@ function* updateUser(payload) {
     } else if (payload.userAddress) {
       const address = yield call(axios.put, '/endereco/', payload.userAddress);
       yield put(action.userUpdateAddress(address.data));
-      console.log(address);
     } else if (payload.userPhone) {
       const phones = yield call(axios.put, '/telefones/', payload.userPhone);
       yield put(action.userUpdatePhones(phones.data));
-      console.log(phones.data);
     }
   } catch (err) {
-    yield console.log(err);
+    yield err;
   }
 }
 

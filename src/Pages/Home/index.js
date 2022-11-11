@@ -14,9 +14,7 @@ import AllProducts from '../AllProducts';
 export default function Home() {
   return (
     <Container>
-      <Carrousel />
-      <List />
-      <Banner />
+      <AllProducts />
     </Container>
   );
 }

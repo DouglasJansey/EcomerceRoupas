@@ -22,20 +22,21 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100%;
 `;
 export const ContainerList = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     height: 100%;
+    padding: 5px;
     background: ${lightGrayColor};
 `;
 export const ContainerSelect = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding: 5px;
@@ -46,9 +47,8 @@ export const ContainerOrder = styled.div`
     align-items: center;
     border-radius: 5px;
     background: ${darkRedColor};
-    width: 100%;
-    height: 25px;
-    padding: 5px;
+    width: 85%;
+    height: 45px;
         p{
             font-size: 0.8rem;
             margin-right: 5px;
@@ -73,7 +73,6 @@ export const ContainerImages = styled.div`
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    padding: 5px;
 `;
 export const ContainerPagesValue = styled.div`
     display: flex;
@@ -84,7 +83,7 @@ export const ContainerPagesValue = styled.div`
     color: ${darkGrayColor};
 `;
 export const ContainerPrice = styled.div`
-    width: 90%;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-wrap: nowrap;
@@ -99,7 +98,7 @@ export const ContainerPrice = styled.div`
             color: #fff;
     }
     input{
-        width: 15%;
+        width: 30%;
         height: 20px;
         margin-left: 5px;
         margin-right: 5px;
@@ -109,12 +108,10 @@ export const ContainerPrice = styled.div`
     }
 `;
 export const ContainerFilter = styled.div`
-    width: 20%;
+    width: 30%;
     height: 100%;
     display: flex;
-    padding-left: 25px;
     flex-wrap: wrap;
-    background: ${lightGrayColor};
     justify-content: center;
     align-items: center;
 `;

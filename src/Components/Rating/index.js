@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { ContainerRating, StarRating } from './styled';
 
 export default function Rating() {
+  const random = Math.floor(Math.random() * 6);
   const [currentStar, setCurrentStar] = useState(0);
   const rating = [1, 2, 3, 4, 5];
-
+  console.log(random);
   function handleRating(e, item) {
     e.preventDefault();
     setCurrentStar(item);
@@ -15,7 +16,7 @@ export default function Rating() {
       {rating.map((item) => (
         <StarRating
           key={item}
-          item={currentStar}
+          item={random}
           role="button"
           onClick={(e) => handleRating(e, item)}
         />

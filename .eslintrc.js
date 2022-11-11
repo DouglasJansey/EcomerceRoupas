@@ -18,10 +18,10 @@ module.exports = {
     'react',
   ],
   rules: {
-    'react/jsx-filename-extension': 'off',
-    'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'off',
     'no-console': 'off',
     'linebreak-style': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
 };
