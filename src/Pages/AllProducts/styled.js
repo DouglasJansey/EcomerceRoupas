@@ -22,7 +22,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 100%;
 `;
 export const ContainerList = styled.div`

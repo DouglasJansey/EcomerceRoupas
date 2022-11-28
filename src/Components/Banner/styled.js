@@ -101,7 +101,7 @@ export const Titulo = styled.div`
       font-weight: 800;
       text-shadow: 4px 2px 0px rgba(0,0,0,0.6);
       stroke-width: 5px;
-      -webkit-text-stroke: 2px;
+      -webkit-text-stroke: 1px;
       -webkit-text-stroke-color: #0756cc ;
      }
      h6{

@@ -22,6 +22,7 @@ export default function Cards({ product, cartItem }) {
   const subInfo = {
     quantity: 1,
     subTotal: cartItem.price,
+    size: '',
   };
   function validaItemCart() {
     cart.forEach((item) => {

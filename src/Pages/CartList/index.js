@@ -15,19 +15,17 @@ export default function CartList() {
     <Container>
       <ContainerCartList>
         <Container2>
-          {`Você tem ${produtos.length} itens no carrinho!`}
           { produtos.map((produto) => (
           // eslint-disable-next-line react/no-array-index-key
             <Cart item={produto} key={produto.cartItem.id} />
           )) }
         </Container2>
-        <SubContainer>
-          <ContainerTotal>
-            <CartFinish />
-          </ContainerTotal>
-          <ContainerInfo />
-        </SubContainer>
       </ContainerCartList>
+      <SubContainer>
+        <ContainerTotal>
+          <CartFinish />
+        </ContainerTotal>
+      </SubContainer>
     </Container>
   );
 }

@@ -16,6 +16,10 @@ export const Container = styled.footer`
   justify-content: center;
   flex-direction: column;
   bottom: 0;
+  margin: auto;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 
   div:nth-child(1){
     background: transparent;

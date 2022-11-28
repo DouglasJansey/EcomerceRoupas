@@ -12,9 +12,11 @@ import * as actionCart from '../../store/modules/cart/actions';
 
 export default function Cart({ item }) {
   const dispatch = useDispatch();
+  const [sizeProd, setSizeProd] = useState();
   const { cartItem } = item;
   const { quantity } = item.subInfo;
   const { subTotal } = item.subInfo;
+  const { size } = item.subInfo;
 
   function handleDeleteCart(e) {
     e.preventDefault();
@@ -29,6 +31,16 @@ export default function Cart({ item }) {
     e.preventDefault();
     dispatch(actionCart.removeQuantity(cartItem.id));
   }
+  function addSizeProduct(e) {
+    e.preventDefault();
+    const payload = {
+      id: cartItem.id,
+      value: e.target.value,
+    };
+    setSizeProd(e.target.value);
+    dispatch(actionCart.addSizeProduct(payload));
+  }
+  console.log(size);
   return (
     <ContainerCart>
       <ProductContainer>
@@ -48,6 +60,15 @@ export default function Cart({ item }) {
               <h5>Cor: {cartItem.PhotoProducts[0].color ? cartItem.PhotoProducts[0].color : ' tradicional'} </h5>
               {/* tamanho <h5>{cartItem.description}</h5> */}
               <h5>Time: {cartItem.sub_category}</h5>
+              <h5>Tamanho:
+                <select value={sizeProd} onChange={(e) => addSizeProduct(e)}>
+                  <option hidden>{size}</option>
+                  <option>P</option>
+                  <option>M</option>
+                  <option>G</option>
+                  <option>GG</option>
+                </select>
+              </h5>
             </DescContainer>
           </ContainerInfo>
         </ContainerItens>

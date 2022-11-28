@@ -17,8 +17,8 @@ export default function List() {
   const [priceOrder, setPriceOrder] = useState('');
   const carrousel = useRef(0);
   const imageWidth = carrousel.current.offsetWidth;
-  const cardWidth = 205;
-  const containerWidth = products.length * 196;
+  const cardWidth = 225;
+  const containerWidth = products.length * 202;
 
   useEffect(() => {
     setPriceOrder(priceOrder);
@@ -76,7 +76,7 @@ export default function List() {
 
             <ContainerArrow>
               <ContainerList ref={carrousel}>
-                <ContainerImages directionX={scrollX} containerW={containerWidth}>
+                <ContainerImages directionX={scrollX}>
                   {products.map((item) => (
                     <Card
                       product={item}

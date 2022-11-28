@@ -25,3 +25,9 @@ export function removeQuantity(payload) {
     payload,
   };
 }
+export function addSizeProduct(payload) {
+  return {
+    type: types.ADD_SIZE_PRODUCT,
+    payload,
+  };
+}

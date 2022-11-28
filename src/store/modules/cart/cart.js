@@ -30,6 +30,7 @@ export default function (state = initialState, action) {
           subInfo: {
             quantity: item.subInfo.quantity += 1,
             subTotal: item.subInfo.quantity * item.cartItem.price,
+            size: item.subInfo.size,
           },
         } : item));
       return newState;
@@ -42,11 +43,25 @@ export default function (state = initialState, action) {
           subInfo: {
             quantity: item.subInfo.quantity -= 1,
             subTotal: item.subInfo.quantity * item.cartItem.price,
+            size: item.subInfo.size,
           },
         } : item));
       return newState;
     }
-
+    case types.ADD_SIZE_PRODUCT: {
+      const newState = { ...state };
+      newState.produtos = state.produtos.map((item) => (item.cartItem.id === action.payload.id
+        ? {
+          ...item,
+          subInfo: {
+            size: action.payload.value,
+            quantity: item.subInfo.quantity,
+            subTotal: item.subInfo.subTotal,
+          },
+        } : item));
+      console.log(newState);
+      return newState;
+    }
     default:
       return state;
   }

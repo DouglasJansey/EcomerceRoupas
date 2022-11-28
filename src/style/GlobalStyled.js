@@ -12,10 +12,11 @@ export default createGlobalStyle`
     font-family: sans-serif;
   }
   html, body{
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
     section{
-        padding-top: 150px;
-    }
-    footer{
+        padding-top: 140px;
     }
   }
   a{

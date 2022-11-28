@@ -22,16 +22,15 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 85%;
+    width: 95%;
     position: relative;
     `;
 export const ContainerList = styled.div`
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     width: 100%;
     overflow: hidden;
-
+    padding: 5px;
     `;
 export const ContainerSelect = styled.div`
     display: flex;
@@ -86,7 +85,7 @@ export const ArrowLeft = styled(BsCaretLeftFill)`
     font-size: 50px;
     color: ${darkRedColor};
     position: absolute;
-    left: -50px;
+    left: 0;
     top: 0;
     bottom:0;
     margin: auto;
@@ -98,7 +97,7 @@ export const ArrowRight = styled(BsCaretLeftFill)`
     color: ${darkRedColor};
     transform: rotate(180deg);
     z-index: 10;
-    right: -50px;
+    right: 0;
     top: 0;
     bottom:0;
     margin: auto;

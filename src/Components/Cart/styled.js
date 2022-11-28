@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { BsXSquareFill } from 'react-icons/bs';
 import {
-  grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
+  darkGreenColor, darkRedColor, lightGreenColor, darkBlueColor, lightGrayColor,
   darkGrayColor,
 } from '../../style/colors';
 
@@ -12,15 +12,15 @@ export const Container = styled.div`
     align-items: center ;
     width: 100%;
     height: 100%;
+    padding: 5px;
     `;
 export const ContainerCart = styled.div`
     display: flex;
     margin-bottom: 10px;
-    width: 100%;
+    width: 95%;
     height: auto;
     background: white;
-    padding: 5px;
-
+    padding: 2px;
     `;
 export const ContainerItens = styled.div`
 display: flex;
@@ -39,10 +39,11 @@ export const ProductContainer = styled.div`
     `;
 export const QuantContainer = styled.div`
     width: 10%;
-    height:100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-right: 1px solid ${darkRedColor};
     div{
         justify-content: space-evenly;
@@ -50,7 +51,7 @@ export const QuantContainer = styled.div`
     `;
 export const PriceContainer = styled.div`
     width: 15%;
-    height:100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +62,7 @@ export const PriceContainer = styled.div`
     `;
 export const SubTotalContainer = styled.div`
     width: 15%;
-    height:100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,12 +105,23 @@ export const DescContainer = styled.div`
       h5{
         font-weight: bold;
       }
+      select{
+        width: auto;
+        border: none;
+        padding: 2px;
+        background: ${lightGrayColor};
+        font-weight: bold;
+        color: ${darkGreenColor};
+        option{
+            color: ${darkGreenColor};
+        }
+      }
 
 `;
 export const ConainerButtons = styled.div`
     display: flex;
     width: 5%;
-    height: 100%;
+    min-height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -123,6 +135,7 @@ export const Title = styled.p`
     font-weight: bold;
     width: 100%;
     color: ${darkBlueColor};
+    background: ${lightGrayColor};
 `;
 export const NameProduct = styled.p`
     font-size: 1rem;

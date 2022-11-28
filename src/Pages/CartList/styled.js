@@ -7,9 +7,11 @@ import {
 export const Container = styled.section`
   display: flex;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
   align-items: flex-start;
+  background: ${lightGrayColor};
+  padding-bottom: 8px;
 `;
 
 export const Container2 = styled.div`
@@ -24,25 +26,20 @@ export const Container2 = styled.div`
   `;
 export const ContainerCartList = styled.div`
   width: 80%;
-  height: 100%;
-  min-height: 480px;
+  max-height: 100%;
   display: flex;
-  padding: 5px;
   background: ${lightGrayColor};
-  padding: 10px;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   `;
 export const ContainerTotal = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
-  height: 200px;
-  display: flex;
-  background: #fff;
-  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
   align-items: center;
-  padding: 5px;
 `;
 export const ContainerInfo = styled.div`
   display: flex;
@@ -53,16 +50,15 @@ export const ContainerInfo = styled.div`
   background: #fff;
   justify-content: flex-start;
   align-items: center;
+  background: #fff;
   padding: 5px;
 `;
 export const SubContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 20%;
   height: 100%;
   display: flex;
-  border-left: 1px solid ${darkRedColor};
-  background: #fff;
   justify-content: flex-start;
   align-items: center;
   padding: 5px;

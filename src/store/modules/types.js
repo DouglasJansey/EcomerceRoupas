@@ -10,6 +10,7 @@ export const REMOVE_CART = 'REMOVE_CART';
 
 export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const REMOVE_QUANTITY = 'REMOVE_QUANTITY';
+export const ADD_SIZE_PRODUCT = 'ADD_SIZE_PRODUCT';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
