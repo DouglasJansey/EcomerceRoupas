@@ -34,12 +34,16 @@ export const Container = styled.div`
     height: 100%;
 `;
 export const ContainerForm = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
     height: 100%;
+    background: #fff;
 `;
 export const SubContainer = styled.div`
     display: flex;
-    width: 100%;
+    width: 80vw;
     height: 10%;
     background: ${darkBlueColor};
 `;
@@ -56,7 +60,6 @@ export const ButtonMenu = styled.button`
 `;
 export const UpdateContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
-    width: 100%;
-    height: 100%;
-    background: #fff;
+    min-width: 100%;
+    min-height: 100%;
 `;

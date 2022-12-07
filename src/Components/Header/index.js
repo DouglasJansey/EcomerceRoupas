@@ -69,17 +69,17 @@ export default function Header() {
           <InputContainer>
             <input type="text" name="search" placeholder=" Pesquisar..." />
           </InputContainer>
-          <CartContainer>
-            CARRINHO
-            <Link to="/cart">
+          <Link to="/cart">
+            <CartContainer>
+              CARRINHO
               <Cart />
-            </Link>
-            <CartCount>
-              <p>
-                {length || 0}
-              </p>
-            </CartCount>
-          </CartContainer>
+              <CartCount>
+                <p>
+                  {length || 0}
+                </p>
+              </CartCount>
+            </CartContainer>
+          </Link>
         </SubContainer>
       </SubContainer1>
     </Container>

@@ -13,6 +13,7 @@ export default function Profile() {
   const [cpf, setCpf] = useState(user.cpf);
   const [password, setPassword] = useState(user.password);
   const [gender, setGender] = useState(user.gender);
+  console.log(user);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -40,6 +41,7 @@ export default function Profile() {
       <Label htmlFor="email">
         Email:
         <InputForm
+          disabled
           type="email"
           name="email"
           value={email}

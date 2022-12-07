@@ -7,25 +7,28 @@ import {
 } from '../../../style/colors';
 
 export const ImageContainer = styled.div`
-        max-width: 70%;
-        max-height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 5px;
 `;
 export const ImageProfile = styled.img`
-        width: 100%;
-        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: auto;
 `;
 export const Label = styled.label`
-        padding: 15px 55px;
         display: block;
-        margin-left: 5px;
-        margin-right: 5px;
+        padding: 15px 70px;
         background-color: ${darkRedColor};
         border-radius: 10px;
         color:  #fff;
         text-align: center;
         width: auto;
         margin-top: 10px;
+        margin-bottom: 25px;
          cursor: pointer;
 
          input {
@@ -36,12 +39,12 @@ export const Form = styled.form`
 display: flex;
 justify-content: center;
 align-items: center;
-flex-direction: column;
-height: 78%;
+margin-top: 5px;
+height: 100%;
 width: 100%;
 `;
 export const ButtonSubmitForm = styled.button`
-    width: 50%;
+    width: 15%;
     height: 50px;
     font-weight: bold;
     border-style: none;
@@ -57,7 +60,10 @@ export const ButtonSubmitForm = styled.button`
 `;
 export const PhotoContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    height: 85%;
+    flex-direction:  column;
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
 `;

@@ -27,7 +27,7 @@ export default function ShowCase() {
   const hiddenInput = useRef(null);
   const form = useRef(null);
   let error = false;
-  console.log(hiddenInput, form);
+
   function validateInput() {
     if (name.length < 4 || !name) {
       error = true;

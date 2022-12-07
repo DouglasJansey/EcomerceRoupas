@@ -11,7 +11,6 @@ import {
   UpdateContainer, SubContainer,
   ButtonMenu, ContainerForm, Container,
 } from './styled';
-import LoadingPage from '../Loading';
 
 export default function UpdateUser() {
   const [bg, setBg] = useState('endereço');
@@ -26,6 +25,7 @@ export default function UpdateUser() {
 
   function ComponentsRender() {
     const Components = ComponentsMap[bg.replace(/[ç]/g, 'c').toLocaleUpperCase()];
+    console.log('tentando renderizar');
     return (
       <Suspense fallback=" ">
         <Components />
@@ -49,9 +49,7 @@ export default function UpdateUser() {
           ))}
         </SubContainer>
         <ContainerForm>
-          {/*
           <ComponentsRender />
-          */}
         </ContainerForm>
       </UpdateContainer>
     </Container>

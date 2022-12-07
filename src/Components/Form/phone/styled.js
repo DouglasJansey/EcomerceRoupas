@@ -19,7 +19,7 @@ export const Form = styled.form`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 60%;
     height: 20%;
 `;
 export const SubContainer = styled.div`
@@ -74,7 +74,6 @@ export const ButtonSubmitForm = styled.button`
     background: ${darkRedColor};
     color: #fff;
     cursor: pointer;
-
     position: relative;
     bottom: -50px;
     left: 0;

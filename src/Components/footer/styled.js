@@ -36,26 +36,20 @@ export const SubContainer = styled.div`
     align-items: center;
     justify-content: center;
     color: #fff;
-    div:nth-child(1){
-        margin-bottom: 15px;
-    }
     a{
         margin-left: 10px;
-        cursor: pointer;
+        color: #fff;
     }
 `;
 
 export const SubContainer1 = styled.div`
+  display: flex;
+  background: red;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background-image: url(${bgFooter});
-  background-repeat: none;
-  background-size: cover;
-  opacity: 0.2;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  a{
+    margin-left: 15px;
+  }
 `;

@@ -1,9 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 export const ADD_PRODUCTS = 'ADD_PRODUCTS';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+export const SHOW_PRODUCTS = 'SHOW_PRODUCTS';
 
 export const ORDER_PRICE_UP = 'ORDER_PRICE_UP';
 export const ORDER_PRICE_DOWN = 'ORDER_PRICE_DOWN';
+export const PRICE_UP = 'PRICE_UP';
+export const PRICE_DOWN = 'PRICE_DOWN';
 
 export const ADD_CART = 'ADD_CART';
 export const REMOVE_CART = 'REMOVE_CART';

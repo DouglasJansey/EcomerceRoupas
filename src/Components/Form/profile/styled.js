@@ -67,6 +67,7 @@ export const InputForm = styled.input`
   align-items: center;
   text-align: left;
   margin-left: 10px;
+  padding-left: 10px;
 
   &:focus{
     border: 1px solid ${darkRedColor};

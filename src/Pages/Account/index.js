@@ -12,15 +12,14 @@ import {
   Container, UpdateContainer, SubContainer,
   ButtonMenu, ContainerForm,
 } from './styled';
-import LoadingPage from '../../Components/Loading';
 
 export default function UpdateUser() {
   const [bg, setBg] = useState('Perfil');
-  const menuButton = ['Perfil', 'Produtos', 'Pedidos'];
+  const menuButton = ['Perfil', 'Produtos', 'Pedidos', 'Histórico'];
 
   const ComponentsMap = {
     PERFIL: lazy(() => import('../../Components/updateUser')),
-    PRODUTOS: lazy(() => import('../../Components/Produtos')),
+    // PRODUTOS: lazy(() => import('../../Components/Produtos')),
   };
   function ComponentsRender() {
     const Component = ComponentsMap[bg.toLocaleUpperCase()];
@@ -49,7 +48,7 @@ export default function UpdateUser() {
           ))}
         </SubContainer>
         <ContainerForm>
-          {/* <ComponentsRender /> */}
+          <ComponentsRender />
         </ContainerForm>
       </UpdateContainer>
     </Container>

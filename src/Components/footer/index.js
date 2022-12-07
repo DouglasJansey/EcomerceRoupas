@@ -18,24 +18,23 @@ export default function Footer() {
 
   return (
     <Container>
+      <SubContainer1>
+        <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
+          <BsInstagram size={20} color="#fff" />
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+          <BsFacebook size={20} color="#fff" />
+        </a>
+        <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
+          <BsTwitter size={20} color="#fff" />
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+          <BsLinkedin size={20} color="#fff" />
+        </a>
+      </SubContainer1>
       <SubContainer>
-        <div>
-          <Link to="wwww.instagram.com">
-            <BsInstagram size={25} color="#fff" />
-          </Link>
-          <Link to="wwww.instagram.com">
-            <BsFacebook size={25} color="#fff" />
-          </Link>
-          <Link to="wwww.instagram.com">
-            <BsTwitter size={25} color="#fff" />
-          </Link>
-          <Link to="wwww.instagram.com">
-            <BsLinkedin size={25} color="#fff" />
-          </Link>
-        </div>
         <p>Endereço: Rua Olimpia Esteves  - 1864 - Realengo - Rio de Janeiro - RJ</p>
         <p> Contato: (21) 9 8888-8888</p>
-        <SubContainer1 />
       </SubContainer>
     </Container>
   );

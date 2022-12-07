@@ -17,6 +17,7 @@ function* loginRequest({ payload }) {
     if (email === process.env.REACT_APP_BASE_ADM) yield put(action.loginAdmin({ ...res.data }));
 
     yield put(action.loginSuccess({ ...res.data }));
+    toast.success('Login feito com sucesso!');
     axios.defaults.headers.Authorization = `Bearer ${res.data.token}`;
 
     const resp = yield call(axios.get, '/users/');

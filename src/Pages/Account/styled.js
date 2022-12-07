@@ -28,7 +28,7 @@ const ChangeBg = (props) => {
   }
 };
 export const Container = styled.div`
-    padding-top: 30px;
+    padding-top: 130px;
     display: flex;
     width: 100%;
     height: 100vh;
@@ -45,7 +45,7 @@ export const ContainerForm = styled.div`
 export const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 100%;
     height: 100%;
     background: ${darkBlueColor};
 `;
@@ -62,11 +62,9 @@ export const ButtonMenu = styled.button`
 `;
 export const UpdateContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
-    max-width: 900px;
     width: 100%;
-    height: 70%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
 `;

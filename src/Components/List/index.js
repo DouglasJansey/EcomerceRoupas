@@ -16,19 +16,18 @@ export default function List() {
   const [scrollX, setScrollX] = useState(0);
   const [priceOrder, setPriceOrder] = useState('');
   const carrousel = useRef(0);
-  const imageWidth = carrousel.current.offsetWidth;
   const cardWidth = 225;
-  const containerWidth = products.length * 202;
+  const containerWidth = 10 * 202;
+  getProducts();
 
   useEffect(() => {
     setPriceOrder(priceOrder);
   }, [priceOrder]);
 
-  getProducts.getParcialProducts();
   function handleClickRight() {
     let x = scrollX - cardWidth;
-    if ((imageWidth - containerWidth) >= x) {
-      x = (imageWidth - containerWidth);
+    if ((carrousel.current.offsetWidth - containerWidth) >= x) {
+      x = (carrousel.current.offsetWidth - containerWidth);
     }
     setScrollX(x);
   }
@@ -44,7 +43,6 @@ export default function List() {
     if (props === 'maior') return dispatch(actionProducts.orderPriceUp());
     return '';
   }
-
   const SortByPrice = (e) => {
     e.preventDefault();
     const inputSelect = e.target.value;
@@ -54,43 +52,38 @@ export default function List() {
 
   return (
     <Container>
-      {products.length > 0
-        ? (
-          <>
-            <ContainerSelect>
-              <ContainerOrder>
-                <p>Ordernar:</p>
-                <select value={priceOrder} onChange={(e) => SortByPrice(e)}>
-                  <option value="" defaultChecked hidden>
-                    Selecionar
-                  </option>
-                  <option value="menor">
-                    Menor preço
-                  </option>
-                  <option value="maior">
-                    Maior preço
-                  </option>
-                </select>
-              </ContainerOrder>
-            </ContainerSelect>
+      <ContainerSelect>
+        <ContainerOrder>
+          <p>Ordernar:</p>
+          <select value={priceOrder} onChange={(e) => SortByPrice(e)}>
+            <option value="" defaultChecked hidden>
+              Selecionar
+            </option>
+            <option value="menor">
+              Menor preço
+            </option>
+            <option value="maior">
+              Maior preço
+            </option>
+          </select>
+        </ContainerOrder>
+      </ContainerSelect>
 
-            <ContainerArrow>
-              <ContainerList ref={carrousel}>
-                <ContainerImages directionX={scrollX}>
-                  {products.map((item) => (
-                    <Card
-                      product={item}
-                      key={item.id}
-                      cartItem={item}
-                    />
-                  ))}
-                </ContainerImages>
-              </ContainerList>
-              <ArrowLeft onClick={() => handleScrollLeft()} />
-              <ArrowRight onClick={() => handleClickRight()} />
-            </ContainerArrow>
-          </>
-        ) : ''}
+      <ContainerArrow>
+        <ContainerList ref={carrousel}>
+          <ContainerImages directionX={scrollX}>
+            {products.map((item) => (
+              <Card
+                product={item}
+                key={item.id}
+                cartItem={item}
+              />
+            ))}
+          </ContainerImages>
+        </ContainerList>
+        <ArrowLeft onClick={() => handleScrollLeft()} />
+        <ArrowRight onClick={() => handleClickRight()} />
+      </ContainerArrow>
     </Container>
   );
 }

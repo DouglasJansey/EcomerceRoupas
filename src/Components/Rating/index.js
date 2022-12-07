@@ -6,7 +6,6 @@ export default function Rating() {
   const random = Math.floor(Math.random() * 6);
   const [currentStar, setCurrentStar] = useState(0);
   const rating = [1, 2, 3, 4, 5];
-  console.log(random);
   function handleRating(e, item) {
     e.preventDefault();
     setCurrentStar(item);

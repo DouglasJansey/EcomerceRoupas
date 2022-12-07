@@ -7,15 +7,15 @@ import {
 import * as actionUser from '../../../store/modules/userInfo/actions';
 
 export default function Photo() {
-  const { url } = useSelector((state) => state.userInfo.user.Photo);
+  const photoImg = useSelector((state) => state.userInfo.user.Photo.url);
   const dispatch = useDispatch();
   const [photo, setPhoto] = useState();
-  const [profilePic, setProfilePic] = useState(url);
+  const [profilePic, setProfilePic] = useState(photoImg);
   const hiddenInput = useRef(null);
   useEffect(() => {
-    if (!url) setProfilePic(url);
+    if (!photoImg) setProfilePic(photoImg);
   }, []);
-
+  console.log(photoImg);
   function handleClick() {
     hiddenInput.current.click();
   }
@@ -66,8 +66,8 @@ export default function Photo() {
             onChange={(e) => validateImage(e)}
           />
         </Label>
+        <ButtonSubmitForm onClick={(e) => handleSubmit(e)}> Salvar </ButtonSubmitForm>
       </PhotoContainer>
-      <ButtonSubmitForm onClick={(e) => handleSubmit(e)}> Salvar </ButtonSubmitForm>
     </Form>
   );
 }

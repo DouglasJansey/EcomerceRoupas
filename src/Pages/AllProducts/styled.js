@@ -16,7 +16,7 @@ const fadeIn = keyframes`
         transform: translateY(${window.screen.width})
     }
 `;
-export const Container = styled.div`
+export const Container = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +36,7 @@ export const ContainerList = styled.div`
 `;
 export const ContainerSelect = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -46,14 +47,14 @@ export const ContainerOrder = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    background: ${darkRedColor};
-    width: 85%;
+    background: #fff;
+    width: 100%;
     height: 45px;
         p{
             font-size: 0.8rem;
             margin-right: 5px;
             font-weight: bold;
-            color: #fff;
+            color: #000;
         }
         select{
             border-radius: 5px;
@@ -61,6 +62,7 @@ export const ContainerOrder = styled.div`
             font-size: 0.8rem;
             font-weight: bold;
             border: none;
+            background: ${lightGrayColor};
             :focus{
                 outline: none;
             }
@@ -83,37 +85,86 @@ export const ContainerPagesValue = styled.div`
     color: ${darkGrayColor};
 `;
 export const ContainerPrice = styled.div`
-    width: 80%;
-    height: 100%;
+    width: 97%;
+    height: auto;
     display: flex;
-    flex-wrap: nowrap;
-    background: ${darkRedColor};
+    flex-direction: column;
+    background: #fff;
     border-radius: 5px;
+    margin-top: 10px;
     justify-content: center;
     align-items: center;
     padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    label{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
     p{
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: bold;
             color: #fff;
     }
     input{
-        width: 30%;
-        height: 20px;
-        margin-left: 5px;
-        margin-right: 5px;
+        width: 35%;
+        height: 17px;
         border: none;
         border-radius: 5px;
         padding: 2px;
+        background: ${lightGrayColor};
+        :focus{
+            border: none;
+        }
     }
 `;
 export const ContainerFilter = styled.div`
     width: 30%;
-    height: 100%;
+    min-height: 50%;
+    height: 100vmax;
+    max-height: 500px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    position: relative;
+    padding: 5px;
+`;
+export const ButtonSubmit = styled.button`
+    background: none;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    color: ${darkBlueColor};
+    opacity: 0.7;
+    cursor: pointer;
+    :hover{
+        opacity: 1;
+        color: ${darkBlueColor};
+        transition: ease;
+    }
+`;
+export const CleanButton = styled.button`
+    border: none;
+    background: none;
+    border-radius: 5px;
+    color: ${darkBlueColor};
+    margin-left: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+    :hover{
+        opacity: 1;
+        color: ${darkBlueColor};
+        transition: ease;
+    }
 `;
 export const ArrowLeft = styled(BsCaretLeftFill)`
     font-size: 30px;

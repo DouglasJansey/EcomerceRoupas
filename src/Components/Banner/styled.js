@@ -124,6 +124,9 @@ export const ButtonDesc = styled.button`
   margin-top: 15px;
   background: #0756cc;
   padding: 5px;
+  a{
+    color: #fff;
+  }
 `;
 export const ContainerImg = styled.div`
     width:  80%;
@@ -147,4 +150,17 @@ export const ImageWidth = styled.div`
     background-position: center;
     overflow: hidden;
     position: relative;
+
+    &:hover{
+        background-size: auto;
+        background-repeat: none;
+        &:after{
+        content: "";
+        background: black;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    }
 `;

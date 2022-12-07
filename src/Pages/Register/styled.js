@@ -26,7 +26,7 @@ export const Container = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: ${darkRedColor};
+    background: ${lightGrayColor};
 
 `;
 export const RegisterContainer = styled.div`
@@ -64,7 +64,7 @@ export const RegisterContainer = styled.div`
     font-size: 15px;
     border-radius: 15px;
     background: ${darkRedColor};
-    color: ${darkRedColor};
+    color: #fff;
     cursor: pointer;
     bottom: 70px;
     :hover{
@@ -197,7 +197,7 @@ export const PhotoContainer = styled.div`
         margin-right: 5px;
         background-color: ${darkRedColor};
         border-radius: 10px;
-        color:  ${darkRedColor};
+        color: #fff;
         text-align: center;
          cursor: pointer;
 

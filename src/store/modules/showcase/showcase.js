@@ -12,24 +12,24 @@ const initialState = {
 // eslint-disable-next-line
 export default function (state = initialState, action) {
   switch (action.type) {
-    case types.ADD_PRODUCTS: {
+    case types.SHOW_PRODUCTS: {
       const newState = { ...state };
       newState.produtos = action.payload;
       return newState;
     }
-    case types.ORDER_PRICE_DOWN: {
+    case types.PRICE_DOWN: {
       const newState = { ...state };
-      newState.produtos = state.produtos.sort((a, b) => a.price - b.price);
+      newState.produtos.rows = state.produtos.rows.sort((a, b) => a.price - b.price);
       return newState;
     }
-    case types.ORDER_PRICE_UP: {
+    case types.PRICE_UP: {
       const newState = { ...state };
-      newState.produtos = state.produtos.sort((a, b) => b.price - a.price);
+      newState.produtos.rows = state.produtos.rows.sort((a, b) => b.price - a.price);
       return newState;
     }
     case types.REMOVE_PRODUCT: {
       const newState = { ...state };
-      newState.produtos = state.produtos.filter((item) => item.id !== action.payload);
+      newState.produtos.rows = state.produtos.rows.filter((item) => item.id !== action.payload);
       return newState;
     }
     default:

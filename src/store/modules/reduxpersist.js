@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: 'USER-STATE',
       storage,
-      whitelist: ['auth', 'cart', 'products', 'userInfo'],
+      whitelist: ['auth', 'cart', 'userInfo'],
     },
     reducers,
   );

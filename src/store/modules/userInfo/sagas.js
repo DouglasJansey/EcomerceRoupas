@@ -23,6 +23,7 @@ function* updateUser(payload) {
       yield put(action.userUpdateProfile(user.data));
     } else if (payload.userAddress) {
       const address = yield call(axios.put, '/endereco/', payload.userAddress);
+      console.log(payload.userAddress, address);
       yield put(action.userUpdateAddress(address.data));
     } else if (payload.userPhone) {
       const phones = yield call(axios.put, '/telefones/', payload.userPhone);

@@ -4,6 +4,7 @@
 /* eslint-disable react/no-array-index-key */
 import { useState, useRef } from 'react';
 import { set } from 'lodash';
+import { Link } from 'react-router-dom';
 import {
   Container, ContainerImg, ButtonDesc, ContainerAzul, ContainerDesc,
   ImageWidth, Titulo, ContainerAmarelo,
@@ -21,7 +22,9 @@ export default function Banner() {
               <h6> Confira a linha de jerseys San Diego Charges </h6>
             </Titulo>
             <ButtonDesc>
-              Saiba mais &gt;&gt;
+              <Link to="/produtos">
+                Saiba mais &gt;&gt;
+              </Link>
             </ButtonDesc>
           </ContainerDesc>
           <ContainerAmarelo />

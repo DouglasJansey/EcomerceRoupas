@@ -15,10 +15,10 @@ export default function CartList() {
     <Container>
       <ContainerCartList>
         <Container2>
-          { produtos.map((produto) => (
+          {produtos.length !== 0 ? produtos.map((produto) => (
           // eslint-disable-next-line react/no-array-index-key
             <Cart item={produto} key={produto.cartItem.id} />
-          )) }
+          )) : 'Você ainda não tem itens no carrinho de compras!'}
         </Container2>
       </ContainerCartList>
       <SubContainer>

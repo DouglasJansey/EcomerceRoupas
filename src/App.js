@@ -8,6 +8,7 @@ import Header from './Components/Header';
 import GlobalStyled from './style/GlobalStyled';
 import RoutesPage from './Routes';
 import Footer from './Components/footer';
+import getProducts from './services/produtos';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Header />
           <RoutesPage />
           <GlobalStyled />
-          <ToastContainer autoClose={3000} className="toast-container" />
+          <ToastContainer autoClose={1000} className="toast-container" />
           <Footer />
         </Router>
       </PersistGate>

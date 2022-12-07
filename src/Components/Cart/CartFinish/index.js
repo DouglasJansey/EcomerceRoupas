@@ -14,8 +14,9 @@ export default function CartFinish() {
   const produtos = useSelector((state) => state.cart.produtos);
   const subTotal = produtos.map((item) => item.subInfo.subTotal);
   const [cupom, setCupom] = useState(0);
+  const [cep, setCep] = useState('');
   const [descount, setDescount] = useState(0);
-  const frete = 22.50;
+  const [frete, setFrete] = useState(0);
   const totalPrice = lodash.sum(subTotal);
   const total = (totalPrice + frete) - descount;
 
@@ -23,28 +24,38 @@ export default function CartFinish() {
     const cupomDesconto = e.target.value;
     setCupom(cupomDesconto);
   }
+  function submitOrder(e) {
+    e.preventDefault();
+  }
+  function handleSubmitCep(e) {
+    e.preventDefault();
+    if (cep) return setFrete(22.50);
+    return setFrete(0);
+  }
 
   function CalcCupom(e) {
     e.preventDefault();
-    switch (cupom) {
-      case '10%OFF':
-        return setDescount((10 * totalPrice) / 100);
-      case '20%OFF':
-        return setDescount((20 * totalPrice) / 100);
-      case '30%OFF':
-        return setDescount((30 * totalPrice) / 100);
-      default:
-        return 0;
+    if (produtos) {
+      switch (cupom) {
+        case '10%OFF':
+          return setDescount((10 * totalPrice) / 100);
+        case '20%OFF':
+          return setDescount((20 * totalPrice) / 100);
+        case '30%OFF':
+          return setDescount((30 * totalPrice) / 100);
+        default:
+          return setDescount(0);
+      }
     }
   }
-  console.log(totalPrice);
+
   return (
     <Container>
       <ContainerFrete>
         Calcular Frete
         <Label>
-          <InputSearch type="text" />
-          <ButtonSecundary type="button">Ok</ButtonSecundary>
+          <InputSearch type="text" onChange={(e) => setCep(e.target.value)} />
+          <ButtonSecundary type="button" onClick={(e) => handleSubmitCep(e)}>Ok</ButtonSecundary>
         </Label>
       </ContainerFrete>
       <ContainerCupom>
@@ -61,17 +72,17 @@ export default function CartFinish() {
         </ContainerPrices>
         <ContainerPrices>
           <p> Frete: </p>
-          {` ${frete.toFixed(2)}`}
+          { subTotal !== 0 ? ` ${frete.toFixed(2)}` : '0,00'}
         </ContainerPrices>
         <ContainerPrices>
           <p> Desconto: </p>
-          {descount ? `- ${descount.toFixed(2)}` : '0.00'}
+          {subTotal !== 0 ? `- ${descount.toFixed(2)}` : '0,00'}
         </ContainerPrices>
         <SubContainer>
           <p> Total: </p>
-          {` ${total.toFixed(2)}`}
+          { produtos ? ` ${total.toFixed(2)}` : '0,00'}
         </SubContainer>
-        <ButtonFinish type="button">Finalizar</ButtonFinish>
+        <ButtonFinish type="button" onClick={(e) => submitOrder(e)}>Finalizar</ButtonFinish>
       </ContainerTotal>
     </Container>
   );

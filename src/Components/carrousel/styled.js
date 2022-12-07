@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { BsCaretLeftFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+import { darkBlueColor } from '../../style/colors';
 
 const fadeIn = keyframes`
     0%{
@@ -10,6 +12,14 @@ const fadeIn = keyframes`
         opacity: 1;
         transform: translateX(${window.screen.width})
     }
+`;
+export const LinkPage = styled(Link)`
+padding: 7px;
+border-radius: 5px;
+  p{
+    color: #fff;
+    font-weight: bold;
+  }
 `;
 export const ArrowRight = styled(BsCaretLeftFill)`
 font-size: 50px;
@@ -42,6 +52,7 @@ export const Container = styled.div`
   max-width: 1080px;
   height: 500px;
   max-height: 550px;
+
   `;
 export const ContainerDesc = styled.div`
   animation: ${fadeIn} 1.5s ease forwards;
@@ -79,9 +90,10 @@ export const ButtonDesc = styled.button`
   font-weight: bold;
   margin-right: 20px;
   margin-top: 25px;
+
 `;
 export const ContainerImg = styled.div`
-    width:  80%;
+    width:  95%;
     height: 100%;
     display: flex;
     transform: translateX(${(props) => props.directionX}px);
@@ -100,7 +112,6 @@ export const ImageWidth = styled.div`
     background-repeat: none;
     background-size: cover;
     background-position: center;
-    overflow: hidden;
     position: relative;
 `;
 export const ContainerButtons = styled.div`

@@ -30,6 +30,7 @@ export default function (state = INITIAL_STATE, action) {
     case types.USER_UPDATE_ADDRESS: {
       const newState = { ...state };
       newState.user.Addresses[0] = action.payload;
+      console.log(action.payload);
       return newState;
     }
     case types.USER_UPDATE_PHONES: {

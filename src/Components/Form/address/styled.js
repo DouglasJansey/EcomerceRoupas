@@ -19,7 +19,7 @@ export const Form = styled.form`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 70%;
     height: 70%;
 `;
 export const Container = styled.div`
@@ -64,11 +64,12 @@ export const InputForm = styled.input`
   font-size: 15px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  margin-top: 5px;
   justify-content:center;
   align-items: center;
   text-align: left;
   margin-left: 10px;
+  margin-top: 5px;
+  padding-left: 10px;
 
   &:focus{
     border: 1px solid ${darkRedColor};
@@ -77,7 +78,7 @@ export const InputForm = styled.input`
 `;
 
 export const ButtonSubmitForm = styled.button`
-    width: 100%;
+    width: 250px;
     height: 45px;
     font-weight: bold;
     border-style: none;

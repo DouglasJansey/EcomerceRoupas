@@ -40,7 +40,6 @@ export default function Cart({ item }) {
     setSizeProd(e.target.value);
     dispatch(actionCart.addSizeProduct(payload));
   }
-  console.log(size);
   return (
     <ContainerCart>
       <ProductContainer>
@@ -58,11 +57,10 @@ export default function Cart({ item }) {
             <DescContainer>
               <h5> Tipo: { cartItem.type}</h5>
               <h5>Cor: {cartItem.PhotoProducts[0].color ? cartItem.PhotoProducts[0].color : ' tradicional'} </h5>
-              {/* tamanho <h5>{cartItem.description}</h5> */}
               <h5>Time: {cartItem.sub_category}</h5>
               <h5>Tamanho:
                 <select value={sizeProd} onChange={(e) => addSizeProduct(e)}>
-                  <option hidden>{size}</option>
+                  <option hidden>{size || 'Tam'}</option>
                   <option>P</option>
                   <option>M</option>
                   <option>G</option>

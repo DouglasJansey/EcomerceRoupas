@@ -9,6 +9,7 @@ import Login from '../Pages/login';
 import RegisterProducts from '../Components/Produtos';
 import CartList from '../Pages/CartList';
 import Account from '../Pages/Account';
+import AllProducts from '../Pages/AllProducts';
 import PrivateRoute from './PrivateRoutes';
 
 export default function RoutePages() {
@@ -21,12 +22,13 @@ export default function RoutePages() {
         <Route path="home" element={<Home />} />
         {/* Rotas fechadas */}
         <Route element={<PrivateRoute isClosed />}>
-          <Route path="produtos" element={AdminLoggedIn ? <RegisterProducts /> : <Navigate to="/home" />} />
-          <Route path="conta" element={AdminLoggedIn ? <Account /> : <Navigate to="/home" />} />
+          <Route path="produto" element={AdminLoggedIn ? <RegisterProducts /> : <Navigate to="/home" />} />
         </Route>
+        <Route path="conta" element={isLoggedIn ? <Account /> : <Navigate to="/home" />} />
         <Route path="register" element={isLoggedIn ? <Navigate to="/home" /> : <Register />} />
         <Route path="login" element={isLoggedIn ? <Navigate to="/home" /> : <Login />} />
         <Route path="contato" element={<Contato />} />
+        <Route path="produtos" element={<AllProducts />} />
         <Route path="cart" element={<CartList />} />
       </Route>
       <Route path="*" element={<NotFound />} />

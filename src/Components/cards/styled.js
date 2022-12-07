@@ -52,13 +52,12 @@ export const Text = styled.div`
 export const Description = styled.div`
     font-weight: bold;
     font-size: 10px;
-    width: 90%;
+    width: 100%;
     justify-content: center;
     align-items: center;
     color: ${darkGrayColor};
     display: flex;
     flex-wrap: wrap;
-    margin: 5px;
 `;
 export const ContainerDesc = styled.div`
     display: flex;
@@ -97,7 +96,7 @@ export const ButtonBuy = styled.button`
     color: ${lightGrayColor};
     cursor: pointer;
     padding: 2px;
-    margin-bottom: 5px;
+    margin-top: 5px;
     :hover{
         opacity: 0.5;
     }
