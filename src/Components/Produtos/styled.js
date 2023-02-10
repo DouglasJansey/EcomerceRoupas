@@ -9,7 +9,7 @@ import {
 }
   from '../../style/colors';
 
-const defaultImage = '';
+const defaultImage = 'https://www.ofertadia.com.br/wp-content/themes/deals/images/store-default.png';
 
 const fadeIn = keyframes`
     0%{
@@ -21,35 +21,42 @@ const fadeIn = keyframes`
      }
 `;
 
-export const Container = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-`;
-export const Register = styled.div`
+export const Container = styled.section`
     animation: ${fadeIn} 1s ease forwards;
     display: flex;
+    width: 80vw;
+    min-height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #fff;
+    margin-bottom: 10px;
+    h1{
+        display: flex;
+        width: 100%;
+    }
+`;
+export const Register = styled.div`
+    display: flex;
     max-width: 98%;
-    height: 98%;
+    height: auto;
     background-color: #fff;
     overflow: hidden;
     padding: 5px;
-`;
+    `;
 export const Label = styled.label`
         display: flex;
         flex-direction: column;
-`;
+        margin-bottom: 10px;
+        `;
 export const Form = styled.form`
     display: flex;
     flex-wrap: wrap;
     padding: 5px;
     width: 100%;
+    height: 100%;
     justify-content: center;
-    align-items: space-between;
-
+    align-items: center;
 
     textarea{
         width:100% ;
@@ -71,12 +78,15 @@ export const LabelPic = styled.label`
         font-weight: bold ;
         justify-content: center;
         align-items: center;
-        background-color: ${darkRedColor};
+        background-color: ${darkBlueColor};
         border-radius: 10px;
         color: #fff;
          cursor: pointer;
     input{
         display: none;
+    }
+    :hover{
+        background-color: ${darkRedColor};
     }
 
 `;
@@ -84,9 +94,10 @@ export const ContainerPic = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    height: auto;
     width: 100%;
-    padding-left: 50px;
+    padding-left: 10px;
+    margin-bottom: 15px;
     `;
 export const ContainerLabel = styled.div`
     display: flex;
@@ -102,16 +113,19 @@ export const ContainerImg = styled.div`
     flex: none;
     overflow: hidden;
     border-radius: 20px;
-    height: 200px;
-    width: 200px;
+    width: 250px;
+    border: 2px solid ${darkGrayColor};
+    margin-bottom: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     img{
-        width: 100%;
-        height: 100%;
+        width: 50%;
     }
 `;
 export const DefaultImage = styled.img`
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
 `;
 DefaultImage.defaultProps = {
   src: defaultImage,
@@ -127,16 +141,17 @@ export const ContainerCol = styled.div`
 
 `;
 export const ButtonSubmit = styled.button`
-    width: 250px;
-    height: 45px;
+    width: 350px;
+    height: 65px;
     font-weight: bold;
     border-style: none;
     font-size: 15px;
     border-radius: 15px;
-    background: ${darkRedColor};
+    background: ${darkBlueColor};
     color: #fff;
     cursor: pointer;
     bottom: 55px;
+    margin-left: 50px;;
     :hover{
         background: ${darkRedColor};
     }
@@ -144,13 +159,14 @@ export const ButtonSubmit = styled.button`
 export const InputForm = styled.input`
     height: 30px;
     width: 80%;
-    padding-left: 25px;
-    border-radius: 5px;
+    padding-left: 5px;
     margin-top: 5px;
     border: none;
-    background: ${lightGrayColor};
+    background: none;
+    border-bottom: 2px solid ${darkGrayColor};
 
-     &:focus{
-        outline: 1px solid ${darkRedColor};
+    &:focus{
+        outline: none;
+        border-bottom: 2px solid ${darkRedColor};
      }
 `;

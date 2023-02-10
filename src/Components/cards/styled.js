@@ -29,20 +29,22 @@ export const DeleteProduct = styled(BsXSquareFill)`
 `;
 
 export const ContainerImg = styled.div`
-    width: 80%;
+    width: 100%;
     height: 55%;
-    background: none;
     position: relative;
+    margin-bottom: 5px;
     button{
         position: absolute;
         border: none;
         top: 10px;
-        left: -5px;
+        left: 10px;
     }
 `;
 export const Image = styled.img`
-    width: 90%;
-    height: 100%;
+    height: 95%;
+    width: auto;
+    padding: 5px;
+
 `;
 export const Text = styled.div`
     font-weight: bold;

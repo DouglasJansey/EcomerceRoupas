@@ -1,16 +1,23 @@
+/* eslint-disable radix */
 /* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-bind */
 import validator from 'validator';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from '../../services/axios';
 import {
-  Container, RegisterContainer, Form, EndForm,
-  PhotoContainer, DefaultImage, TextLogin,
+  Container,
+  RegisterContainer,
+  Form,
+  EndForm,
+  PhotoContainer,
+  DefaultImage,
+  TextLogin,
 } from './styled';
 import inputMask from '../../Util';
+import urlStorage from '../../services/urlStoragePhoto';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -29,7 +36,6 @@ export default function Register() {
   const form = useRef(null);
 
   let error = false;
-
   function validateInput() {
     if (name.length < 4 || !name) {
       error = true;
@@ -39,63 +45,77 @@ export default function Register() {
     if (cpf.length > 0 && cpf.length < 11) error = true;
     if (!street || !street_number || !city) error = true;
     if (!cel_number || !ddd_cel) error = true;
-    if (photo && (photo.type !== 'image/png' || photo.type !== 'image/jpeg')) error = true;
+    // if (photo && (photo.type !== 'image/png' || photo.type !== 'image/jpeg')) error = true;
   }
-  function validateImage(e) {
+  async function validateImage(e) {
     const reader = new FileReader();
     const imagePic = e.target.files[0];
     if (!imagePic || imagePic.length > 0) return;
     setPhoto(imagePic);
-    reader.onload = () => {
-      setProfilePic(reader.result);
+    reader.onload = (fileReader) => {
+      setProfilePic(fileReader.target.result);
     };
     reader.readAsDataURL(imagePic);
   }
+  console.log(cpf);
   function handleClick(e) {
     hiddenInput.current.click();
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    validateInput();
+    // validateInput();
     const formData = new FormData();
     if (error) return toast.error('FAIULURE REGISTER');
     try {
-      await axios.post('/users/', {
-        name,
-        cpf,
-        email,
-        gender,
-        password,
-      }).then(async (res) => {
-        const { id } = res.data;
-        const id_user = id;
-
-        await axios.post('/endereco', {
-          street,
-          city,
-          street_number,
-          id_user,
-        }).then(async () => {
-          await axios.post('/telefones', {
-            ddd_cel,
-            cel_number,
-            id_user,
-          });
-        }).then(async () => {
-          formData.append('photo', photo);
-          formData.append('user_id', id_user);
-          await axios.post('/fotos', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-
-          });
+      await axios
+        .post('/users', {
+          name,
+          cpf,
+          email,
+          gender,
+          password,
+        })
+        .then(async (res) => {
+          const { id } = res.data;
+          const id_user = id;
+          await axios
+            .post('/endereco', {
+              street,
+              city,
+              street_number,
+              id_user,
+            })
+            .then(async () => {
+              const dddCel = parseInt(ddd_cel);
+              const celNumber = parseInt(cel_number);
+              await axios.post('/telefones', {
+                ddd_cel: dddCel,
+                cel_number: celNumber,
+                id_user,
+              });
+            })
+            .then(async () => {
+              formData.append('image', photo);
+              await axios.post(`${urlStorage}`, formData, {
+                Content_Type: 'multipart/form-data',
+                method: 'POST',
+              }).then(async (resp) => {
+                const { data } = resp.data;
+                const { display_url } = data;
+                await axios.post('/fotos', {
+                  originalname: data.id,
+                  filename: data.image.filename,
+                  display_url,
+                  user_id: id_user,
+                });
+              });
+            });
         });
-      });
       toast.success('SUCCESS!');
-    //   alert('Usuário criado com sucesso!');
+      //   alert('Usuário criado com sucesso!');
     } catch (err) {
-      toast.error('FAIULURE REGISTER');
+      // toast.error('FAIULURE REGISTER');
+      console.log(err);
     }
   }
 
@@ -110,13 +130,14 @@ export default function Register() {
             <PhotoContainer>
               <div>
                 <div>
-                  {profilePic
-                    ? (
-                      <img
-                        src={profilePic}
-                        alt="foto perfil"
-                      />
-                    ) : <DefaultImage />}
+                  {profilePic ? (
+                    <img
+                      src={profilePic}
+                      alt="foto perfil"
+                    />
+                  ) : (
+                    <DefaultImage />
+                  )}
                 </div>
                 <label
                   htmlFor="foto"
@@ -131,8 +152,7 @@ export default function Register() {
                     onChange={(e) => validateImage(e)}
                   />
                 </label>
-                <p>{photo ? photo.name : 'File' }</p>
-
+                <p>{photo ? photo.name : 'File'}</p>
               </div>
             </PhotoContainer>
             <label htmlFor="nome">
@@ -195,27 +215,20 @@ export default function Register() {
                 </label>
                 <label htmlFor="gender">
                   Gênero:
-                  <select value={gender} onChange={(e) => setGender(e.target.value)}>
-                    <option
-                      defaultChecked
-                      hidden
-                      value=" "
-                    >
+                  <select
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                  >
+                    <option defaultChecked hidden value=" ">
                       selecionar
                     </option>
-                    <option
-                      value="Masculino"
-                    >
+                    <option value="Masculino">
                       Masculino
                     </option>
-                    <option
-                      value="Feminino"
-                    >
+                    <option value="Feminino">
                       Feminino
                     </option>
-                    <option
-                      value="Outro..."
-                    >
+                    <option value="Outro...">
                       Outro...
                     </option>
                   </select>
@@ -225,7 +238,7 @@ export default function Register() {
                   <input
                     type="text"
                     name="cpf"
-                    value={inputMask(cpf, 'cpf')}
+                    value={cpf}
                     onChange={(e) => setCpf(e.target.value)}
                   />
                 </label>
@@ -245,11 +258,10 @@ export default function Register() {
                   <input
                     type="text"
                     name="celular"
-                    value={inputMask(cel_number, 'cel')}
+                    value={cel_number}
                     onChange={(e) => setCelPhone(e.target.value)}
                   />
                 </label>
-
               </div>
             </EndForm>
           </div>

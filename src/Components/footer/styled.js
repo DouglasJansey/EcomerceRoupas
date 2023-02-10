@@ -8,19 +8,12 @@ import bgFooter from '../../img/bgFooter.jpg';
 
 export const Container = styled.footer`
   width: 100%;
-  height: 100px;
+  height: auto;
   background: #183d5b;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  bottom: 0;
-  margin: auto;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-
   div:nth-child(1){
     background: transparent;
   }
@@ -32,10 +25,10 @@ export const SubContainer = styled.div`
     height: 100%;
     width: 100%;
     background: #183d5b;
-    position: relative;
     align-items: center;
     justify-content: center;
     color: #fff;
+    text-align: center;
     a{
         margin-left: 10px;
         color: #fff;
@@ -51,5 +44,6 @@ export const SubContainer1 = styled.div`
   height: 100%;
   a{
     margin-left: 15px;
+    margin-top: 20px;
   }
 `;

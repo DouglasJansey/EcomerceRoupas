@@ -35,15 +35,13 @@ z-index: 10;
 `;
 export const Container = styled.div`
   display: flex;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 155px;
   flex-direction: column;
   justify-content: center;
-  padding: 5px;
   align-items: center;
   width: 100%;
-  max-width: 1080px;
-  height: 400px;
+  height: 550px;
   max-height: 550px;
   `;
 export const ContainerDesc = styled.div`
@@ -121,7 +119,7 @@ export const ButtonDesc = styled.button`
   border: none;
   cursor: pointer;
   color: #fff;
-  margin-top: 15px;
+  margin-top: 5px;
   background: #0756cc;
   padding: 5px;
   a{
@@ -129,35 +127,42 @@ export const ButtonDesc = styled.button`
   }
 `;
 export const ContainerImg = styled.div`
-    width:  80%;
-    height: 100%;
+    width:  100%;
+    height: auto;
     display: flex;
     transform: translateX(${(props) => props.directionX}px);
     transition: all 0.5s ease ;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    img{
+        width: 50%;
+    }
+    div{
+        width: 100%;
+        height: 100%;
+    }
 `;
 export const ImageWidth = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 500px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     background-image: url(${(props) => props.imageBg});
     background-repeat: none;
     background-size: cover;
-    background-position: center;
+    background-position: top;
     overflow: hidden;
     position: relative;
-
     &:hover{
-        background-size: auto;
         background-repeat: none;
+        background-size: 110%;
         &:after{
         content: "";
         background: black;
         opacity: 0.4;
+        padding: 15px;
         width: 100%;
         height: 100%;
         position: absolute;

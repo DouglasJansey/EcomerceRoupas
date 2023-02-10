@@ -27,33 +27,40 @@ const ChangeBg = (props) => {
     default: return `background: ${lightGrayColor};`;
   }
 };
-export const Container = styled.div`
-    padding-top: 130px;
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    background: ${lightGrayColor};
-`;
-export const ContainerForm = styled.div`
+export const Container = styled.section`
     display: flex;
     width: 100%;
     height: 100%;
+    align-items: flex-start;
     justify-content: center;
+    background: ${lightGrayColor};
+    overflow: hidden;
+`;
+export const ContainerForm = styled.div`
+    display: flex;
+    width: 80%;
+    height: auto;
+    justify-content: center;
+
 `;
 export const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    width: 20%;
+    min-width: 150px;
     height: 100%;
-    background: ${darkBlueColor};
+    background: red;
 `;
 
 export const ButtonMenu = styled.button`
     ${({ changeBG }) => ChangeBg(changeBG)}
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 10%;
+    height: 60px;
     border: none;
     :hover{
         background: #fff;
@@ -63,8 +70,8 @@ export const ButtonMenu = styled.button`
 export const UpdateContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
     width: 100%;
-    height: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 `;

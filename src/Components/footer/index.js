@@ -33,8 +33,13 @@ export default function Footer() {
         </a>
       </SubContainer1>
       <SubContainer>
-        <p>Endereço: Rua Olimpia Esteves  - 1864 - Realengo - Rio de Janeiro - RJ</p>
-        <p> Contato: (21) 9 8888-8888</p>
+        <p>
+          Endereço: Rua Olimpia Esteves  - 1864 - Realengo - Rio de Janeiro - RJ
+          <br />
+          Contato: (21) 9 8888-8888
+
+        </p>
+
       </SubContainer>
     </Container>
   );

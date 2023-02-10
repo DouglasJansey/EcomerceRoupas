@@ -18,7 +18,7 @@ export const Container = styled.div`
    width: 100%;
    height: 100%;
    position: relative;
-   background: #000;
+   background: none;
    opacity: 0.6;
 `;
 export const SubContainer = styled.div`
@@ -33,9 +33,8 @@ export const Loading = styled.div`
     height: 50px;
     background: none;
     border-radius: 100%;
-    border: 3px solid ${lightGrayColor};
-    border-top: 3px solid ${darkRedColor};
-    position: absolute;
+    border: 5px solid ${lightGrayColor};
+    border-top: 5px solid ${darkRedColor};
     top: 0;
     bottom: 0;
     left: 0;

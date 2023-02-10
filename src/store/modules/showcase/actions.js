@@ -16,9 +16,15 @@ export function showOrderPriceDown() {
     type: types.PRICE_DOWN,
   };
 }
-export function removeProduct(payload) {
+export function searchPrice(payload) {
   return {
-    type: types.REMOVE_PRODUCT,
+    type: types.SEARCH_PRICE,
+    payload,
+  };
+}
+export function showOrderTeam(payload) {
+  return {
+    type: types.ORDER_TEAM,
     payload,
   };
 }

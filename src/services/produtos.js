@@ -6,6 +6,7 @@ import axios from './axios';
 function getProducts() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.produtos);
+  console.log(product);
 
   useEffect(() => {
     async function getData() {

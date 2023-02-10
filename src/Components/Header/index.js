@@ -1,36 +1,63 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable dot-notation */
 /* eslint-disable prefer-const */
 /* eslint-disable react/no-array-index-key */
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { render } from 'react-dom';
 import * as actionAuth from '../../store/modules/auth/actions';
+import * as showcaseAction from '../../store/modules/showcase/actions';
 import logo from '../../img/logo.png';
-
 import {
   Container, NavBar, CartContainer, ContainerTitle,
   InputContainer, Cart, CartCount, SubContainer, UserInfo,
-  SubContainer1, SubContainerNav, SubContainerTitle,
+  SubContainer1, SubContainerNav, SubContainerTitle, TeamsContainer,
+  ContainerTeamMenu,
 } from './styled';
 
 export default function Header() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const [bgIndex, setbgIndex] = useState('');
+  const [bgIndex, setbgIndex] = useState(-1);
   const length = useSelector((state) => state.cart.produtos.length);
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.auth);
   const linksNav = ['Times', 'Feminino', 'Masculino', 'Infantil', 'Ofertas'];
   const titleLinks = ['home', 'info', 'contato', 'login'];
+  const [menuTeam, setMenuTeam] = useState('');
+  const [leave, setLeave] = useState(false);
 
   if (isLoggedIn) {
     const loginIndex = titleLinks.findIndex((item) => item === 'login');
     titleLinks[loginIndex] = 'conta';
   }
+
   function handleLogout(e) {
     e.preventDefault();
     dispatch(actionAuth.userLogout());
+  }
+
+  const componentsTeams = {
+    Times: lazy(() => import('../Teams/index')),
+  };
+
+  function SetTeam(e, index) {
+    if (bgIndex !== -1) setbgIndex(-1);
+    if (menuTeam === 'Times') return setMenuTeam('');
+    setbgIndex(index);
+    setMenuTeam(e.target.innerText);
+  }
+  function ComponentMenuTeams() {
+    const ComponentMount = componentsTeams[menuTeam];
+    return (
+      <ContainerTeamMenu>
+        <TeamsContainer>
+          <Suspense fallback={<div />}>
+            {menuTeam === 'Times' ? <ComponentMount /> : ''}
+          </Suspense>
+        </TeamsContainer>
+      </ContainerTeamMenu>
+    );
   }
 
   return (
@@ -48,7 +75,7 @@ export default function Header() {
         <NavBar>
           {titleLinks.map((links, index) => (
             <SubContainerTitle borderColor={pathname} key={index}>
-              <Link to={links}>
+              <Link name={links} to={links}>
                 {links.toUpperCase()}
               </Link>
             </SubContainerTitle>
@@ -58,11 +85,17 @@ export default function Header() {
       <SubContainer1>
         <NavBar>
           {linksNav.map((link, index) => (
-            <SubContainerNav bgColor={bgIndex} key={index}>
-              <Link to="/" onClick={() => setbgIndex(index)}>
-                {link}
-              </Link>
+            <SubContainerNav
+              onClick={(e) => {
+                SetTeam(e, index);
+                setLeave(!leave);
+              }}
+              bgColor={bgIndex}
+              key={index}
+            >
+              {link}
             </SubContainerNav>
+
           ))}
         </NavBar>
         <SubContainer>
@@ -82,6 +115,7 @@ export default function Header() {
           </Link>
         </SubContainer>
       </SubContainer1>
+      <ComponentMenuTeams />
     </Container>
   );
 }

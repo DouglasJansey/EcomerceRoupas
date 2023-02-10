@@ -6,21 +6,24 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-bind */
 import {
-  useState, lazy, Suspense,
+  useState, lazy, Suspense, useEffect,
 } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Container, UpdateContainer, SubContainer,
   ButtonMenu, ContainerForm,
 } from './styled';
 
 export default function UpdateUser() {
+  const loginAdmin = useSelector((state) => state.auth.admin);
   const [bg, setBg] = useState('Perfil');
-  const menuButton = ['Perfil', 'Produtos', 'Pedidos', 'Histórico'];
+  const menuButton = loginAdmin ? ['Perfil', 'Produtos'] : ['Perfil'];
 
   const ComponentsMap = {
     PERFIL: lazy(() => import('../../Components/updateUser')),
-    // PRODUTOS: lazy(() => import('../../Components/Produtos')),
+    PRODUTOS: lazy(() => import('../../Components/Produtos')),
   };
+
   function ComponentsRender() {
     const Component = ComponentsMap[bg.toLocaleUpperCase()];
     return (

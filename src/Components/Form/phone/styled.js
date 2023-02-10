@@ -7,8 +7,8 @@ import {
 
 const InputWidth = (width) => {
   switch (width) {
-    case 'celular': return 'width: 60%;';
-    case 'telefone': return 'width: 60%;';
+    case 'celular': return 'width: 50%;min-width: 100px;';
+    case 'telefone': return 'width: 50%;min-width: 100px;';
     case 'ddd': return 'width: 30px;';
     default: return 'width: 100%;';
   }
@@ -19,39 +19,43 @@ export const Form = styled.form`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 60%;
-    height: 20%;
+    width: 100%;
+    height: 50vh;
+    padding: 10px;
 `;
 export const SubContainer = styled.div`
    display: flex;
+   margin-top: 10px;
    height: 100%;
-   width: 100%;
+   width: 80vw;
    justify-content: center;
+   align-items: center;
+
 `;
 export const Container = styled.div`
    display: flex;
-   padding-top: 40px;
-   height: 50%;
-   width:100%;
+   height: auto;
+   width: 100%;
    justify-content: center;
    align-items: center;
+
 `;
 
 export const Label = styled.div`
   display: flex;
   font-weight: bold;
   font-size: 15px;
-  width: 27%;
+  width: auto;
   color: ${darkRedColor};
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  margin-right: 10px;
-  `;
+  margin-top: 15px;
+
+    `;
 
 export const InputForm = styled.input`
   height: 30px;
   ${({ inputWidth }) => InputWidth(inputWidth)};
-  padding-left: 10px;
   font-size: 15px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -73,9 +77,8 @@ export const ButtonSubmitForm = styled.button`
     border-radius: 15px;
     background: ${darkRedColor};
     color: #fff;
+    margin-top: 10px;
     cursor: pointer;
-    position: relative;
-    bottom: -50px;
     left: 0;
     right: 0;
     margin: auto;

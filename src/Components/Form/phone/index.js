@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import InputMask from '../../../Util';
 import {
   Form, Label, InputForm, Container, ButtonSubmitForm, SubContainer,
 } from './styled';
@@ -21,10 +22,11 @@ export default function Phone() {
       if (ddd_phone) setDddPhone(phone[0].ddd_phone);
       if (phone_number) setPhoneNumber(phone[0].phone_number);
     }
-  }, []);
+  }, [phone]);
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log('foi');
     dispatch(actionUser.userRequest({
       userPhone: {
         ddd_cel,

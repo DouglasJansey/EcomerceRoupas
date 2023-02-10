@@ -46,7 +46,7 @@ export default function Cart({ item }) {
         <Title>Produtos</Title>
         <ContainerItens>
           <ContainerImage>
-            <img src={cartItem.PhotoProducts[0] ? cartItem.PhotoProducts[0].url : 'https://th.bing.com/th/id/OIP.Q9wGF7gaHP6X5Vl4VlL57gHaHM?pid=ImgDet&rs=1'} alt="batman profile" />
+            <img src={cartItem.PhotoProducts[0] ? cartItem.PhotoProducts[0].display_url : 'https://th.bing.com/th/id/OIP.Q9wGF7gaHP6X5Vl4VlL57gHaHM?pid=ImgDet&rs=1'} alt="batman profile" />
           </ContainerImage>
           <ContainerInfo>
             <NameConainer>
@@ -57,7 +57,7 @@ export default function Cart({ item }) {
             <DescContainer>
               <h5> Tipo: { cartItem.type}</h5>
               <h5>Cor: {cartItem.PhotoProducts[0].color ? cartItem.PhotoProducts[0].color : ' tradicional'} </h5>
-              <h5>Time: {cartItem.sub_category}</h5>
+              <h5>Time: {cartItem.name}</h5>
               <h5>Tamanho:
                 <select value={sizeProd} onChange={(e) => addSizeProduct(e)}>
                   <option hidden>{size || 'Tam'}</option>

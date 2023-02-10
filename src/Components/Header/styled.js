@@ -32,25 +32,28 @@ const ChildBg = (props) => {
 
 export const Container = styled.div`
   width: 100%;
-  height: 130px;
-  position: fixed;
+  height: auto;
   background: #fff;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
+  margin-top: 10px;
   z-index: 11;
 `;
 export const ContainerTitle = styled.div`
   width: 100%;
   height: 60%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
   img{
-        max-height: 70%;
-        min-width: 10%;
+        width: 160px;
         margin-left: 10px;
+        margin-bottom: 10px;
     }
 `;
 export const SubContainerTitle = styled.div`
@@ -59,7 +62,7 @@ export const SubContainerTitle = styled.div`
     align-items: center;
     margin-left: 25px;
     width: auto;
-    height: 50%;
+    height: 100%;
     margin-right: 20px;
     ${({ borderColor }) => ChildBorder(borderColor)}
     border-bottom: 5px solid ${lightGrayColor};
@@ -70,6 +73,7 @@ export const SubContainerTitle = styled.div`
 
     a{
     font-size: 0.9rem;
+    margin-bottom: 15px;
     font-weight: bold;
     display: flex;
     color: ${darkGrayColor};
@@ -77,12 +81,12 @@ export const SubContainerTitle = styled.div`
 `;
 export const SubContainer1 = styled.div`
   width: 100%;
-  height: 30%;
+  height: auto;
   background: ${darkBlueColor};
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  overflow: hidden;
   a{
     font-size: 0.9rem;
     display: flex;
@@ -92,16 +96,33 @@ export const SubContainer1 = styled.div`
 export const SubContainer = styled.div`
     display: flex;
     height: 100%;
+    flex-wrap: wrap;
     width: auto;
-    margin-left: 20px;
     align-items: center;
-    margin-right: 15px;
     justify-content: flex-end;
+
+`;
+export const TeamsContainer = styled.div`
+    display: block;
+    height: auto;
+    flex-wrap: wrap;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    `;
+export const ContainerTeamMenu = styled.div`
+    display: flex;
+    transform: translateX(calc(${(props) => props.posX}px/2));
+    height: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
 `;
 export const UserInfo = styled.div`
     display: flex;
     width: 100%;
-    height:20px;
+    height: 20px;
     align-items: center;
     padding-right: 10px;
     padding-top: 5px;
@@ -128,11 +149,13 @@ export const UserInfo = styled.div`
 export const SubContainerNav = styled.div`
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    margin-left: 25px;
     width: auto;
     height: 100%;
-    padding: 5px;
+    padding: 15px;
+    color: #fff;
+    cursor: pointer;
     ${({ bgColor }) => ChildBg(bgColor)};
     :hover{
         background: ${darkRedColor};
@@ -142,14 +165,16 @@ export const InputContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
-    width: 300px;
-    height: 23px;
+    width: 45%;
+    height: 30px;
     margin-right: 50px;
-    overflow: hidden;
+    margin-left: 5px;
+    background: none;
     input{
-        width: 100%;
+        width: 250px;
+        min-width: 150px;
         height: 100%;
+        border-radius: 5px;
     }
 `;
 export const CartContainer = styled.div`
@@ -157,7 +182,7 @@ export const CartContainer = styled.div`
     align-items: center;
     justify-content: space-around;
     height: 100%;
-    width: 150px;
+    width: 85%;
     padding: 5px;
     font-weight: bold;
     background: ${yellowColor};
@@ -192,9 +217,9 @@ export const CartCount = styled.div`
 export const NavBar = styled.nav`
 display: flex;
 align-items: center;
-height: 100%;
+flex-wrap: wrap;
+height: auto;
 width: auto;
-overflow: hidden;
 `;
 
 export const LoginContainer = styled.div`

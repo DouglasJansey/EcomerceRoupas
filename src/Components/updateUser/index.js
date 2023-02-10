@@ -25,7 +25,6 @@ export default function UpdateUser() {
 
   function ComponentsRender() {
     const Components = ComponentsMap[bg.replace(/[ç]/g, 'c').toLocaleUpperCase()];
-    console.log('tentando renderizar');
     return (
       <Suspense fallback=" ">
         <Components />

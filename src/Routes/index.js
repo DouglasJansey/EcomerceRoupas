@@ -9,7 +9,7 @@ import Login from '../Pages/login';
 import RegisterProducts from '../Components/Produtos';
 import CartList from '../Pages/CartList';
 import Account from '../Pages/Account';
-import AllProducts from '../Pages/AllProducts';
+import AllProducts from '../Pages/ShowCase';
 import PrivateRoute from './PrivateRoutes';
 
 export default function RoutePages() {

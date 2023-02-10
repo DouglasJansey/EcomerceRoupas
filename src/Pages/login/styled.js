@@ -19,7 +19,7 @@ const fadeIn = keyframes`
     }
 `;
 
-export const Container = styled.div`
+export const Container = styled.section`
     display: flex;
     width: 100%;
     height: 100vh;

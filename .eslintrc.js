@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'no-console': 'off',
+    'max-len': 'off',
     'linebreak-style': 'off',
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',

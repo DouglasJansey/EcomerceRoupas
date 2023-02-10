@@ -45,14 +45,11 @@ z-index: 10;
 `;
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1080px;
-  height: 500px;
-  max-height: 550px;
-
+  height: 100%;
+  margin-bottom: 0px;
   `;
 export const ContainerDesc = styled.div`
   animation: ${fadeIn} 1.5s ease forwards;
@@ -93,26 +90,40 @@ export const ButtonDesc = styled.button`
 
 `;
 export const ContainerImg = styled.div`
-    width:  95%;
-    height: 100%;
+    width: 100%;
+    height: 400px;
     display: flex;
     transform: translateX(${(props) => props.directionX}px);
     transition: all 0.5s ease ;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background: #000;
+    div{
+        width: 100%;
+        padding-top: 5px;
+        height:100%;
+         box-shadow: 0px 0px 10px inset;
+        background-image: linear-gradient(rgba(0,0,0,0),transparent, transparent, rgba(0,0,0,1));
+        position: absolute;
+        z-index: 13;
+    }
+    img{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+
+    }
 `;
-export const ImageWidth = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    background-image: url(${(props) => props.imageBg});
-    background-repeat: none;
-    background-size: cover;
-    background-position: center;
-    position: relative;
+export const ImageWidth = styled.image`
+width: 10%;
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+position: relative;
 `;
 export const ContainerButtons = styled.div`
     display: flex;

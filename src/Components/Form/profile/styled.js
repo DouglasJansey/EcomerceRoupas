@@ -19,16 +19,17 @@ export const Form = styled.form`
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    width: 90%;
-    height: 80%;
-    position: relative;
+    margin-top: 15px;
+    min-width: 100%;
+    min-height: 80%;
+    padding: 10px;
 `;
 export const Container = styled.div`
    display: flex;
    flex-wrap: wrap;
 `;
 
-export const Label = styled.div`
+export const Label = styled.label`
   display: flex;
   font-weight: bold;
   font-size: 15px;
@@ -37,52 +38,45 @@ export const Label = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-right: 5px;
-
+  margin-left: 10px;
+  padding: 20px;
   `;
 export const SelectForm = styled.select`
-  height: 30px;
-  width: 100%;
-  font-size: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  margin-top: 5px;
-  justify-content:center;
-  align-items: center;
-  text-align: left;
-  margin-left: 10px;
+    height: 30px;
+    width: 80%;
+    padding-left: 5px;
+    margin-top: 5px;
+    border: none;
+    background: none;
+    border-bottom: 2px solid ${darkGrayColor};
 
-  &:focus{
-    border: 1px solid ${darkRedColor};
-    outline: none;
-  }
+    &:focus{
+        outline: none;
+        border-bottom: 2px solid ${darkRedColor};
+     }
 `;
 export const InputForm = styled.input`
-  height: 30px;
-  width: 100%;
-  font-size: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  margin-top: 5px;
-  justify-content:center;
-  align-items: center;
-  text-align: left;
-  margin-left: 10px;
-  padding-left: 10px;
+    height: 30px;
+    width: 80%;
+    padding-left: 5px;
+    margin-top: 5px;
+    border: none;
+    background: none;
+    border-bottom: 2px solid ${darkGrayColor};
 
-  &:focus{
-    border: 1px solid ${darkRedColor};
-    outline: none;
-  }
+    &:focus{
+        outline: none;
+        border-bottom: 2px solid ${darkRedColor};
+     }
 `;
 
 export const ButtonSubmitForm = styled.button`
     width: 50%;
-    height: 45px;
+    height: 55px;
     font-weight: bold;
     border-style: none;
     font-size: 15px;
     border-radius: 15px;
-    margin-top: 20px;
     background: ${darkRedColor};
     color: #fff;
     position: relative;

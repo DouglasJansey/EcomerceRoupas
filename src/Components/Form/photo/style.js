@@ -6,17 +6,28 @@ import {
   darkGrayColor,
 } from '../../../style/colors';
 
+export const Container = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        margin-bottom: 15px;
+      
+`;
+
 export const ImageContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 5px;
+        width: 80%;
+        margin-top: 10px;
 `;
 export const ImageProfile = styled.img`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 250px;
+        width: 30%;
+        min-width: 200px;
         height: auto;
 `;
 export const Label = styled.label`
@@ -28,7 +39,6 @@ export const Label = styled.label`
         text-align: center;
         width: auto;
         margin-top: 10px;
-        margin-bottom: 25px;
          cursor: pointer;
 
          input {
@@ -39,12 +49,13 @@ export const Form = styled.form`
 display: flex;
 justify-content: center;
 align-items: center;
-margin-top: 5px;
-height: 100%;
-width: 100%;
+height: 80%;
+width: 100vmin;
+padding: 5px;
 `;
 export const ButtonSubmitForm = styled.button`
     width: 15%;
+    min-width: 100px;
     height: 50px;
     font-weight: bold;
     border-style: none;
@@ -63,7 +74,6 @@ export const PhotoContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     flex-direction:  column;
-    height: 100%;
-    width: 100%;
-    margin-top: 10px;
+    height: 30%;
+    width: 30%;
 `;

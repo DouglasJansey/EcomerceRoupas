@@ -1,7 +1,10 @@
+import { Container } from './styled';
+
 export default function Home() {
   return (
-
-    <h1>Contato</h1>
+    <Container>
+      <h1>Contato</h1>
+    </Container>
 
   );
 }

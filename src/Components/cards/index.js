@@ -46,7 +46,7 @@ export default function Cards({ product, cartItem }) {
             <DeleteProduct />
           </button>
         ) : '' }
-        <Image src={product.PhotoProducts[0] ? product.PhotoProducts[0].url : "https://quickbooks.intuit.com/oidam/intuit/sbseg/en_row/quickbooks/web/content/default-placeholder.png"} alt="foto produto" />
+        <Image src={product.PhotoProducts[0] ? product.PhotoProducts[0].display_url : "https://quickbooks.intuit.com/oidam/intuit/sbseg/en_row/quickbooks/web/content/default-placeholder.png"} alt="foto produto" />
       </ContainerImg>
       <ContainerDesc>
         <Text>

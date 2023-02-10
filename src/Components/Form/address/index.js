@@ -12,13 +12,16 @@ export default function Address() {
   const [street, setStreet] = useState(' ');
   const [street_number, setStreetNumber] = useState(' ');
   const [city, setCity] = useState(' ');
-  console.log(address);
 
   useEffect(() => {
     if (address.length > 0) {
       setStreet(address[0].street);
       setStreetNumber(address[0].street_number);
       setCity(address[0].city);
+    } else {
+      setStreet('');
+      setStreetNumber('');
+      setCity('');
     }
   }, [address]);
 
@@ -36,33 +39,37 @@ export default function Address() {
   return (
     <Container>
       <Form>
-        <Label htmlFor="endereco">
-          Endereço:
-          <InputForm
-            type="text"
-            name="endereco"
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-          />
-        </Label>
-        <Label htmlFor="numero" inputWidth="numero">
-          Número:
-          <InputForm
-            type="text"
-            name="numero"
-            value={street_number}
-            onChange={(e) => setStreetNumber(e.target.value)}
-          />
-        </Label>
-        <Label htmlFor="estado" inputWidth="estado">
-          Estado:
-          <InputForm
-            type="text"
-            name="estado"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-        </Label>
+        <div>
+          <Label htmlFor="endereco">
+            Endereço:
+            <InputForm
+              type="text"
+              name="endereco"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+          </Label>
+          <Label htmlFor="numero">
+            Número:
+            <InputForm
+              inputWidth="numero"
+              type="text"
+              name="numero"
+              value={street_number}
+              onChange={(e) => setStreetNumber(e.target.value)}
+            />
+          </Label>
+          <Label htmlFor="estado">
+            Estado:
+            <InputForm
+              inputWidth="estado"
+              type="text"
+              name="estado"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </Label>
+        </div>
         <ButtonSubmitForm onClick={(e) => handleSubmit(e)}> Salvar </ButtonSubmitForm>
       </Form>
     </Container>

@@ -7,6 +7,8 @@ export const ORDER_PRICE_UP = 'ORDER_PRICE_UP';
 export const ORDER_PRICE_DOWN = 'ORDER_PRICE_DOWN';
 export const PRICE_UP = 'PRICE_UP';
 export const PRICE_DOWN = 'PRICE_DOWN';
+export const ORDER_TEAM = 'ORDER_TEAM';
+export const SEARCH_PRICE = 'SEARCH_PRICE';
 
 export const ADD_CART = 'ADD_CART';
 export const REMOVE_CART = 'REMOVE_CART';

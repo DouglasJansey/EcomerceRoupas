@@ -79,13 +79,13 @@ export const ContainerInfo = styled.div`
     height: 100%;
 `;
 export const ContainerImage = styled.div`
+    display: flex;
     width: 140px;
     height: 110px;
     justify-content: center;
     align-items: center;
     img{
-         height: 100%;
-         width: 100%;
+         height: 90%;
     }
 `;
 export const NameConainer = styled.div`

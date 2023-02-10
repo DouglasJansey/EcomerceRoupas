@@ -18,12 +18,12 @@ const fadeIn = keyframes`
 `;
 export const Container = styled.div`
     display: flex;
-    margin-top: 20px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0,0));
     `;
 export const ContainerList = styled.div`
     display: flex;

@@ -7,38 +7,43 @@ import {
 
 const InputWidth = (width) => {
   switch (width) {
-    case 'numero': return 'width: 25%;';
-    case 'estado': return 'width: 40%;';
+    case 'numero': return 'width: 5%;min-width: 40px;';
+    case 'estado': return 'width: 5%;min-width: 250px;';
     default: return 'width: 100%;';
   }
 };
 
 export const Form = styled.form`
-    margin-top : 25px ;
+    margin-top : 5px ;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
-    height: 70%;
-`;
+    width: auto;
+    min-height: 50vh;
+    padding: 10px;
+    div{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    `;
 export const Container = styled.div`
    display: flex;
-   height: 100%;
-   width: 100%;
-   flex-wrap: wrap;
+   min-height: 100%;
+   width: 80vw;
    justify-content: center;
+
 `;
 
 export const Label = styled.div`
-  display: flex;
+  width: auto;
   font-weight: bold;
   font-size: 15px;
   color: ${darkRedColor};
-  ${({ inputWidth }) => InputWidth(inputWidth)}
   justify-content: flex-start;
   align-items: center;
-  margin-right: 10px;
+  margin-top: 10px;
 
   `;
 export const SelectForm = styled.select`
@@ -59,22 +64,18 @@ export const SelectForm = styled.select`
   }
 `;
 export const InputForm = styled.input`
-  height: 30px;
-  width: 100%;
-  font-size: 15px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  justify-content:center;
-  align-items: center;
-  text-align: left;
-  margin-left: 10px;
-  margin-top: 5px;
-  padding-left: 10px;
+    height: 30px;
+    ${({ inputWidth }) => InputWidth(inputWidth)}
+    padding-left: 5px;
+    margin-top: 5px;
+    border: none;
+    background: none;
+    border-bottom: 2px solid ${darkGrayColor};
 
-  &:focus{
-    border: 1px solid ${darkRedColor};
-    outline: none;
-  }
+    &:focus{
+        outline: none;
+        border-bottom: 2px solid ${darkRedColor};
+     }
 `;
 
 export const ButtonSubmitForm = styled.button`
@@ -84,7 +85,7 @@ export const ButtonSubmitForm = styled.button`
     border-style: none;
     font-size: 15px;
     border-radius: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
     background: ${darkRedColor};
     color: #fff;
     cursor: pointer;

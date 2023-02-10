@@ -9,27 +9,15 @@ import {
   Container, ContainerImg, ButtonDesc, ContainerAzul, ContainerDesc,
   ImageWidth, Titulo, ContainerAmarelo,
 } from './styled';
-import charges from '../../img/charges.jpg';
+import charges from '../../img/ESPN-Kayo-NBAFinals-Thumbnail.jpg';
 
 export default function Banner() {
   return (
     <Container>
       <ContainerImg>
-        <ImageWidth imageBg={charges}>
-          <ContainerDesc>
-            <Titulo>
-              <p> JERSEY CHARGES </p>
-              <h6> Confira a linha de jerseys San Diego Charges </h6>
-            </Titulo>
-            <ButtonDesc>
-              <Link to="/produtos">
-                Saiba mais &gt;&gt;
-              </Link>
-            </ButtonDesc>
-          </ContainerDesc>
-          <ContainerAmarelo />
-          <ContainerAzul />
-        </ImageWidth>
+        <div>
+          <img src={charges} alt="" />
+        </div>
       </ContainerImg>
     </Container>
   );

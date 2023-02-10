@@ -13,7 +13,6 @@ export default function Profile() {
   const [cpf, setCpf] = useState(user.cpf);
   const [password, setPassword] = useState(user.password);
   const [gender, setGender] = useState(user.gender);
-  console.log(user);
 
   function handleSubmit(e) {
     e.preventDefault();

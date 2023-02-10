@@ -37,22 +37,25 @@ export const ContainerForm = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    margin-top: 10px;
     width: 100%;
-    height: 100%;
+    height: 90%;
     background: #fff;
 `;
 export const SubContainer = styled.div`
     display: flex;
-    width: 80vw;
+    width: auto;
     height: 10%;
-    background: ${darkBlueColor};
 `;
 
 export const ButtonMenu = styled.button`
     ${({ changeBG }) => ChangeBg(changeBG)}
-    width: 30%;
-    height: 100%;
+    width: 25%;
+    min-width:  10%;
+    height: 60px;
     border: none;
+    padding: 5px;
+    font-size: 12px;
     :hover{
         background: #fff;
         transition: 1s all ease;
@@ -60,6 +63,8 @@ export const ButtonMenu = styled.button`
 `;
 export const UpdateContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-param-reassign */
@@ -7,6 +8,7 @@ import * as types from '../types';
 
 const initialState = {
   produtos: [],
+  team: '',
 };
 
 // eslint-disable-next-line
@@ -27,9 +29,14 @@ export default function (state = initialState, action) {
       newState.produtos.rows = state.produtos.rows.sort((a, b) => b.price - a.price);
       return newState;
     }
-    case types.REMOVE_PRODUCT: {
+    case types.SEARCH_PRICE: {
       const newState = { ...state };
-      newState.produtos.rows = state.produtos.rows.filter((item) => item.id !== action.payload);
+      // newState.produtos.rows = state.produtos.rows.filter((item) => item.price > action.payload.value1);
+      return newState;
+    }
+    case types.ORDER_TEAM: {
+      const newState = { ...state };
+      newState.team = action.payload;
       return newState;
     }
     default:
