@@ -10,7 +10,7 @@ import {
   Container, ContainerImg, ButtonDesc, ContainerDesc,
   ImageWidth, Titulo, Description, ContainerButtons, LinkPage,
 } from './styled';
-import banner1 from '../../img/capa.png';
+import banner1 from '../../img/capa.gif';
 
 export default function Carrousel() {
   const carrousel = useRef(0);

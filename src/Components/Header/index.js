@@ -42,18 +42,20 @@ export default function Header() {
   };
 
   function SetTeam(e, index) {
+    if (pathname === '/produtos') return setMenuTeam('');
     if (bgIndex !== -1) setbgIndex(-1);
     if (menuTeam === 'Times') return setMenuTeam('');
     setbgIndex(index);
     setMenuTeam(e.target.innerText);
   }
+  console.log(bgIndex);
   function ComponentMenuTeams() {
     const ComponentMount = componentsTeams[menuTeam];
     return (
       <ContainerTeamMenu>
         <TeamsContainer>
           <Suspense fallback={<div />}>
-            {menuTeam === 'Times' ? <ComponentMount /> : ''}
+            {menuTeam === 'Times' && pathname !== '/produtos' ? <ComponentMount /> : setMenuTeam('') }
           </Suspense>
         </TeamsContainer>
       </ContainerTeamMenu>

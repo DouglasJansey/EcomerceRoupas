@@ -35,7 +35,7 @@ const listTeams = {
     image: knicks,
   },
   Lakers: {
-    name: 'Lakers',
+    name: 'Los Angeles Lakers',
     image: lakers,
   },
   Chicago_Bulls: {
@@ -47,7 +47,7 @@ const listTeams = {
     image: warriors,
   },
   Cavaliers: {
-    name: 'Cavaliers',
+    name: 'Cleveland Cavaliers',
     image: cavaliers,
   },
   Miami_Heat: {
