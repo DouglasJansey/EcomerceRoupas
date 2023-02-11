@@ -27,7 +27,7 @@ export default function ListProducts() {
   const [value2, setValue2] = useState('');
   const [team, setTeam] = useState(teamSubMenu);
   const [priceOrder, setPriceOrder] = useState('');
-  console.log(products, 'time', team);
+
   function MaxValuePages(value) {
     (Math.floor(value / 10) < 1) ? setMaxPages(1) : setMaxPages(Math.floor(value / 10));
   }

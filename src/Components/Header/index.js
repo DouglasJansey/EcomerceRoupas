@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import * as actionAuth from '../../store/modules/auth/actions';
 import * as showcaseAction from '../../store/modules/showcase/actions';
+import Teams from '../Teams/index';
 import logo from '../../img/logo.png';
 import {
   Container, NavBar, CartContainer, ContainerTitle,
@@ -42,29 +43,24 @@ export default function Header() {
   };
 
   function SetTeam(e, index) {
-    if (pathname === '/produtos') return setMenuTeam('');
     if (bgIndex !== -1) setbgIndex(-1);
     if (menuTeam === 'Times') return setMenuTeam('');
     setbgIndex(index);
     setMenuTeam(e.target.innerText);
   }
-  console.log(bgIndex);
+  function CleanColorBgSubMenu() {
+    setbgIndex(-1);
+    setMenuTeam('');
+    console.log(bgIndex);
+  }
+
   function ComponentMenuTeams() {
     const ComponentMount = componentsTeams[menuTeam];
     return (
       <ContainerTeamMenu>
         <TeamsContainer>
           <Suspense fallback={<div />}>
-            {menuTeam === 'Times' && pathname !== '/produtos' ? <ComponentMount /> : () => {
-              if (pathname === '/produtos' && bgIndex === -1) {
-                const cleanAll = {
-                  cleanbgIndex: setbgIndex(-1),
-                  cleanTeamMenu: setMenuTeam(''),
-                };
-                return cleanAll;
-              }
-              setMenuTeam('');
-            }}
+            {menuTeam === 'Times' && pathname !== '/produtos' ? <Teams /> : CleanColorBgSubMenu()}
           </Suspense>
         </TeamsContainer>
       </ContainerTeamMenu>
