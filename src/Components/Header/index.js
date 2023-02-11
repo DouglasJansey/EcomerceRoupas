@@ -55,7 +55,16 @@ export default function Header() {
       <ContainerTeamMenu>
         <TeamsContainer>
           <Suspense fallback={<div />}>
-            {menuTeam === 'Times' && pathname !== '/produtos' ? <ComponentMount /> : setMenuTeam('') }
+            {menuTeam === 'Times' && pathname !== '/produtos' ? <ComponentMount /> : () => {
+              if (pathname === '/produtos' && bgIndex === -1) {
+                const cleanAll = {
+                  cleanbgIndex: setbgIndex(-1),
+                  cleanTeamMenu: setMenuTeam(''),
+                };
+                return cleanAll;
+              }
+              setMenuTeam('');
+            }}
           </Suspense>
         </TeamsContainer>
       </ContainerTeamMenu>
