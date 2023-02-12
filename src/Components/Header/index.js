@@ -99,7 +99,7 @@ export default function Header() {
               bgColor={bgIndex}
               key={index}
             >
-              {link}
+              {link === 'Ofertas' ? <Link to="/produtos">{link}</Link> : link}
             </SubContainerNav>
 
           ))}

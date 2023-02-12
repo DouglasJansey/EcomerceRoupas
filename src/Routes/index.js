@@ -19,7 +19,7 @@ export default function RoutePages() {
     <Routes>
       <Route>
         <Route path="/" element={<Home />} />
-        <Route path="home" element={<Home />} />
+        <Route exact path="home" element={<Home />} />
         {/* Rotas fechadas */}
         <Route element={<PrivateRoute isClosed />}>
           <Route path="produto" element={AdminLoggedIn ? <RegisterProducts /> : <Navigate to="/home" />} />
