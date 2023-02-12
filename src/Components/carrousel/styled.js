@@ -91,7 +91,7 @@ export const ButtonDesc = styled.button`
 `;
 export const ContainerImg = styled.div`
     width: 100%;
-    height: 400px;
+    height: 5%;
     display: flex;
     transform: translateX(${(props) => props.directionX}px);
     transition: all 0.5s ease ;
@@ -109,7 +109,7 @@ export const ContainerImg = styled.div`
         z-index: 13;
     }
     img{
-        height: 100%;
+        height: 90%;
         width: 100%;
         display: flex;
         justify-content: flex-start;

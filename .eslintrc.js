@@ -24,5 +24,6 @@ module.exports = {
     'linebreak-style': 'off',
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',
+    ' no-trailing-spaces': 'off',
   },
 };

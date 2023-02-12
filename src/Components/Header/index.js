@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import * as actionAuth from '../../store/modules/auth/actions';
 import * as showcaseAction from '../../store/modules/showcase/actions';
-import Teams from '../Teams/index';
 import logo from '../../img/logo.png';
 import {
   Container, NavBar, CartContainer, ContainerTitle,
@@ -60,7 +59,7 @@ export default function Header() {
       <ContainerTeamMenu>
         <TeamsContainer>
           <Suspense fallback={<div />}>
-            {menuTeam === 'Times' && pathname !== '/produtos' ? <Teams /> : CleanColorBgSubMenu()}
+            {menuTeam === 'Times' && pathname !== '/produtos' ? <ComponentMount /> : CleanColorBgSubMenu()}
           </Suspense>
         </TeamsContainer>
       </ContainerTeamMenu>
@@ -122,7 +121,7 @@ export default function Header() {
           </Link>
         </SubContainer>
       </SubContainer1>
-      <ComponentMenuTeams />
+      {menuTeam ? <ComponentMenuTeams /> : ''}
     </Container>
   );
 }

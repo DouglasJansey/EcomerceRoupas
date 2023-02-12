@@ -43,6 +43,10 @@ export const Container = styled.div`
   width: 100%;
   height: 550px;
   max-height: 550px;
+  background-image: url('');
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
   `;
 export const ContainerDesc = styled.div`
   display: flex;

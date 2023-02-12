@@ -16,7 +16,7 @@ export default function Banner() {
     <Container>
       <ContainerImg>
         <div>
-          <img src={charges} alt="" />
+          <img src="" alt="" />
         </div>
       </ContainerImg>
     </Container>
