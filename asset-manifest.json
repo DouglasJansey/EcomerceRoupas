@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/EcomerceRoupas/static/css/main.3d10672c.css",
-    "main.js": "/EcomerceRoupas/static/js/main.5d347ca6.js",
+    "main.js": "/EcomerceRoupas/static/js/main.32cbacae.js",
     "static/js/224.010bd6cf.chunk.js": "/EcomerceRoupas/static/js/224.010bd6cf.chunk.js",
     "static/js/795.a6172eb4.chunk.js": "/EcomerceRoupas/static/js/795.a6172eb4.chunk.js",
     "static/js/539.57b7c553.chunk.js": "/EcomerceRoupas/static/js/539.57b7c553.chunk.js",
@@ -50,7 +50,7 @@
     "static/media/kings.png": "/EcomerceRoupas/static/media/kings.823e2b6b0eef0b5dd509.png",
     "index.html": "/EcomerceRoupas/index.html",
     "main.3d10672c.css.map": "/EcomerceRoupas/static/css/main.3d10672c.css.map",
-    "main.5d347ca6.js.map": "/EcomerceRoupas/static/js/main.5d347ca6.js.map",
+    "main.32cbacae.js.map": "/EcomerceRoupas/static/js/main.32cbacae.js.map",
     "224.010bd6cf.chunk.js.map": "/EcomerceRoupas/static/js/224.010bd6cf.chunk.js.map",
     "795.a6172eb4.chunk.js.map": "/EcomerceRoupas/static/js/795.a6172eb4.chunk.js.map",
     "539.57b7c553.chunk.js.map": "/EcomerceRoupas/static/js/539.57b7c553.chunk.js.map",
@@ -60,6 +60,6 @@
   },
   "entrypoints": [
     "static/css/main.3d10672c.css",
-    "static/js/main.5d347ca6.js"
+    "static/js/main.32cbacae.js"
   ]
 }
