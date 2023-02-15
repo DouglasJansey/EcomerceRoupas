@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable dot-notation */
 /* eslint-disable prefer-const */
@@ -66,9 +67,9 @@ export default function Header() {
     );
   }
   function handleMenuSearch(props) {
-    if (props !== 'Times') {
+    if (props !== 'Times' && props !== 'Ofertas') {
+      if (props && props === 'Masculino') return dispatch(showcaseAction.filterType(props.replace('o', 'a')));
       dispatch(showcaseAction.filterType(props));
-      console.log('header', props);
     }
     return props;
   }

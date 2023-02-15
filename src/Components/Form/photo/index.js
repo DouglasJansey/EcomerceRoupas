@@ -29,7 +29,7 @@ export default function Photo() {
   function handleClick() {
     hiddenInput.current.click();
   }
-  console.log(urlStorage);
+
   function validateImage(e) {
     const reader = new FileReader();
     const imagePic = e.target.files[0];

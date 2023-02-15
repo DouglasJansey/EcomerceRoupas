@@ -91,7 +91,6 @@ export const ContainerPrice = styled.div`
     width: 100%;
     height: auto;
     display: flex;
-    flex-direction: column;
     background: #fff;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -100,11 +99,14 @@ export const ContainerPrice = styled.div`
     padding: 5px;
     font-size: 14px;
     font-weight: bold;
+
     label{
         width: 50%;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+
     }
     form{
         display: flex;
@@ -118,8 +120,20 @@ export const ContainerPrice = styled.div`
             color: #fff;
     }
     input{
-        width: 55%;
-        height: 17px;
+        width: 45%;
+        height: 25px;
+        border: none;
+        border-radius: 5px;
+        padding-left: 5px;
+        margin-left: 5px;
+        background: ${lightGrayColor};
+        :focus{
+            border: none;
+        }
+    }
+    select{
+        width: 100%;
+        height: 25px;
         border: none;
         border-radius: 5px;
         padding: 2px;

@@ -19,7 +19,6 @@ export default function List() {
   const cardWidth = 225;
   const containerWidth = products.length * 202;
   getProducts();
-  console.log(products);
   useEffect(() => {
     setPriceOrder(priceOrder);
   }, [priceOrder]);

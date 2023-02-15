@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable prefer-const */
 /* eslint-disable react/prop-types */
@@ -19,6 +20,7 @@ import {
 export default function ListProducts() {
   const { count, rows } = useSelector((state) => state.showCase.produtos);
   const regex = /(_)/g;
+  const list = Object.values(listTeams);
   const teamSubMenu = useSelector((state) => state.showCase.team);
   const type = useSelector((state) => state.showCase.type);
   const products = rows;
@@ -30,7 +32,6 @@ export default function ListProducts() {
   const [team, setTeam] = useState(teamSubMenu || type);
   const [priceOrder, setPriceOrder] = useState('');
 
-  console.log(teamSubMenu, team, 'type', type);
   function MaxValuePages(value) {
     (Math.floor(value / 10) < 1) ? setMaxPages(1) : setMaxPages(Math.floor(value / 10));
   }
@@ -43,9 +44,9 @@ export default function ListProducts() {
     return '';
   }
   useEffect(() => {
+    type === 'Masculino' ? console.log(type.replace('o', 'a')) : '';
     async function getData() {
       const response = await axios.get(`/produtos?page=${page}&max=10&${SearchProducts()}`);
-      console.log(response.data);
       dispatch(actionProducts.showProducts(response.data));
       MaxValuePages(count);
     }
@@ -129,13 +130,16 @@ export default function ListProducts() {
               <form onSubmit={(e) => handleSubmitTeam(e)}>
                 <label htmlFor="value1">
                   Selecione seu time:
-                  <select>
-                    <option value="" defaultChecked hidden>Time</option>
+                  <select onChange={(e) => setTeam(e.target.value)}>
+                    <option value="" defaultChecked hidden>Selecione seu time</option>
+                    {list.map((item, index) => (
+                      <option key={index}>
+                        {item.name}
+                      </option>
+                    ))}
                   </select>
-                  <input type="text" name="team" placeholder="Min" />
                 </label>
                 <ButtonSubmit type="submit">Aplicar</ButtonSubmit>
-                <CleanButton type="reset" onClick={(e) => CleanSearch(e)}>Limpar</CleanButton>
               </form>
             </ContainerPrice>
             <CleanButton

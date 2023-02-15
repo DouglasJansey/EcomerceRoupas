@@ -69,7 +69,7 @@ export default function ShowCase() {
     };
     reader.readAsDataURL(imagePic);
   }
-  console.log(loading);
+
   async function handleSubmit(e) {
     validateInput();
     e.preventDefault();
