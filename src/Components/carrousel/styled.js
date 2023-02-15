@@ -48,8 +48,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
-  margin-bottom: 0px;
+  height: auto;
   `;
 export const ContainerDesc = styled.div`
   animation: ${fadeIn} 1.5s ease forwards;
@@ -91,7 +90,7 @@ export const ButtonDesc = styled.button`
 `;
 export const ContainerImg = styled.div`
     width: 100%;
-    height: 5%;
+    height: auto;
     display: flex;
     transform: translateX(${(props) => props.directionX}px);
     transition: all 0.5s ease ;
@@ -99,15 +98,6 @@ export const ContainerImg = styled.div`
     align-items: center;
     overflow: hidden;
     background: #000;
-    div{
-        width: 100%;
-        padding-top: 5px;
-        height:100%;
-         box-shadow: 0px 0px 10px inset;
-        background-image: linear-gradient(rgba(0,0,0,0),transparent, transparent, rgba(0,0,0,1));
-        position: absolute;
-        z-index: 13;
-    }
     img{
         height: 90%;
         width: 100%;

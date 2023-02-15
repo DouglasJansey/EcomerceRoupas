@@ -1,26 +1,28 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-return-assign */
 import { useState, useRef, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Card from '../cards';
-import getProducts from '../../services/produtos';
-import * as actionProducts from '../../store/modules/products/actions';
+import axios from '../../services/axios';
 import {
   ContainerList, ContainerImages, Container, ContainerOrder,
   ArrowLeft, ArrowRight, ContainerArrow, ContainerSelect,
 } from './styled';
 
 export default function List() {
-  const products = useSelector((state) => state.products.produtos);
+  const [products, setProducts] = useState();
   const dispatch = useDispatch();
   const [scrollX, setScrollX] = useState(0);
   const [priceOrder, setPriceOrder] = useState('');
   const carrousel = useRef(0);
   const cardWidth = 225;
-  const containerWidth = products.length * 202;
-  getProducts();
-  console.log(products);
+  const containerWidth = products ? products.length * 202 : 0;
   useEffect(() => {
+    async function getData() {
+      const response = await axios.get('/produtos?page=1&max=10&search=type&type=Tênis');
+      setProducts(response.data.rows);
+    }
+    getData();
     setPriceOrder(priceOrder);
   }, [priceOrder]);
 
@@ -39,8 +41,6 @@ export default function List() {
     setScrollX(x);
   }
   function validateSelect(props) {
-    if (props === 'menor') return dispatch(actionProducts.orderPriceDown());
-    if (props === 'maior') return dispatch(actionProducts.orderPriceUp());
     return '';
   }
   const SortByPrice = (e) => {

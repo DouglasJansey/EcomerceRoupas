@@ -11,13 +11,17 @@ export const ContainerCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 195px;
     height: 300px;
     background: white;
     border-radius: 10px;
     text-align: center;
-    overflow: hidden;
     border: 1px solid${darkGrayColor};
+    span{
+        width: 100%;
+        height: 60%;
+    }
 
 `;
 export const DeleteProduct = styled(BsXSquareFill)`
@@ -30,8 +34,11 @@ export const DeleteProduct = styled(BsXSquareFill)`
 
 export const ContainerImg = styled.div`
     width: 100%;
-    height: 55%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     position: relative;
+    align-items: center;
     margin-bottom: 5px;
     button{
         position: absolute;
@@ -41,9 +48,8 @@ export const ContainerImg = styled.div`
     }
 `;
 export const Image = styled.img`
-    height: 95%;
+    height: 90%;
     width: auto;
-    padding: 5px;
 
 `;
 export const Text = styled.div`

@@ -7,35 +7,31 @@ import {
 export const Container = styled.section`
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  flex-wrap: wrap;
+  height: auto;
   justify-content: center;
-  align-items: flex-start;
-  background: ${lightGrayColor};
-  padding-bottom: 8px;
+  align-items:flex-start;
 `;
 
 export const Container2 = styled.div`
   width: 100%;
-  min-width: 242px;
   height: 100%;
   display: flex;
-  padding: 5px;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   `;
 export const ContainerCartList = styled.div`
-  width: 80%;
-  max-height: 100%;
+  width: 70%;
+  height: auto;
   display: flex;
   background: ${lightGrayColor};
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
   `;
 export const ContainerTotal = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -55,11 +51,12 @@ export const ContainerInfo = styled.div`
 `;
 export const SubContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 20%;
-  height: 100%;
+  width: 25%;
+  min-width: 150px;
+  height: auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 5px;
+  background: #fff;
 `;

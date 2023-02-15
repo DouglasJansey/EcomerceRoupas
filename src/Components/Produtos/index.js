@@ -42,7 +42,13 @@ export default function ShowCase() {
       setWidth('84');
       setLength('175');
     }
-  }, [category]);
+    if (type === 'Tênis') {
+      setWeight('1');
+      setHeight('15');
+      setWidth('12');
+      setLength('36');
+    }
+  }, [type, category]);
   function validateInput() {
     if (name.length < 4 || !name) {
       error = true;

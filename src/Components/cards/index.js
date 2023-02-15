@@ -9,6 +9,7 @@ import {
 } from './styled';
 import * as action from '../../store/modules/cart/actions';
 import * as actionProducts from '../../store/modules/products/actions';
+import * as actionShowcase from '../../store/modules/showcase/actions';
 import axios from '../../services/axios';
 import Rating from '../Rating';
 
@@ -36,18 +37,21 @@ export default function Cards({ product, cartItem }) {
   }
   async function deleteProduct(e) {
     dispatch(actionProducts.removeProduct(product.id));
+    dispatch(actionShowcase.removeShowCase(product.id));
     await axios.delete(`/produtos/${product.id}`);
   }
   return (
     <ContainerCard>
-      <ContainerImg>
-        {isLoggedAdmin ? (
-          <button type="button" onClick={(e) => deleteProduct(e)}>
-            <DeleteProduct />
-          </button>
-        ) : '' }
-        <Image src={product.PhotoProducts[0] ? product.PhotoProducts[0].display_url : "https://quickbooks.intuit.com/oidam/intuit/sbseg/en_row/quickbooks/web/content/default-placeholder.png"} alt="foto produto" />
-      </ContainerImg>
+      <span>
+        <ContainerImg>
+          {isLoggedAdmin ? (
+            <button type="button" onClick={(e) => deleteProduct(e)}>
+              <DeleteProduct />
+            </button>
+          ) : '' }
+          <Image src={product.PhotoProducts[0] ? product.PhotoProducts[0].display_url : "https://quickbooks.intuit.com/oidam/intuit/sbseg/en_row/quickbooks/web/content/default-placeholder.png"} alt="foto produto" />
+        </ContainerImg>
+      </span>
       <ContainerDesc>
         <Text>
           {product.name}

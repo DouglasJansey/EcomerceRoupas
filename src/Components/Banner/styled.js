@@ -35,18 +35,11 @@ z-index: 10;
 `;
 export const Container = styled.div`
   display: flex;
-  margin-top: 10px;
-  margin-bottom: 155px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 550px;
-  max-height: 550px;
-  background-image: url('');
-  background-size: cover;
-  background-repeat: none;
-  background-position: center;
+  height: auto;
   `;
 export const ContainerDesc = styled.div`
   display: flex;
@@ -61,32 +54,7 @@ export const ContainerDesc = styled.div`
   left: 10px;
   bottom: 5px;
   `;
-export const ContainerAzul = styled.div`
-  display: flex;
-  width: 100%;
-  transform: rotate(15deg);
-  padding: 10px;
-  height: 200px;
-  background: #0756cc;
-  opacity: 0.6;
-  position: absolute;
-  bottom: -100px;
-  left: -100px;
-  z-index: 1;
-  `;
-export const ContainerAmarelo = styled.div`
-  display: flex;
-  width: 105%;
-  transform: rotate(5deg);
-  padding: 10px;
-  height: 120px;
-  background: #f1c100;
-  position: absolute;
-  z-index: 2;
-  bottom: -50px;
-  border: 2px solid #0756cc;
-  right: -15px;
-  `;
+
 export const Description = styled.p`
     font-size: 1rem;
     color: #fff;
@@ -134,13 +102,14 @@ export const ContainerImg = styled.div`
     width:  100%;
     height: auto;
     display: flex;
+    margin-bottom: 10px;
     transform: translateX(${(props) => props.directionX}px);
     transition: all 0.5s ease ;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     img{
-        width: 50%;
+        width: 100%;
     }
     div{
         width: 100%;
@@ -153,8 +122,6 @@ export const ImageWidth = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    background-image: url(${(props) => props.imageBg});
-    background-repeat: none;
     background-size: cover;
     background-position: top;
     overflow: hidden;

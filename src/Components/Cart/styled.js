@@ -12,28 +12,32 @@ export const Container = styled.div`
     align-items: center ;
     width: 100%;
     height: 100%;
-    padding: 5px;
+    background: red;
+
     `;
 export const ContainerCart = styled.div`
     display: flex;
-    margin-bottom: 10px;
     width: 95%;
-    height: auto;
+    min-width: 150px;
+    height: 100%;
     background: white;
-    padding: 2px;
+    margin-bottom: 20px;
+    border: 1px solid ${darkRedColor};
     `;
 export const ContainerItens = styled.div`
 display: flex;
 width: 100%;
 height: 100%;
-justify-content: flex-start;
+justify-content: center;
 align-items: center ;
 border-top: 1px solid ${darkRedColor};
 `;
 export const ProductContainer = styled.div`
-    width: 100%;
+    width: 50%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 2px;
     align-items: center;
     border-right: 1px solid ${darkRedColor};
     `;
@@ -44,9 +48,14 @@ export const QuantContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2px;
     border-right: 1px solid ${darkRedColor};
-    div{
-        justify-content: space-evenly;
+    span{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
     `;
 export const PriceContainer = styled.div`
@@ -55,13 +64,15 @@ export const PriceContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2px;
     border-right: 1px solid ${darkRedColor};
     div{
         justify-content: space-evenly;
     }
     `;
 export const SubTotalContainer = styled.div`
-    width: 15%;
+    width: 25%;
+    padding: 2px;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -80,35 +91,40 @@ export const ContainerInfo = styled.div`
 `;
 export const ContainerImage = styled.div`
     display: flex;
-    width: 140px;
-    height: 110px;
+    width: auto;
+    height: auto;
     justify-content: center;
     align-items: center;
+    margin-right: 2px;
+    margin-left: 5px;
     img{
-         height: 90%;
+         width: 100%;
+         height: 130px;
     }
 `;
 export const NameConainer = styled.div`
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    height: 30px;
-    margin: 5px;
+    height: auto;
+    margin-left : 5px;
+    margin-bottom: 5px;
     `;
 export const DescContainer = styled.div`
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
+      flex-wrap: wrap;
       width: 100%;
       height: 100%;
-      margin-left : 10px;
+      margin-left : 5px;
       h5{
         font-weight: bold;
+        font-size: 10px;
       }
       select{
-        width: auto;
+        width: 45px;
         border: none;
-        padding: 2px;
         background: ${lightGrayColor};
         font-weight: bold;
         color: ${darkGreenColor};
@@ -120,9 +136,8 @@ export const DescContainer = styled.div`
 `;
 export const ConainerButtons = styled.div`
     display: flex;
-    width: 5%;
+    width: 30px;
     min-height: 100%;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     div{
@@ -130,7 +145,7 @@ export const ConainerButtons = styled.div`
     }
 `;
 export const Title = styled.p`
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: center;
     font-weight: bold;
     width: 100%;
@@ -138,7 +153,7 @@ export const Title = styled.p`
     background: ${lightGrayColor};
 `;
 export const NameProduct = styled.p`
-    font-size: 1rem;
+    font-size: 0.8rem;
     width: 100%;
     font-weight: bold;
     color: ${darkBlueColor};

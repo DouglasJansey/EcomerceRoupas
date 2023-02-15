@@ -18,33 +18,38 @@ import {
 export default function ListProducts() {
   const { count, rows } = useSelector((state) => state.showCase.produtos);
   const regex = /(_)/g;
-  const teamSubMenu = useSelector((state) => state.showCase.team.replace(regex, ' '));
+  const teamSubMenu = useSelector((state) => state.showCase.team);
+  const type = useSelector((state) => state.showCase.type);
   const products = rows;
   const dispatch = useDispatch();
   const [maxPages, setMaxPages] = useState(Math.floor(count / 10));
   const [page, setPages] = useState(1);
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
-  const [team, setTeam] = useState(teamSubMenu);
+  const [team, setTeam] = useState(teamSubMenu || type);
   const [priceOrder, setPriceOrder] = useState('');
 
+  console.log(teamSubMenu, team, 'type', type);
   function MaxValuePages(value) {
     (Math.floor(value / 10) < 1) ? setMaxPages(1) : setMaxPages(Math.floor(value / 10));
   }
 
   function SearchProducts() {
-    if (value1 && value2) return `&search=price&value1=${value1}&value2=${value2}`;
-    if (team) return `&search=team&teamname=${team}`;
+    if (value1 && value2) return `search=price&value1=${value1}&value2=${value2}`;
+    if (team && teamSubMenu) return `search=team&teamname=${team}`;
+    if (team === type) return `search=type&type=${type}`;
     return '';
   }
   useEffect(() => {
     async function getData() {
-      const response = await axios.get(`/produtos?page=${page}&max=10${SearchProducts()}`);
+      console.log(SearchProducts());
+      const response = await axios.get(`/produtos?page=${page}&max=10&${SearchProducts()}`);
+      console.log(response.data);
       dispatch(actionProducts.showProducts(response.data));
       MaxValuePages(count);
     }
     getData();
-  }, [page, value1, value2, count, team]);
+  }, [page, value1, value2, count, team, type]);
   function handleClickRight() {
     if (page < maxPages) setPages(page + 1);
   }

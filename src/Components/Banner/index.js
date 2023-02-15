@@ -6,19 +6,19 @@ import { useState, useRef } from 'react';
 import { set } from 'lodash';
 import { Link } from 'react-router-dom';
 import {
-  Container, ContainerImg, ButtonDesc, ContainerAzul, ContainerDesc,
-  ImageWidth, Titulo, ContainerAmarelo,
+  Container, ContainerImg, ButtonDesc, ContainerDesc,
+  ImageWidth, Titulo,
 } from './styled';
-import charges from '../../img/ESPN-Kayo-NBAFinals-Thumbnail.jpg';
+import banner2 from '../../img/nbaBanner2.gif';
+import jordan from '../../img/jordan.gif';
 
 export default function Banner() {
   return (
     <Container>
       <ContainerImg>
-        <div>
-          <img src="" alt="" />
-        </div>
+        <img src={banner2} alt="" />
       </ContainerImg>
+      <ContainerImg />
     </Container>
   );
 }

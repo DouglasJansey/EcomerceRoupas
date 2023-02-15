@@ -16,15 +16,21 @@ export function showOrderPriceDown() {
     type: types.PRICE_DOWN,
   };
 }
-export function searchPrice(payload) {
+export function filterType(payload) {
   return {
-    type: types.SEARCH_PRICE,
+    type: types.FILTER_TYPE,
     payload,
   };
 }
 export function showOrderTeam(payload) {
   return {
     type: types.ORDER_TEAM,
+    payload,
+  };
+}
+export function removeShowCase(payload) {
+  return {
+    type: types.REMOVE_SHOWCASE,
     payload,
   };
 }

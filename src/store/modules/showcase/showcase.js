@@ -9,6 +9,7 @@ import * as types from '../types';
 const initialState = {
   produtos: [],
   team: '',
+  type: '',
 };
 
 // eslint-disable-next-line
@@ -29,9 +30,15 @@ export default function (state = initialState, action) {
       newState.produtos.rows = state.produtos.rows.sort((a, b) => b.price - a.price);
       return newState;
     }
-    case types.SEARCH_PRICE: {
+    case types.FILTER_TYPE: {
       const newState = { ...state };
+      newState.type = action.payload;
       // newState.produtos.rows = state.produtos.rows.filter((item) => item.price > action.payload.value1);
+      return newState;
+    }
+    case types.REMOVE_SHOWCASE: {
+      const newState = { ...state };
+      newState.produtos.rows = state.produtos.rows.filter((item) => item.id !== action.payload);
       return newState;
     }
     case types.ORDER_TEAM: {

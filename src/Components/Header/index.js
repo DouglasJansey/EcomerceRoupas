@@ -22,7 +22,7 @@ export default function Header() {
   const length = useSelector((state) => state.cart.produtos.length);
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.auth);
-  const linksNav = ['Times', 'Feminino', 'Masculino', 'Infantil', 'Ofertas'];
+  const linksNav = ['Times', 'Feminino', 'Masculino', 'Tênis', 'Infantil', 'Ofertas'];
   const titleLinks = ['home', 'info', 'contato', 'login'];
   const [menuTeam, setMenuTeam] = useState('');
   const [leave, setLeave] = useState(false);
@@ -50,7 +50,6 @@ export default function Header() {
   function CleanColorBgSubMenu() {
     setbgIndex(-1);
     setMenuTeam('');
-    console.log(bgIndex);
   }
 
   function ComponentMenuTeams() {
@@ -65,7 +64,13 @@ export default function Header() {
       </ContainerTeamMenu>
     );
   }
-
+  function handleMenuSearch(props) {
+    if (props !== 'Times') {
+      dispatch(showcaseAction.filterType(props));
+      console.log('header', props);
+    }
+    return props;
+  }
   return (
     <Container>
       {isLoggedIn
@@ -95,14 +100,15 @@ export default function Header() {
               onClick={(e) => {
                 SetTeam(e, index);
                 setLeave(!leave);
+                handleMenuSearch(link);
               }}
               bgColor={bgIndex}
               key={index}
             >
-              {link === 'Ofertas' ? <Link to="/produtos">{link}</Link> : link}
+              {link !== 'Times' ? <Link to="/produtos">{link}</Link> : link}
             </SubContainerNav>
-
           ))}
+          <ComponentMenuTeams />
         </NavBar>
         <SubContainer>
           <InputContainer>
@@ -121,7 +127,6 @@ export default function Header() {
           </Link>
         </SubContainer>
       </SubContainer1>
-      {menuTeam ? <ComponentMenuTeams /> : ''}
     </Container>
   );
 }

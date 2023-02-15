@@ -74,9 +74,11 @@ export default function Cart({ item }) {
       <QuantContainer>
         <Title>Qtd</Title>
         <ContainerItens>
-          <Button type="button" onClick={(e) => handleQuantityPlus(e)}>+</Button>
-          {quantity}
-          <Button type="button" onClick={(e) => handleQuantitySub(e)}>-</Button>
+          <span>
+            <Button type="button" onClick={(e) => handleQuantityPlus(e)}>+</Button>
+            {quantity}
+            <Button type="button" onClick={(e) => handleQuantitySub(e)}>-</Button>
+          </span>
         </ContainerItens>
       </QuantContainer>
       <PriceContainer>
