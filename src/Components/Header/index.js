@@ -2,7 +2,9 @@
 /* eslint-disable dot-notation */
 /* eslint-disable prefer-const */
 /* eslint-disable react/no-array-index-key */
-import { useState, lazy, Suspense } from 'react';
+import {
+  useState, lazy, Suspense, useEffect,
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import * as actionAuth from '../../store/modules/auth/actions';
@@ -18,19 +20,22 @@ import {
 export default function Header() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const [bgIndex, setbgIndex] = useState(-1);
+  const [bgIndex, setbgIndex] = useState();
   const length = useSelector((state) => state.cart.produtos.length);
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.auth);
   const linksNav = ['Times', 'Feminino', 'Masculino', 'Tênis', 'Infantil', 'Ofertas'];
   const titleLinks = ['home', 'info', 'contato', 'login'];
-  const [menuTeam, setMenuTeam] = useState('');
-  const [leave, setLeave] = useState(false);
+  const [visible, setVisible] = useState();
 
   if (isLoggedIn) {
     const loginIndex = titleLinks.findIndex((item) => item === 'login');
     titleLinks[loginIndex] = 'conta';
   }
+  useEffect(() => {
+    setVisible(false);
+    setbgIndex(-1);
+  }, [pathname]);
 
   function handleLogout(e) {
     e.preventDefault();
@@ -38,30 +43,26 @@ export default function Header() {
   }
 
   const componentsTeams = {
-    Times: lazy(() => import('../Teams/index')),
+    Times: lazy(() => import('../Teams')),
   };
-
-  function SetTeam(e, index) {
-    if (bgIndex !== -1) setbgIndex(-1);
-    if (menuTeam === 'Times') return setMenuTeam('');
-    setbgIndex(index);
-    setMenuTeam(e.target.innerText);
-  }
   function CleanColorBgSubMenu() {
-    setbgIndex(-1);
-    setMenuTeam('');
+    if (visible) return setbgIndex(-1);
+  }
+  function SetTeam(e, index) {
+    if (e.target.innerText === 'Times' && pathname === '/home') {
+      setbgIndex(index);
+      setVisible(!visible);
+    }
   }
 
   function ComponentMenuTeams() {
-    const ComponentMount = componentsTeams[menuTeam];
+    const ComponentMount = componentsTeams['Times'];
     return (
-      <ContainerTeamMenu>
-        <TeamsContainer>
-          <Suspense fallback={<div />}>
-            {menuTeam === 'Times' && pathname !== '/produtos' ? <ComponentMount /> : CleanColorBgSubMenu()}
-          </Suspense>
-        </TeamsContainer>
-      </ContainerTeamMenu>
+      <Suspense fallback={<div />}>
+        <ContainerTeamMenu isVisible={visible}>
+          <ComponentMount />
+        </ContainerTeamMenu>
+      </Suspense>
     );
   }
   function handleMenuSearch(props) {
@@ -99,8 +100,8 @@ export default function Header() {
             <SubContainerNav
               onClick={(e) => {
                 SetTeam(e, index);
-                setLeave(!leave);
                 handleMenuSearch(link);
+                CleanColorBgSubMenu();
               }}
               bgColor={bgIndex}
               key={index}
@@ -108,7 +109,6 @@ export default function Header() {
               {link !== 'Times' ? <Link to="/produtos">{link}</Link> : link}
             </SubContainerNav>
           ))}
-          <ComponentMenuTeams />
         </NavBar>
         <SubContainer>
           <InputContainer>
@@ -127,6 +127,7 @@ export default function Header() {
           </Link>
         </SubContainer>
       </SubContainer1>
+      {pathname === '/home' ? <ComponentMenuTeams /> : ''}
     </Container>
   );
 }

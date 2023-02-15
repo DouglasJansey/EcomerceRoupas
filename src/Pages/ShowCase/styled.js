@@ -20,14 +20,14 @@ export const Container = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    position: relative;
+   flex-wrap: wrap;
     width: 100%;
     height: 100%;
 `;
 export const ContainerList = styled.div`
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     height: 100%;
@@ -47,9 +47,11 @@ export const ContainerOrder = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    margin-bottom: 15px;
     background: #fff;
     width: 100%;
-    height: 45px;
+    height: auto;
+    padding: 10px 5px;
         p{
             font-size: 0.8rem;
             margin-right: 5px;
@@ -73,7 +75,8 @@ export const ContainerImages = styled.div`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
+    width: 70%;
+    min-width: 350px;
     height: 100%;
 `;
 export const ContainerPagesValue = styled.div`
@@ -85,13 +88,13 @@ export const ContainerPagesValue = styled.div`
     color: ${darkGrayColor};
 `;
 export const ContainerPrice = styled.div`
-    width: 97%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     background: #fff;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-bottom: 15px;
     justify-content: center;
     align-items: center;
     padding: 5px;
@@ -115,7 +118,7 @@ export const ContainerPrice = styled.div`
             color: #fff;
     }
     input{
-        width: 35%;
+        width: 55%;
         height: 17px;
         border: none;
         border-radius: 5px;
@@ -127,10 +130,9 @@ export const ContainerPrice = styled.div`
     }
 `;
 export const ContainerFilter = styled.div`
-    width: 30%;
-    min-height: 50%;
-    height: 100vmax;
-    max-height: 500px;
+    width: 20%;
+    min-width: 340px;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

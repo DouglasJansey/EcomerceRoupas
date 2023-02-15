@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const freteCalc = (props) => {
   console.log(props);
@@ -14,6 +15,11 @@ const freteCalc = (props) => {
     nVlLargura}&sCdMaoPropria=${sCdMaoPropria}&nVlValorDeclarado=${
     nVlValorDeclarado}&sCdAvisoRecebimento=${CdAvisoRecebimento}&nCdServico=${
     nCdServico}&nVlDiametro=${nVlDiametro}&StrRetorno=xml`;
-  axios.post(Url).then((response) => console.log(response));
+  useEffect(() => {
+    async function getData() {
+      await axios.post(Url).then((response) => console.log(response));
+    }
+    getData();
+  }, []);
 };
 export default freteCalc;

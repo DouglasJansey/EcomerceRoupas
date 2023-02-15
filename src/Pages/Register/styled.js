@@ -21,12 +21,13 @@ const fadeIn = keyframes`
 
 export const Container = styled.section`
     display: flex;
-    width: 100%;
-    height: 100vh;
+    width: auto;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: ${lightGrayColor};
+    padding: 10px;
 
 `;
 export const RegisterContainer = styled.div`
@@ -35,13 +36,10 @@ export const RegisterContainer = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 60vmax;
-    height: 75vh;
-    max-width: 90vmax;
-    max-height: 85vmax;
+    width: 90%;
+    height: auto;
     box-shadow: 0 0 5px rgba(0,0,0,0.6) ;
-    background-color: #d9d9d9;
-    border-radius: 5%;
+    background-color: #fff;
     overflow: hidden;
 
     span{
@@ -50,15 +48,14 @@ export const RegisterContainer = styled.div`
         justify-content: center;
         background-color: ${darkRedColor};
         width: 100%;
-        position: relative;
-        height: 10%;
+        height: 15%;
+        padding: 15px;
         color: #f9f9f9;
     }
 
     button{
     width: 250px;
     height: 45px;
-    position:absolute;
     font-weight: bold;
     border-style: none;
     font-size: 15px;
@@ -74,14 +71,16 @@ export const RegisterContainer = styled.div`
   }
 `;
 export const TextLogin = styled.p`
- margin-top: 70px;
+ margin-top: 50px;
+ text-align: center;
 `;
 
 export const Form = styled.form`
-margin-top : 10px ;
 display: flex;
+flex-wrap: wrap;
 justify-content: center;
 align-items: center;
+height: 90%;
 width: 100%;
 #password{
     width: 250px;
@@ -109,7 +108,7 @@ label{
 
 input, select {
   height: 30px;
-  width: 100%;
+  width: 95%;
   font-size: 15px;
   border: 1px solid #ddd;
   border-radius: 10px;

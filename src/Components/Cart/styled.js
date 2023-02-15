@@ -21,6 +21,7 @@ export const ContainerCart = styled.div`
     min-width: 150px;
     height: 100%;
     background: white;
+    margin-top: 10px;
     margin-bottom: 20px;
     border: 1px solid ${darkRedColor};
     `;
@@ -92,14 +93,15 @@ export const ContainerInfo = styled.div`
 export const ContainerImage = styled.div`
     display: flex;
     width: auto;
-    height: auto;
+    height: 100%;
     justify-content: center;
     align-items: center;
     margin-right: 2px;
     margin-left: 5px;
+    padding: 5px;
     img{
          width: 100%;
-         height: 130px;
+         height: 100px;
     }
 `;
 export const NameConainer = styled.div`

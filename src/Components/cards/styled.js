@@ -12,15 +12,15 @@ export const ContainerCard = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 195px;
-    height: 300px;
+    width: 150px;
+    height: 230px;
     background: white;
     border-radius: 10px;
     text-align: center;
     border: 1px solid${darkGrayColor};
     span{
         width: 100%;
-        height: 60%;
+        height: 50%;
     }
 
 `;

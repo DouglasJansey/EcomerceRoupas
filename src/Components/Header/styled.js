@@ -103,7 +103,6 @@ export const SubContainer = styled.div`
 
 `;
 export const TeamsContainer = styled.div`
-    display: block;
     height: auto;
     flex-wrap: wrap;
     width: auto;
@@ -111,13 +110,14 @@ export const TeamsContainer = styled.div`
     justify-content: center;
     `;
 export const ContainerTeamMenu = styled.div`
-    display: flex;
+    display: ${(props) => (props.isVisible ? 'flex' : 'none')};;
     transform: translateX(calc(${(props) => props.posX}px/2));
     height: auto;
     width: 100%;
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
+    background: none;
 `;
 export const UserInfo = styled.div`
     display: flex;

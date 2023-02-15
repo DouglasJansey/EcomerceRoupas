@@ -25,33 +25,29 @@ export const Container = styled.section`
     height: 100vh;
     align-items: center;
     justify-content: center;
+    background-color: #d9d9d9;
 `;
 export const LoginContainer = styled.div`
     animation: ${fadeIn} 1s ease forwards;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 30%;
-    height: 50%;
-    min-width: 250px;
-    max-width: 350px;
-    min-height: 350px;
-    max-height: 450px;
+    min-width: 340px;
+    height: 70%;
     box-shadow: 0 0 5px rgba(0,0,0,0.6) ;
-    background-color: #d9d9d9;
-    border-radius: 5%;
+    background: #fff;
     overflow: hidden;
 
     span{
         display: flex;
-        padding: 15px;
         align-items: center;
         justify-content: center;
         background-color: ${darkRedColor};
         width: 100%;
         position: relative;
-        height: 20%;
+        height: 10%;
         font-size: 10px;
         color: #f9f9f9;
     }

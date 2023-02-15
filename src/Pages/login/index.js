@@ -36,7 +36,7 @@ export default function Login() {
     <Container>
       <LoginContainer>
         <span>
-          <h1>Faça seu Login</h1>
+          <h1>Login</h1>
         </span>
         <Form onSubmit={handleSubmit} id="formRegister">
           <div>

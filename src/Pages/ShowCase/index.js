@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Card from '../../Components/cards';
 import axios from '../../services/axios';
 import Loading from '../../Components/Loading';
+import listTeams from '../../Components/Teams/ListTeams';
 import * as actionProducts from '../../store/modules/showcase/actions';
 import {
   ContainerList, ContainerImages, Container, ContainerOrder, ContainerPrice,
@@ -38,11 +39,11 @@ export default function ListProducts() {
     if (value1 && value2) return `search=price&value1=${value1}&value2=${value2}`;
     if (team && teamSubMenu) return `search=team&teamname=${team}`;
     if (team === type) return `search=type&type=${type}`;
+    if (team === type && type === 'Masculino') return `search=type&type=${type.replace('o', 'a')}`;
     return '';
   }
   useEffect(() => {
     async function getData() {
-      console.log(SearchProducts());
       const response = await axios.get(`/produtos?page=${page}&max=10&${SearchProducts()}`);
       console.log(response.data);
       dispatch(actionProducts.showProducts(response.data));
@@ -127,7 +128,10 @@ export default function ListProducts() {
             <ContainerPrice>
               <form onSubmit={(e) => handleSubmitTeam(e)}>
                 <label htmlFor="value1">
-                  Time:
+                  Selecione seu time:
+                  <select>
+                    <option value="" defaultChecked hidden>Time</option>
+                  </select>
                   <input type="text" name="team" placeholder="Min" />
                 </label>
                 <ButtonSubmit type="submit">Aplicar</ButtonSubmit>

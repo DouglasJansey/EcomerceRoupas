@@ -23,7 +23,7 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    height: 5%;
+    height: auto;
 `;
 export const Image = styled.img`
     width: 37px;

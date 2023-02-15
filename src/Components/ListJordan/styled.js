@@ -36,7 +36,7 @@ export const ContainerSelect = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 90%;
+    width: 96%;
     padding: 5px;
     `;
 export const ContainerOrder = styled.div`
@@ -74,7 +74,7 @@ export const ContainerImages = styled.div`
     `;
 
 export const ContainerArrow = styled.div`
-    width: 90%;
+    width: 95%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -83,21 +83,13 @@ export const ContainerArrow = styled.div`
 
 `;
 export const ArrowLeft = styled(BsCaretLeftFill)`
-    font-size: 50px;
+    font-size: 25px;
     color: ${darkRedColor};
-    left: 0;
-    top: 0;
-    bottom:0;
-    margin: auto;
-    z-index: 10;
+
 `;
 export const ArrowRight = styled(BsCaretLeftFill)`
-    font-size: 50px;
+    font-size: 25px;
     color: ${darkRedColor};
     transform: rotate(180deg);
-    z-index: 10;
-    right: 0;
-    top: 0;
-    bottom:0;
-    margin: auto;
+    margin-left: 25px;
 `;
