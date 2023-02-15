@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/EcomerceRoupas/static/css/main.3d10672c.css",
-    "main.js": "/EcomerceRoupas/static/js/main.32cbacae.js",
+    "main.js": "/EcomerceRoupas/static/js/main.6e3e16b4.js",
     "static/js/224.010bd6cf.chunk.js": "/EcomerceRoupas/static/js/224.010bd6cf.chunk.js",
     "static/js/795.a6172eb4.chunk.js": "/EcomerceRoupas/static/js/795.a6172eb4.chunk.js",
     "static/js/539.57b7c553.chunk.js": "/EcomerceRoupas/static/js/539.57b7c553.chunk.js",
@@ -9,11 +9,12 @@
     "static/js/779.f659377a.chunk.js": "/EcomerceRoupas/static/js/779.f659377a.chunk.js",
     "static/js/656.e7059109.chunk.js": "/EcomerceRoupas/static/js/656.e7059109.chunk.js",
     "static/media/bg.jpg": "/EcomerceRoupas/static/media/bg.5e5d88a5eddaccd85ef3.jpg",
-    "static/media/capa.gif": "/EcomerceRoupas/static/media/capa.b1685c7c72f1b269fc35.gif",
-    "static/media/ESPN-Kayo-NBAFinals-Thumbnail.jpg": "/EcomerceRoupas/static/media/ESPN-Kayo-NBAFinals-Thumbnail.6d1612b4b00a3461c6f1.jpg",
+    "static/media/capa2.gif": "/EcomerceRoupas/static/media/capa2.34b8bff022a034087079.gif",
     "static/media/nbaBanner.gif": "/EcomerceRoupas/static/media/nbaBanner.12f44c8668e88d78f8c7.gif",
     "static/media/background.png": "/EcomerceRoupas/static/media/background.9ced9b112c6932f953c2.png",
+    "static/media/jordan.gif": "/EcomerceRoupas/static/media/jordan.5d13713b0aba84b7b53d.gif",
     "static/media/bgFooter.jpg": "/EcomerceRoupas/static/media/bgFooter.21749b57096f56047185.jpg",
+    "static/media/nbaBanner2.gif": "/EcomerceRoupas/static/media/nbaBanner2.c9ed95c307b2da8858f8.gif",
     "static/media/raptors.png": "/EcomerceRoupas/static/media/raptors.5a4fa45f5be63868741a.png",
     "static/media/bucks.png": "/EcomerceRoupas/static/media/bucks.c401cd8b5e40244173ee.png",
     "static/media/cavaliers.png": "/EcomerceRoupas/static/media/cavaliers.e2aa13dbf3edbf723a2c.png",
@@ -50,7 +51,7 @@
     "static/media/kings.png": "/EcomerceRoupas/static/media/kings.823e2b6b0eef0b5dd509.png",
     "index.html": "/EcomerceRoupas/index.html",
     "main.3d10672c.css.map": "/EcomerceRoupas/static/css/main.3d10672c.css.map",
-    "main.32cbacae.js.map": "/EcomerceRoupas/static/js/main.32cbacae.js.map",
+    "main.6e3e16b4.js.map": "/EcomerceRoupas/static/js/main.6e3e16b4.js.map",
     "224.010bd6cf.chunk.js.map": "/EcomerceRoupas/static/js/224.010bd6cf.chunk.js.map",
     "795.a6172eb4.chunk.js.map": "/EcomerceRoupas/static/js/795.a6172eb4.chunk.js.map",
     "539.57b7c553.chunk.js.map": "/EcomerceRoupas/static/js/539.57b7c553.chunk.js.map",
@@ -60,6 +61,6 @@
   },
   "entrypoints": [
     "static/css/main.3d10672c.css",
-    "static/js/main.32cbacae.js"
+    "static/js/main.6e3e16b4.js"
   ]
 }
