@@ -5,6 +5,7 @@
 /* eslint-disable no-return-assign */
 import { set } from 'lodash';
 import { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from '../../Components/cards';
 import axios from '../../services/axios';
@@ -18,39 +19,41 @@ import {
 } from './styled';
 
 export default function ListProducts() {
-  const { count, rows } = useSelector((state) => state.showCase.produtos);
-  const regex = /(_)/g;
-  const list = Object.values(listTeams);
-  const teamSubMenu = useSelector((state) => state.showCase.team);
-  const type = useSelector((state) => state.showCase.type);
-  const products = rows;
   const dispatch = useDispatch();
+  const { count, rows } = useSelector((state) => state.showCase.produtos);
+  const teamSubMenu = useSelector((state) => state.showCase.team);
+  const typeHeader = useSelector((state) => state.showCase.type);
   const [maxPages, setMaxPages] = useState(Math.floor(count / 10));
   const [page, setPages] = useState(1);
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
-  const [team, setTeam] = useState(teamSubMenu || type);
+  const [team, setTeam] = useState(teamSubMenu || typeHeader);
   const [priceOrder, setPriceOrder] = useState('');
+  const list = Object.values(listTeams);
+  const products = rows;
 
   function MaxValuePages(value) {
     (Math.floor(value / 10) < 1) ? setMaxPages(1) : setMaxPages(Math.floor(value / 10));
   }
 
   function SearchProducts() {
+    if (team && typeHeader) return `search=type&type=${team}`;
     if (value1 && value2) return `search=price&value1=${value1}&value2=${value2}`;
     if (team && teamSubMenu) return `search=team&teamname=${team}`;
-    if (team === type) return `search=type&type=${type}`;
-    if (team === type && type === 'Masculino') return `search=type&type=${type.replace('o', 'a')}`;
+    if (team === typeHeader) return `search=type&type=${typeHeader}`;
     return '';
   }
+
   useEffect(() => {
+    setTeam('');
+    if (typeHeader) setTeam(typeHeader);
     async function getData() {
       const response = await axios.get(`/produtos?page=${page}&max=10&${SearchProducts()}`);
       dispatch(actionProducts.showProducts(response.data));
       MaxValuePages(count);
     }
     getData();
-  }, [page, value1, value2, count, team, type]);
+  }, [page, value1, value2, count, team, typeHeader]);
   function handleClickRight() {
     if (page < maxPages) setPages(page + 1);
   }
@@ -76,6 +79,7 @@ export default function ListProducts() {
       setValue2('');
     }
   }
+
   function CleanSearch(e) {
     if (value1 && value2) {
       setValue1('');

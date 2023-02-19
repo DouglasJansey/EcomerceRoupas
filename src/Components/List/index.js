@@ -20,7 +20,6 @@ export default function List() {
   const cardWidth = 162;
   const containerWidth = products ? products.length * 157 : 0;
 
-  console.log(products);
   useEffect(() => {
     async function getData() {
       const response = await axios.get('/produtos?page=1&max=10&search=type&type=Masculino');
