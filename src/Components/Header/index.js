@@ -68,7 +68,6 @@ export default function Header() {
   }
   function handleMenuSearch(props) {
     if (props !== 'Times' && props !== 'Ofertas') {
-      if (props && props === 'Masculino') return dispatch(showcaseAction.filterType(props.replace('o', 'a')));
       dispatch(showcaseAction.filterType(props));
     }
     return props;

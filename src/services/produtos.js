@@ -9,7 +9,7 @@ function getProducts() {
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.get('/produtos?page=1&max=10');
+      const response = await axios.get('/produtos?');
       if (JSON.stringify(product) !== JSON.stringify(response.data.rows)) {
         dispatch(actionProducts.addProducts(response.data.rows));
       }

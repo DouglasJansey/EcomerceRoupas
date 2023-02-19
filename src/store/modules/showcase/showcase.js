@@ -36,11 +36,7 @@ export default function (state = initialState, action) {
       // newState.produtos.rows = state.produtos.rows.filter((item) => item.price > action.payload.value1);
       return newState;
     }
-    case types.REMOVE_SHOWCASE: {
-      const newState = { ...state };
-      newState.produtos.rows = state.produtos.rows.filter((item) => item.id !== action.payload);
-      return newState;
-    }
+
     case types.ORDER_TEAM: {
       const newState = { ...state };
       newState.team = action.payload;

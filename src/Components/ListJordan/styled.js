@@ -23,6 +23,7 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100%;
     position: relative;
+    margin-top: 20px;
     background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0,0));
     `;
 export const ContainerList = styled.div`
@@ -74,7 +75,7 @@ export const ContainerImages = styled.div`
     `;
 
 export const ContainerArrow = styled.div`
-    width: 95%;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;

@@ -36,7 +36,7 @@ export const ContainerSelect = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 95%;
+    width: 97%;
     padding: 5px;
     `;
 export const ContainerOrder = styled.div`
@@ -74,7 +74,7 @@ export const ContainerImages = styled.div`
     `;
 
 export const ContainerArrow = styled.div`
-    width: 96%;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-direction: column;

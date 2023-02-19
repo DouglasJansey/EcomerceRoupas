@@ -44,7 +44,6 @@ export default function ListProducts() {
     return '';
   }
   useEffect(() => {
-    type === 'Masculino' ? console.log(type.replace('o', 'a')) : '';
     async function getData() {
       const response = await axios.get(`/produtos?page=${page}&max=10&${SearchProducts()}`);
       dispatch(actionProducts.showProducts(response.data));

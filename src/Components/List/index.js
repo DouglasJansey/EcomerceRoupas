@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from '../cards';
 import getProducts from '../../services/produtos';
+import axios from '../../services/axios';
 import * as actionProducts from '../../store/modules/products/actions';
 import {
   ContainerList, ContainerImages, Container, ContainerOrder,
@@ -11,15 +12,23 @@ import {
 } from './styled';
 
 export default function List() {
-  const products = useSelector((state) => state.products.produtos);
+  const [products, setProducts] = useState();
   const dispatch = useDispatch();
   const [scrollX, setScrollX] = useState(0);
   const [priceOrder, setPriceOrder] = useState('');
   const carrousel = useRef(0);
-  const cardWidth = 225;
-  const containerWidth = products.length * 202;
-  getProducts();
+  const cardWidth = 162;
+  const containerWidth = products ? products.length * 157 : 0;
+
+  console.log(products);
   useEffect(() => {
+    async function getData() {
+      const response = await axios.get('/produtos?page=1&max=10&search=type&type=Masculino');
+      if (!priceOrder) setProducts(response.data.rows);
+      if (priceOrder === 'menor') setProducts(response.data.rows.sort((a, b) => a.price - b.price));
+      if (priceOrder === 'maior') setProducts(response.data.rows.sort((a, b) => b.price - a.price));
+    }
+    getData();
     setPriceOrder(priceOrder);
   }, [priceOrder]);
 

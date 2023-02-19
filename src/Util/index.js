@@ -17,7 +17,12 @@ const InputMask = (value, type) => {
         .replace(/(\d{5})(\d)/, '$1-$2')
         .replace(/(-\d{4})(\d+?)/, '$1');
     }
-    default: return '';
+    case 'cep': {
+      return value
+        .replace(/[\D]/g, '')
+        .replace(/(\d{5})(\d+?)/, '$1-$2');
+    }
+    default: return value;
   }
 };
 export default InputMask;

@@ -7,6 +7,7 @@ import * as types from '../types';
 
 const initialState = {
   produtos: [],
+  frete: 0,
 };
 
 // eslint-disable-next-line
@@ -59,7 +60,6 @@ export default function (state = initialState, action) {
             subTotal: item.subInfo.subTotal,
           },
         } : item));
-      console.log(newState);
       return newState;
     }
     default:

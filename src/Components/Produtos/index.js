@@ -36,17 +36,23 @@ export default function ShowCase() {
   const form = useRef(null);
   let error = false;
   useEffect(() => {
-    if (category === 'Basket') {
-      setWeight('2');
-      setHeight('75');
-      setWidth('84');
-      setLength('175');
+    if (type === 'Masculino' || type === 'Feminino') {
+      setWeight('0.2');
+      setHeight('2');
+      setWidth('10');
+      setLength('25');
     }
     if (type === 'Tênis') {
       setWeight('1');
-      setHeight('15');
-      setWidth('12');
-      setLength('36');
+      setHeight('12');
+      setWidth('21');
+      setLength('33');
+    }
+    if (type === 'Infantil') {
+      setWeight('0.1');
+      setHeight('6');
+      setWidth('11');
+      setLength('17');
     }
   }, [type, category]);
   function validateInput() {

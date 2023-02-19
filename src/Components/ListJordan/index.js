@@ -15,12 +15,14 @@ export default function List() {
   const [scrollX, setScrollX] = useState(0);
   const [priceOrder, setPriceOrder] = useState('');
   const carrousel = useRef(0);
-  const cardWidth = 225;
-  const containerWidth = products ? products.length * 202 : 0;
+  const cardWidth = 162;
+  const containerWidth = products ? products.length * 157 : 0;
   useEffect(() => {
     async function getData() {
       const response = await axios.get('/produtos?page=1&max=10&search=type&type=Tênis');
-      setProducts(response.data.rows);
+      if (!priceOrder) setProducts(response.data.rows);
+      if (priceOrder === 'menor') setProducts(response.data.rows.sort((a, b) => a.price - b.price));
+      if (priceOrder === 'maior') setProducts(response.data.rows.sort((a, b) => b.price - a.price));
     }
     getData();
     setPriceOrder(priceOrder);
