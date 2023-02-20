@@ -8,20 +8,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 500px;
+  min-height: 60vh;
   align-items: center;
   justify-content: flex-start;
 
   `;
 export const ButtonFinish = styled.button`
-    width: 100%;
+    width: 50%;
     height: 25%;
     padding: 5px;
     margin-top: 15px;
     font-weight: bold;
     border-style: none;
     font-size: 20px;
-    border-radius: 15px;
     background: ${lightGreenColor};
     opacity: 0.6;
     color: #fff;
@@ -53,6 +52,30 @@ export const ContainerPrices = styled.div`
   font-size: 14px;
   color: ${darkGrayColor};
 `;
+export const FreteLoading = styled.div`
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  color: ${lightGreenColor};
+  div{
+    width: 25px;
+    height: 15px;
+  }
+`;
+export const Containershipping = styled.span`
+  display: ${(props) => (props.show ? 'flex' : 'none')};
+  width: 100%;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 15px 0px;
+  align-items: flex-end;
+  justify-content: center;
+  p{
+    font-size: 15px;
+  }
+`;
 export const SubContainer = styled.div`
   display: flex;
   width: 100%;
@@ -74,8 +97,10 @@ export const ContainerFrete = styled.div`
   font-size: 19px;
   margin-bottom: 5px;
   background: #fff;
-  padding: 5px;
-
+  padding: 20px 0px;
+  form{
+    width: 100%;
+  }
 `;
 export const ContainerCupom = styled.div`
   display: flex;
@@ -88,7 +113,8 @@ export const ContainerCupom = styled.div`
   font-size: 19px;
   margin-bottom: 5px;
   background: #fff;
-  padding: 5px;
+  padding: 20px 0px;
+
   label{
     display: flex;
     width: 100%;
@@ -104,6 +130,9 @@ export const ContainerCupom = styled.div`
     color: #fff;
     font-weight: bold;
     padding: 10px;
+  }
+  form{
+    width: 100%;
   }
 `;
 export const Label = styled.label`
@@ -124,13 +153,14 @@ export const ButtonSecundary = styled.button`
 `;
 export const InputSearch = styled.input`
   width: 60%;
-  min-height: 30px;
+  min-height: 35px;
   border: none;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   font-size: 19px;
+  padding-left: 10px;
   background: ${lightGrayColor};
   :focus{
     outline: none;

@@ -14,7 +14,7 @@ import axios from '../../services/axios';
 export default async function FreteCalc(props) {
   const { produtos } = props;
   const { cep } = props;
-  const sCepDestino = cep;
+  const sCepDestino = "21770230";
   const sCepOrigem = "21360300";
   const nCdFormato = 1;
   const sCdMaoPropria = "n";
@@ -49,17 +49,27 @@ export default async function FreteCalc(props) {
     return { result, quantity };
   };
   const LoadFreteValue = async () => {
-    let value = 0;
-    let day = 0;
-    const message = '';
+    let obj = {
+      value: 0,
+      day: 0,
+      msg: '',
+    };
     const frete = produtos.map(async (item) => getValueData(item)) || 0;
     const allPromise = await Promise.all(frete)
-      .then((values) => values.map((value) => +value.result[0][0].Valor.replace(',', '.') * value.quantity));
+      .then((values) => values.map((value) => {
+        const obj = {
+          day: value.result[0][0].PrazoEntrega,
+          obsFim: value.result[0][0].obsFim,
+          value: +value.result[0][0].Valor.replace(',', '.') * value.quantity,
+        };
+        return obj;
+      }));
     for (let key in allPromise) {
-      value += allPromise[key];
+      obj.value += allPromise[key].value;
+      obj.day = allPromise[key].day;
+      obj.msg = allPromise[key].obsFim;
     }
-    console.log(value);
-    return value.toFixed(2);
+    return obj;
   };
   const valueFinal = await LoadFreteValue();
   return valueFinal;

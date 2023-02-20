@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-shadow */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-multi-assign */
@@ -17,29 +18,35 @@ import { useEffect, useState } from 'react';
 import lodash from 'lodash';
 import FreteCalc from '../../../Util/FreteCalculator';
 import InputMask from '../../../Util';
+import Loading from '../../Loading';
 
 import {
   Container, ContainerTotal, ButtonFinish, ContainerPrices, SubContainer,
   ContainerFrete, ContainerCupom, InputSearch, ButtonSecundary, Label,
+  FreteLoading, Containershipping,
 } from './styled';
 
 export default function CartFinish() {
   const { produtos } = useSelector((state) => state.cart);
-  const [cupom, setCupom] = useState(0);
-  const [discount, setDescount] = useState(0);
-  const [cep, setCep] = useState('');
   const subTotal = produtos.map((item) => item.subInfo.subTotal);
   const totalPrice = lodash.sum(subTotal);
-  let [freteValue, setFreteValue] = useState(0);
-  let [total, setTotal] = useState(totalPrice);
+  const [cupom, setCupom] = useState(0);
+  const [discount, setDescount] = useState(0);
+  const [message, setMessage] = useState('');
+  const [days, setDays] = useState(0);
+  const [cep, setCep] = useState('');
+  const [freteValue, setFreteValue] = useState(0);
+  const [total, setTotal] = useState(totalPrice);
+  const [loading, setLoading] = useState(false);
 
   function HandleSubmitCep(e) {
     e.preventDefault();
+    setLoading(true);
     setCep(e.target.cep.value);
   }
+
   const GetFinalValue = (totalPrice, freteValue, discount) => {
     let totalValue = 0;
-    console.log(totalPrice, freteValue, discount);
     if (totalPrice > 0) {
       if (+freteValue > 0 && !discount) {
         totalValue = totalPrice + +freteValue;
@@ -58,8 +65,9 @@ export default function CartFinish() {
     setTotal(totalValue.toFixed(2));
   };
   useEffect(() => {
-    GetValueFrete();
     GetFinalValue(totalPrice, freteValue, discount);
+    GetValueFrete();
+    if (freteValue) setLoading(true);
   }, [produtos, cep, discount, freteValue]);
 
   function getValueInput(e) {
@@ -77,9 +85,14 @@ export default function CartFinish() {
       cep,
     };
     if (!cep) return '';
-    const value = await FreteCalc(obj);
-    setFreteValue(value);
+    const data = await FreteCalc(obj);
+    setFreteValue(data.value);
+    setMessage(data.msg);
+    setDays(data.day);
+
+    return setLoading(false);
   }
+
   function CalcCupom(e) {
     e.preventDefault();
     if (produtos) {
@@ -106,6 +119,13 @@ export default function CartFinish() {
             <ButtonSecundary type="submit">Ok</ButtonSecundary>
           </Label>
         </form>
+        <FreteLoading>
+          {loading ? <Loading /> : (
+            <Containershipping show={freteValue}>
+              <p> Prazo para entrega: {days} dias! </p>
+            </Containershipping>
+          )}
+        </FreteLoading>
       </ContainerFrete>
       <ContainerCupom>
         Aplicar Cupom

@@ -9,12 +9,12 @@ function getProducts() {
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.get('/produtos?');
+      const response = await axios.get('/produtos');
       if (JSON.stringify(product) !== JSON.stringify(response.data.rows)) {
         dispatch(actionProducts.addProducts(response.data.rows));
       }
     }
-    getData();
+    // getData();
   }, [product]);
 }
 

@@ -12,7 +12,6 @@ export const Container = styled.div`
     align-items: center ;
     width: 100%;
     height: 100%;
-    background: red;
 
     `;
 export const ContainerCart = styled.div`
