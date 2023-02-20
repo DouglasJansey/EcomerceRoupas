@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/EcomerceRoupas/static/css/main.b3eeeea7.css",
-    "main.js": "/EcomerceRoupas/static/js/main.53985954.js",
+    "main.js": "/EcomerceRoupas/static/js/main.7c1ff359.js",
     "static/js/929.63b610d6.chunk.js": "/EcomerceRoupas/static/js/929.63b610d6.chunk.js",
     "static/js/795.79678f5c.chunk.js": "/EcomerceRoupas/static/js/795.79678f5c.chunk.js",
     "static/js/539.c30b8994.chunk.js": "/EcomerceRoupas/static/js/539.c30b8994.chunk.js",
@@ -15,6 +15,7 @@
     "static/media/jordan.gif": "/EcomerceRoupas/static/media/jordan.5d13713b0aba84b7b53d.gif",
     "static/media/bgFooter.jpg": "/EcomerceRoupas/static/media/bgFooter.21749b57096f56047185.jpg",
     "static/media/nbaBanner2.gif": "/EcomerceRoupas/static/media/nbaBanner2.c9ed95c307b2da8858f8.gif",
+    "static/media/backgroundShowCase.jpg": "/EcomerceRoupas/static/media/backgroundShowCase.fcb04658a859b577e247.jpg",
     "static/media/raptors.png": "/EcomerceRoupas/static/media/raptors.5a4fa45f5be63868741a.png",
     "static/media/bucks.png": "/EcomerceRoupas/static/media/bucks.c401cd8b5e40244173ee.png",
     "static/media/cavaliers.png": "/EcomerceRoupas/static/media/cavaliers.e2aa13dbf3edbf723a2c.png",
@@ -51,7 +52,7 @@
     "static/media/kings.png": "/EcomerceRoupas/static/media/kings.823e2b6b0eef0b5dd509.png",
     "index.html": "/EcomerceRoupas/index.html",
     "main.b3eeeea7.css.map": "/EcomerceRoupas/static/css/main.b3eeeea7.css.map",
-    "main.53985954.js.map": "/EcomerceRoupas/static/js/main.53985954.js.map",
+    "main.7c1ff359.js.map": "/EcomerceRoupas/static/js/main.7c1ff359.js.map",
     "929.63b610d6.chunk.js.map": "/EcomerceRoupas/static/js/929.63b610d6.chunk.js.map",
     "795.79678f5c.chunk.js.map": "/EcomerceRoupas/static/js/795.79678f5c.chunk.js.map",
     "539.c30b8994.chunk.js.map": "/EcomerceRoupas/static/js/539.c30b8994.chunk.js.map",
@@ -61,6 +62,6 @@
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.53985954.js"
+    "static/js/main.7c1ff359.js"
   ]
 }
