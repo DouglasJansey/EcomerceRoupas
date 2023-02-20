@@ -14,9 +14,7 @@ export const Container = styled.div`
 
   `;
 export const ButtonFinish = styled.button`
-    width: 50%;
-    height: 25%;
-    padding: 5px;
+    padding: 10px 25px;
     margin-top: 15px;
     font-weight: bold;
     border-style: none;

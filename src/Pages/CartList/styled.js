@@ -28,6 +28,9 @@ export const ContainerCartList = styled.div`
   background: ${lightGrayColor};
   justify-content: flex-start;
   align-items: center;
+  @media (max-width: 550px) {
+    width: 100%;
+  }
   `;
 export const ContainerTotal = styled.div`
   display: flex;
@@ -59,4 +62,7 @@ export const SubContainer = styled.div`
   align-items: center;
   padding: 5px;
   background: #fff;
+  @media (max-width: 550px) {
+    width: 90%;
+  }
 `;

@@ -112,7 +112,7 @@ export default function Header() {
         </NavBar>
         <SubContainer>
           <InputContainer>
-            <input type="text" name="search" placeholder=" Pesquisar..." />
+            <input disabled type="text" name="search" placeholder=" Não funciona..." />
           </InputContainer>
           <Link to="/cart">
             <CartContainer>

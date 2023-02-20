@@ -55,15 +55,21 @@ export const ContainerTitle = styled.div`
         margin-left: 10px;
         margin-bottom: 10px;
     }
+ @media (max-width: 570px) {
+    display: flex;
+    width: auto;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center;
+}
 `;
 export const SubContainerTitle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 25px;
     width: auto;
     height: 100%;
-    margin-right: 20px;
+    margin-right: 10px;
     ${({ borderColor }) => ChildBorder(borderColor)}
     border-bottom: 5px solid ${lightGrayColor};
 
@@ -78,6 +84,7 @@ export const SubContainerTitle = styled.div`
     display: flex;
     color: ${darkGrayColor};
     }
+
 `;
 export const SubContainer1 = styled.div`
   width: 100%;
@@ -92,6 +99,14 @@ export const SubContainer1 = styled.div`
     display: flex;
     color: #fff;
     }
+    @media (max-width: 940px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 `;
 export const SubContainer = styled.div`
     display: flex;
@@ -100,6 +115,12 @@ export const SubContainer = styled.div`
     width: auto;
     align-items: center;
     justify-content: flex-end;
+    @media (max-width: 370px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 
 `;
 export const TeamsContainer = styled.div`
@@ -176,6 +197,16 @@ export const InputContainer = styled.div`
         height: 100%;
         border-radius: 5px;
     }
+    @media (max-width: 350px) {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    input{
+        width: 100%;
+    }
+}
 `;
 export const CartContainer = styled.div`
     display: flex;
@@ -188,18 +219,18 @@ export const CartContainer = styled.div`
     background: ${yellowColor};
     color: ${darkRedColor};
     position: relative;
+
 `;
 export const Cart = styled(BsCart4)`
-    font-size: 20px;
+    font-size: 10px;
     color: ${darkRedColor};
     margin-bottom: 5px;
     margin-left: 5px;
+    position: relative;
 `;
 export const CartCount = styled.div`
     align-items: center;
     justify-content: center;
-    width: 15px;
-    height: 15px;
     display: flex;
     border-radius: 5px;
     padding: 3px;
@@ -220,6 +251,13 @@ align-items: center;
 flex-wrap: wrap;
 height: auto;
 width: auto;
+@media (max-width: 390px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 `;
 
 export const LoginContainer = styled.div`
