@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
 import { BsCaretLeftFill } from 'react-icons/bs';
+import background from '../../img/backgroundShowCase.jpg';
 import {
   grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
   darkGrayColor,
@@ -23,7 +24,8 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100%;
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0,0));
+    margin-top: 10px;
+    margin-bottom: 10px;
     `;
 export const ContainerList = styled.div`
     display: flex;
