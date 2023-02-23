@@ -59,13 +59,25 @@ export default function Cart({ item }) {
               <h5>Cor: {cartItem.PhotoProducts[0].color ? cartItem.PhotoProducts[0].color : ' tradicional'} </h5>
               <h5>Time: {cartItem.name}</h5>
               <h5>Tamanho:
-                <select value={sizeProd} onChange={(e) => addSizeProduct(e)}>
-                  <option hidden>{size || 'Tam'}</option>
-                  <option>P</option>
-                  <option>M</option>
-                  <option>G</option>
-                  <option>GG</option>
-                </select>
+                { cartItem.category !== 'Calçado'
+                  ? (
+                    <select value={sizeProd} onChange={(e) => addSizeProduct(e)}>
+                      <option hidden>{size || 'Tam'}</option>
+                      <option>P</option>
+                      <option>M</option>
+                      <option>G</option>
+                      <option>GG</option>
+                    </select>
+                  )
+                  : (
+                    <select value={sizeProd} onChange={(e) => addSizeProduct(e)}>
+                      <option hidden>{size || 'Tam'}</option>
+                      <option>37/38</option>
+                      <option>39/40</option>
+                      <option>41/42</option>
+                      <option>43/44</option>
+                    </select>
+                  )}
               </h5>
             </DescContainer>
           </ContainerInfo>

@@ -42,7 +42,9 @@ export default function CartFinish() {
   function HandleSubmitCep(e) {
     e.preventDefault();
     setLoading(true);
-    setCep(e.target.cep.value);
+    if (e.target.cep.value.length === 8) {
+      setCep(e.target.cep.value.replace(/\D/g, ''));
+    }
   }
 
   const GetFinalValue = (totalPrice, freteValue, discount) => {
@@ -115,7 +117,7 @@ export default function CartFinish() {
         Calcular Frete
         <form onSubmit={(e) => HandleSubmitCep(e)}>
           <Label>
-            <InputSearch type="text" name="cep" />
+            <InputSearch type="text" name="cep" maxLength={8} />
             <ButtonSecundary type="submit">Ok</ButtonSecundary>
           </Label>
         </form>

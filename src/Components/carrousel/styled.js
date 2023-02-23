@@ -48,7 +48,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 50%;
   `;
 export const ContainerDesc = styled.div`
   animation: ${fadeIn} 1.5s ease forwards;
@@ -99,7 +99,7 @@ export const ContainerImg = styled.div`
     overflow: hidden;
     background: #000;
     img{
-        height: 90%;
+        height: 100%;
         width: 100%;
         display: flex;
         justify-content: flex-start;

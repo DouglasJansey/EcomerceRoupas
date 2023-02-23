@@ -31,5 +31,5 @@ const ChangeBg = (props) => {
 export const Container = styled.div`
     display: flex;
     width: 100%;
-    height: 62vh;
+    height: 70vh;
 `;

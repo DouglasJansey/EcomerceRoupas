@@ -55,7 +55,7 @@ const listTeams = {
     image: miami,
   },
   Philadelphia: {
-    name: 'Philadelphia 76rs',
+    name: 'Philadelphia 76ers',
     image: ph76rs,
   },
   Portland: {

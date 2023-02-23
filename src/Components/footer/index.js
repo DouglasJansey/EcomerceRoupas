@@ -28,7 +28,7 @@ export default function Footer() {
         <a href="https://www.twitter.com" target="_blank" rel="noreferrer">
           <BsTwitter size={20} color="#fff" />
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+        <a href="https://www.linkedin.com/in/douglasjansey/" target="_blank" rel="noreferrer">
           <BsLinkedin size={20} color="#fff" />
         </a>
       </SubContainer1>

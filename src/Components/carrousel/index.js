@@ -25,24 +25,8 @@ export default function Carrousel() {
   return (
     <Container>
       <ContainerImg directionX={scrollX} containerWidth={containerWidth}>
-        <div />
         <img src={banners[bannerPos].image} alt="" />
-        {/*
-        <ImageWidth src={banner1} alt="" />
-          <ContainerDesc>
-            <Titulo>
-              {banners[bannerPos].titulo}
-            </Titulo>
-            <Description>
-              {banners[bannerPos].subTitle}
-            </Description>
-            <ButtonDesc>
-              <LinkPage to="/produtos"><p> Saiba mais &gt;&gt; </p></LinkPage>
-            </ButtonDesc>
-          </ContainerDesc>
-            */}
       </ContainerImg>
-      <ContainerButtons />
     </Container>
   );
 }

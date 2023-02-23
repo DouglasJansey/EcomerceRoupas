@@ -69,7 +69,7 @@ export const SubContainerTitle = styled.div`
     align-items: center;
     width: auto;
     height: 100%;
-    margin-right: 10px;
+    margin-right: 20px;
     ${({ borderColor }) => ChildBorder(borderColor)}
     border-bottom: 5px solid ${lightGrayColor};
 

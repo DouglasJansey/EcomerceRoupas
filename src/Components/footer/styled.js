@@ -30,20 +30,18 @@ export const SubContainer = styled.div`
     color: #fff;
     text-align: center;
     a{
-        margin-left: 10px;
         color: #fff;
     }
 `;
 
 export const SubContainer1 = styled.div`
   display: flex;
-  background: red;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 10px;
   a{
     margin-left: 15px;
-    margin-top: 20px;
   }
 `;

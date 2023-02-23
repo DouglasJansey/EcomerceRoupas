@@ -109,7 +109,9 @@ export const ContainerImg = styled.div`
     align-items: center;
     overflow: hidden;
     img{
+        height: auto;
         width: 100%;
+        padding-bottom: 25px;
     }
     div{
         width: 100%;

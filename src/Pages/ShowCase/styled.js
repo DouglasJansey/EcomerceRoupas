@@ -22,7 +22,7 @@ export const Container = styled.section`
     align-items: center;
    flex-wrap: wrap;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 `;
 export const ContainerList = styled.div`
     display: flex;
@@ -30,7 +30,7 @@ export const ContainerList = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    min-height: 350px;
     padding: 5px;
     background: ${lightGrayColor};
 `;

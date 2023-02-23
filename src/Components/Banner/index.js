@@ -18,7 +18,6 @@ export default function Banner() {
       <ContainerImg>
         <img src={banner2} alt="" />
       </ContainerImg>
-      <ContainerImg />
     </Container>
   );
 }

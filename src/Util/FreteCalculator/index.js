@@ -12,9 +12,10 @@ import { useEffect } from 'react';
 import axios from '../../services/axios';
 
 export default async function FreteCalc(props) {
+  console.log(props);
   const { produtos } = props;
   const { cep } = props;
-  const sCepDestino = "21770230";
+  const sCepDestino = cep;
   const sCepOrigem = "21360300";
   const nCdFormato = 1;
   const sCdMaoPropria = "n";
@@ -30,7 +31,7 @@ export default async function FreteCalc(props) {
     const nVlValorDeclarado = item.cartItem.price;
     const { quantity } = item.subInfo;
 
-    const myPromise = await axios.post('/produtos/frete', {
+    const myPromise = await axios.post('/frete', {
       sCepDestino,
       sCepOrigem,
       nVlPeso,
