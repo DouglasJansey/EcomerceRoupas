@@ -83,7 +83,9 @@ export default function Header() {
         )
         : ''}
       <ContainerTitle>
-        <img src={logo} alt="logo" />
+        <Link to="/home">
+          <img src={logo} alt="logo" />
+        </Link>
         <NavBar>
           {titleLinks.map((links, index) => (
             <SubContainerTitle borderColor={pathname} key={index}>
