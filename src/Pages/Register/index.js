@@ -194,7 +194,7 @@ export default function Register() {
                 type="text"
                 name="nome"
                 value={name}
-                placeholder="Digite seu nome"
+                placeholder="Digite seu nome..."
                 onChange={(e) => setName(e.target.value)}
               />
             </label>
@@ -208,6 +208,7 @@ export default function Register() {
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Digite seu email..."
               />
             </label>
             <label htmlFor="password" id="password">
@@ -218,6 +219,7 @@ export default function Register() {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Digite sua senha..."
               />
             </label>
           </div>
@@ -232,6 +234,7 @@ export default function Register() {
                     name="endereco"
                     value={street}
                     onChange={(e) => setStreet(e.target.value)}
+                    placeholder="Digite seu endereço..."
                   />
                 </label>
                 <label htmlFor="numero">
@@ -242,6 +245,7 @@ export default function Register() {
                     name="numero"
                     value={street_number}
                     onChange={(e) => setStreetNumber(e.target.value)}
+                    placeholder="Número"
                   />
                 </label>
                 <label htmlFor="estado">
@@ -252,6 +256,7 @@ export default function Register() {
                     name="estado"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
+                    placeholder="Estado"
                   />
                 </label>
                 <label htmlFor="gender">
@@ -263,7 +268,7 @@ export default function Register() {
                     name="genero"
                   >
                     <option defaultChecked hidden value=" ">
-                      selecionar
+                      Selecionar
                     </option>
                     <option value="Masculino">
                       Masculino
@@ -284,6 +289,7 @@ export default function Register() {
                     name="cpf"
                     value={cpf}
                     onChange={(e) => setCpf(inputMask(e.target.value, 'cpf'))}
+                    placeholder="Digite qualquer número"
                   />
                 </label>
               </div>
@@ -296,6 +302,7 @@ export default function Register() {
                     name="ddd"
                     value={ddd_cel}
                     onChange={(e) => setDdd(e.target.value)}
+                    placeholder="DDD"
                   />
                 </label>
                 <label htmlFor="celular">
@@ -306,6 +313,7 @@ export default function Register() {
                     name="celular"
                     value={cel_number}
                     onChange={(e) => setCelPhone(inputMask(e.target.value, 'cel'))}
+                    placeholder="Digite um número"
                   />
                 </label>
               </div>
