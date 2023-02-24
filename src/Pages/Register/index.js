@@ -141,7 +141,7 @@ export default function Register() {
               });
             });
         });
-      toast.success('SUCCESS!');
+      toast.success('SUCESSO!');
       setLoading(false);
       setflagClick(false);
     } catch (err) {

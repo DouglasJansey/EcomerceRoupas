@@ -25,7 +25,7 @@ export default function Login() {
     e.preventDefault();
     validateInput();
     if (error) {
-      return toast.error('LOGIN FAILURE', {
+      return toast.error('FALHA NO LOGIN', {
         position: toast.POSITION.TOP_CENTER,
       });
     }
