@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable radix */
 /* eslint-disable camelcase */
 /* eslint-disable consistent-return */
@@ -15,13 +19,20 @@ import {
   PhotoContainer,
   DefaultImage,
   TextLogin,
+  InputForm,
+  SelectForm,
+  ContainerLoading,
 } from './styled';
 import inputMask from '../../Util';
+import Loading from '../../Components/Loading';
 import urlStorage from '../../services/urlStoragePhoto';
 
 export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [inputError, setInputError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [flagClick, setflagClick] = useState(false);
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
   const [gender, setGender] = useState('');
@@ -34,19 +45,34 @@ export default function Register() {
   const [profilePic, setProfilePic] = useState();
   const hiddenInput = useRef(null);
   const form = useRef(null);
-
   let error = false;
+
   function validateInput() {
+    setInputError(true);
+    if (!validator.isEmail(email)) {
+      error = true;
+    }
     if (name.length < 4 || !name) {
       error = true;
     }
-    if (password.length < 8 || !password) error = true;
-    if (!validator.isEmail(email)) error = true;
-    if (cpf.length > 0 && cpf.length < 11) error = true;
-    if (!street || !street_number || !city) error = true;
-    if (!cel_number || !ddd_cel) error = true;
+    if (password.length < 8 || !password) {
+      error = true;
+    }
+    if (cpf.length > 0 && cpf.length < 11) {
+      error = true;
+    }
+    if (!street || !street_number || !city) {
+      error = true;
+    }
+    if (!cel_number || !ddd_cel) {
+      error = true;
+    }
+    if (!gender) {
+      error = true;
+    }
     // if (photo && (photo.type !== 'image/png' || photo.type !== 'image/jpeg')) error = true;
   }
+
   async function validateImage(e) {
     const reader = new FileReader();
     const imagePic = e.target.files[0];
@@ -57,20 +83,24 @@ export default function Register() {
     };
     reader.readAsDataURL(imagePic);
   }
-  console.log(cpf);
+
   function handleClick(e) {
     hiddenInput.current.click();
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    // validateInput();
+    const newcpf = cpf.replace(/\D/g, '');
+    validateInput(e);
+    if (error) return '';
+    setflagClick(true);
+    if (flagClick) return;
     const formData = new FormData();
-    if (error) return toast.error('FAIULURE REGISTER');
     try {
+      setLoading(true);
       await axios
         .post('/users', {
           name,
-          cpf,
+          cpf: newcpf,
           email,
           gender,
           password,
@@ -87,7 +117,7 @@ export default function Register() {
             })
             .then(async () => {
               const dddCel = parseInt(ddd_cel);
-              const celNumber = parseInt(cel_number);
+              const celNumber = +cel_number.replace(/\D/g, '');
               await axios.post('/telefones', {
                 ddd_cel: dddCel,
                 cel_number: celNumber,
@@ -112,10 +142,12 @@ export default function Register() {
             });
         });
       toast.success('SUCCESS!');
-      //   alert('Usuário criado com sucesso!');
+      setLoading(false);
+      setflagClick(false);
     } catch (err) {
-      // toast.error('FAIULURE REGISTER');
-      console.log(err);
+      toast.error('ERRO');
+      setLoading(false);
+      setflagClick(false);
     }
   }
 
@@ -156,17 +188,22 @@ export default function Register() {
               </div>
             </PhotoContainer>
             <label htmlFor="nome">
-              Nome:
-              <input
+              Nome*:
+              <InputForm
+                inputError={inputError}
                 type="text"
                 name="nome"
                 value={name}
+                placeholder="Digite seu nome"
                 onChange={(e) => setName(e.target.value)}
               />
             </label>
-            <label htmlFor="email">
-              Email:
-              <input
+            <label
+              htmlFor="email"
+            >
+              Email*:
+              <InputForm
+                inputError={inputError}
                 type="email"
                 name="email"
                 value={email}
@@ -174,8 +211,9 @@ export default function Register() {
               />
             </label>
             <label htmlFor="password" id="password">
-              Password:
-              <input
+              Password*:
+              <InputForm
+                inputError={inputError}
                 type="password"
                 name="password"
                 value={password}
@@ -187,8 +225,9 @@ export default function Register() {
             <EndForm>
               <div>
                 <label htmlFor="endereco">
-                  Endereço:
-                  <input
+                  Endereço*:
+                  <InputForm
+                    inputError={inputError}
                     type="text"
                     name="endereco"
                     value={street}
@@ -196,8 +235,9 @@ export default function Register() {
                   />
                 </label>
                 <label htmlFor="numero">
-                  Número:
-                  <input
+                  Número*:
+                  <InputForm
+                    inputError={inputError}
                     type="text"
                     name="numero"
                     value={street_number}
@@ -205,8 +245,9 @@ export default function Register() {
                   />
                 </label>
                 <label htmlFor="estado">
-                  Estado:
-                  <input
+                  Estado*:
+                  <InputForm
+                    inputError={inputError}
                     type="text"
                     name="estado"
                     value={city}
@@ -214,10 +255,12 @@ export default function Register() {
                   />
                 </label>
                 <label htmlFor="gender">
-                  Gênero:
-                  <select
+                  Gênero*:
+                  <SelectForm
+                    inputError={inputError}
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
+                    name="genero"
                   >
                     <option defaultChecked hidden value=" ">
                       selecionar
@@ -231,22 +274,24 @@ export default function Register() {
                     <option value="Outro...">
                       Outro...
                     </option>
-                  </select>
+                  </SelectForm>
                 </label>
                 <label htmlFor="cpf">
-                  CPF:
-                  <input
+                  CPF*:
+                  <InputForm
+                    inputError={inputError}
                     type="text"
                     name="cpf"
                     value={cpf}
-                    onChange={(e) => setCpf(e.target.value)}
+                    onChange={(e) => setCpf(inputMask(e.target.value, 'cpf'))}
                   />
                 </label>
               </div>
               <div>
                 <label htmlFor="ddd">
-                  DDD:
-                  <input
+                  DDD*:
+                  <InputForm
+                    inputError={inputError}
                     type="text"
                     name="ddd"
                     value={ddd_cel}
@@ -254,12 +299,13 @@ export default function Register() {
                   />
                 </label>
                 <label htmlFor="celular">
-                  Celular:
-                  <input
+                  Celular*:
+                  <InputForm
+                    inputError={inputError}
                     type="text"
                     name="celular"
                     value={cel_number}
-                    onChange={(e) => setCelPhone(e.target.value)}
+                    onChange={(e) => setCelPhone(inputMask(e.target.value, 'cel'))}
                   />
                 </label>
               </div>
@@ -267,6 +313,9 @@ export default function Register() {
           </div>
           <button type="submit">Criar Conta</button>
         </Form>
+        <ContainerLoading>
+          {loading ? <Loading /> : ''}
+        </ContainerLoading>
         <TextLogin>
           Se você já tem uma conta faça o seu
           <Link to="/login"> Login</Link>
