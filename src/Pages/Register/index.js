@@ -125,6 +125,7 @@ export default function Register() {
               });
             })
             .then(async () => {
+              if (!photo) return;
               formData.append('image', photo);
               await axios.post(`${urlStorage}`, formData, {
                 Content_Type: 'multipart/form-data',

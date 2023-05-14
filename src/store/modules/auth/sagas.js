@@ -14,9 +14,11 @@ function* loginRequest({ payload }) {
     const res = yield call(axios.post, '/tokens', payload);
     const { email } = res.data.user;
     // Atualiza os dados do usuário para edição
-    if (email === process.env.REACT_APP_ADMIN) yield put(action.loginAdmin({ ...res.data }));
-
-    yield put(action.loginSuccess({ ...res.data }));
+    if (email === process.env.REACT_APP_ADMIN) {
+      yield put(action.loginAdmin({ ...res.data }));
+    } else {
+      yield put(action.loginSuccess({ ...res.data }));
+    }
     toast.success('Login feito com sucesso!');
     axios.defaults.headers.Authorization = `Bearer ${res.data.token}`;
 
