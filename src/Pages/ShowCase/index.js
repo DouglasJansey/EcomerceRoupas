@@ -6,10 +6,9 @@
 /* eslint-disable prefer-const */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-return-assign */
-import { set } from 'lodash';
-import { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Card from '../../Components/cards';
 import axios from '../../services/axios';
 import Loading from '../../Components/Loading';
@@ -23,67 +22,74 @@ import {
 
 export default function ListProducts() {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const { count, rows } = useSelector((state) => state.showCase.produtos);
   const teamSubMenu = useSelector((state) => state.showCase.team);
   const typeHeader = useSelector((state) => state.showCase.type);
   const [maxPages, setMaxPages] = useState(Math.floor(count / 10));
   const [page, setPages] = useState(1);
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(0);
+  const [value1, setValue1] = useState(null);
+  const [value2, setValue2] = useState(null);
   const [type, setType] = useState(typeHeader);
-  const [team, setTeam] = useState(teamSubMenu);
+  const [team, setTeam] = useState();
   const [priceOrder, setPriceOrder] = useState('');
   const list = Object.values(listTeams);
   const products = rows;
-  const objData = {
-    team, type, value: { value1, value2 },
-  };
+
   function MaxValuePages(value) {
     (Math.floor(value / 10) < 1) ? setMaxPages(1) : setMaxPages(Math.floor(value / 10));
   }
+  const objData = { team, value: { value1, value2 }, type };
 
   function SearchProducts(props) {
     const { team, value, type } = props;
     if (props) {
       if (team) {
-        return `search=team&teamname=${team}`;
+        return `&search=team&teamname=${team}`;
       }
-      if (type) {
-        return `search=type&type=${type}`;
+      if (type && !team) {
+        return `&search=type&type=${type}`;
       }
       if (value && value.value1 > 0 && value.value2 > 0) {
-        return `search=price&value1=${value.value1}&value2=${value.value2}`;
+        return `&search=price&value1=${value.value1}&value2=${value.value2}`;
       }
     }
     return '';
   }
+
+  if (typeHeader) {
+    setTeam('');
+    dispatch(actionProducts.showOrderTeam(''));
+    dispatch(actionProducts.filterType(''));
+    setType(typeHeader);
+  }
+  if (teamSubMenu) {
+    setType('');
+    dispatch(actionProducts.filterType(''));
+    dispatch(actionProducts.showOrderTeam(''));
+    setTeam(teamSubMenu);
+  }
+
   useEffect(() => {
     async function getData() {
-      const response = await axios.get(`/produtos?page=${page}&max=10&${SearchProducts(objData)}`);
-      if (response.data.rows.length === 0) setPages(1);
-      dispatch(actionProducts.showProducts(response.data));
+      const response = await axios.get(`/produtos?page=${page}&max=10${SearchProducts(objData)}`);
+      const defaultPage = 1;
+      if (JSON.stringify(products) !== JSON.stringify(response.data.rows)) {
+        dispatch(actionProducts.showProducts(response.data));
+      }
+      if (response.data.rows.length === 0) setPages(defaultPage);
+      if (pathname === '/produtos') dispatch(actionProducts.showProducts(response.data));
       MaxValuePages(count);
     }
-    if (typeHeader) {
-      dispatch(actionProducts.showOrderTeam(''));
-      setTeam('');
-      setType(typeHeader);
-      dispatch(actionProducts.filterType(''));
-    }
-    if (teamSubMenu) {
-      dispatch(actionProducts.filterType(''));
-      setType('');
-      setTeam(teamSubMenu);
-      dispatch(actionProducts.showOrderTeam(''));
-    }
     getData();
-  }, [page, value1, value2, count, team, type, typeHeader, teamSubMenu]);
+  }, [page, value1, value2, count, team, type]);
   function handleClickRight() {
     if (page < maxPages) setPages(page + 1);
   }
   function handleScrollLeft() {
     if (page > 1) setPages(page - 1);
   }
+
   function validateSelect(props) {
     if (props === 'menor') return dispatch(actionProducts.showOrderPriceDown());
     if (props === 'maior') return dispatch(actionProducts.showOrderPriceUp());
@@ -100,9 +106,9 @@ export default function ListProducts() {
   function handleSubmitTeam(e) {
     e.preventDefault();
     setType('');
-    dispatch(actionProducts.filterType(''));
-    dispatch(actionProducts.showOrderTeam(''));
-    setTeam(e.target.team.value);
+    // dispatch(actionProducts.filterType(''));
+    // (actionProducts.showOrderTeam(''));
+    setTeam(e.target.value);
     if (value1 && value2) {
       setValue1('');
       setValue2('');
@@ -118,7 +124,6 @@ export default function ListProducts() {
     if (team) setTeam('');
     setTeam('');
     setType('');
-    console.log(e);
     dispatch(actionProducts.filterType(''));
     dispatch(actionProducts.showOrderTeam(''));
   }
@@ -164,23 +169,21 @@ export default function ListProducts() {
               </form>
             </ContainerPrice>
             <ContainerPrice>
-              <form onSubmit={(e) => handleSubmitTeam(e)}>
-                <label htmlFor="value1">
-                  Selecione seu time:
-                  <select
-                    onChange={(e) => {
-                      setTeam(e.target.value);
-                    }}
-                  >
-                    <option value="" defaultChecked hidden>Selecione seu time</option>
-                    {list.map((item, index) => (
-                      <option key={index}>
-                        {item.name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </form>
+              <label htmlFor="value1">
+                Selecione seu time:
+                <select
+                  onChange={(e) => {
+                    handleSubmitTeam(e);
+                  }}
+                >
+                  <option value={team} defaultChecked hidden>Selecione seu time</option>
+                  {list.map((item, index) => (
+                    <option key={index}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
             </ContainerPrice>
             <CleanButton
               type="reset"

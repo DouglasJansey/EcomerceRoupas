@@ -8,7 +8,6 @@ import Header from './Components/Header';
 import GlobalStyled from './style/GlobalStyled';
 import RoutesPage from './Routes';
 import Footer from './Components/footer';
-import getProducts from './services/produtos';
 
 function App() {
   return (

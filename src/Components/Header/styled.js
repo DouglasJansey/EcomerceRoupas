@@ -60,7 +60,10 @@ export const ContainerTitle = styled.div`
     width: auto;
     align-items: center;
     margin-top: 10px;
-    justify-content: center;
+    justify-content: space-around;
+    img{
+        margin-right: 20px;
+    }
 }
 `;
 export const SubContainerTitle = styled.div`

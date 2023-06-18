@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import background from '../../img/background.png';
 
 export const Container = styled.section`
   display: flex;

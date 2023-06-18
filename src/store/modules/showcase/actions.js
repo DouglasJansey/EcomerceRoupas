@@ -6,6 +6,12 @@ export function showProducts(payload) {
     payload,
   };
 }
+export function teamSearch(payload) {
+  return {
+    type: types.TEAM_SEARCH,
+    payload,
+  };
+}
 export function showOrderPriceUp() {
   return {
     type: types.PRICE_UP,

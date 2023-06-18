@@ -25,5 +25,7 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',
     ' no-trailing-spaces': 'off',
+    'no-unused-expressions': 'off',
+    'react/jsx-boolean-valueexpressions': 'off',
   },
 };

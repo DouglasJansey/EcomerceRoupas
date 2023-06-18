@@ -4,7 +4,6 @@ import {
   grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
   darkGrayColor,
 } from '../../style/colors';
-import bgFooter from '../../img/bgFooter.jpg';
 
 export const Container = styled.footer`
   width: 100%;

@@ -98,6 +98,7 @@ export const ContainerImage = styled.div`
     margin-right: 2px;
     margin-left: 5px;
     padding: 5px;
+    overflow: hidden;
     img{
          width: 100%;
          height: 100px;

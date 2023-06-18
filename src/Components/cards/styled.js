@@ -13,7 +13,7 @@ export const ContainerCard = styled.div`
     align-items: center;
     justify-content: center;
     width: 150px;
-    height: 230px;
+    height: 240px;
     background: white;
     border-radius: 10px;
     text-align: center;
@@ -40,16 +40,21 @@ export const ContainerImg = styled.div`
     position: relative;
     align-items: center;
     margin-bottom: 5px;
+    overflow: hidden;
     button{
         position: absolute;
         border: none;
         top: 10px;
         left: 10px;
+        z-index: 11;
     }
 `;
 export const Image = styled.img`
-    height: 90%;
+    height: 80%;
     width: auto;
+    mix-blend-mode: multiply;
+    margin-bottom: 10px;
+    z-index: 1;
 
 `;
 export const Text = styled.div`
@@ -105,6 +110,7 @@ export const ButtonBuy = styled.button`
     cursor: pointer;
     padding: 2px;
     margin-top: 5px;
+    margin-bottom: 10px;
     :hover{
         opacity: 0.5;
     }

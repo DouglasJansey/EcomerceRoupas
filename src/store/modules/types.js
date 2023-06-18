@@ -4,6 +4,7 @@ export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const SHOW_PRODUCTS = 'SHOW_PRODUCTS';
 
 export const REMOVE_SHOWCASE = 'REMOVE_SHOWCASE';
+export const TEAM_SEARCH = 'TEAM_SEARCH';
 export const ORDER_PRICE_UP = 'ORDER_PRICE_UP';
 export const ORDER_PRICE_DOWN = 'ORDER_PRICE_DOWN';
 export const PRICE_UP = 'PRICE_UP';

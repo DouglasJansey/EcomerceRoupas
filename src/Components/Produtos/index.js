@@ -35,26 +35,33 @@ export default function ShowCase() {
   const hiddenInput = useRef(null);
   const form = useRef(null);
   let error = false;
+
+  function autoComplementPrice(props) {
+    if (props) {
+      if (props === 'Masculino' || props === 'Feminino') {
+        setWeight('0.2');
+        setHeight('2');
+        setWidth('10');
+        setLength('25');
+      }
+      if (props === 'Tênis') {
+        setWeight('1');
+        setHeight('12');
+        setWidth('21');
+        setLength('33');
+      }
+      if (props === 'Infantil') {
+        setWeight('0.1');
+        setHeight('6');
+        setWidth('11');
+        setLength('17');
+      }
+    }
+  }
   useEffect(() => {
-    if (type === 'Masculino' || type === 'Feminino') {
-      setWeight('0.2');
-      setHeight('2');
-      setWidth('10');
-      setLength('25');
-    }
-    if (type === 'Tênis') {
-      setWeight('1');
-      setHeight('12');
-      setWidth('21');
-      setLength('33');
-    }
-    if (type === 'Infantil') {
-      setWeight('0.1');
-      setHeight('6');
-      setWidth('11');
-      setLength('17');
-    }
+    autoComplementPrice(type);
   }, [type, category]);
+
   function validateInput() {
     if (name.length < 4 || !name) {
       error = true;
@@ -158,7 +165,9 @@ export default function ShowCase() {
                       onChange={(e) => validateImage(e)}
                     />
                   </LabelPic>
-                  {photo ? photo.name : 'Nenhum arquivo selecionado!' }
+                  <span>
+                    {photo ? photo.name : 'Nenhum arquivo selecionado!'}
+                  </span>
                 </ContainerLabel>
               </ContainerPic>
               <Label htmlFor="nome">

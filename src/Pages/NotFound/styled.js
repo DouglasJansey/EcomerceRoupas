@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
-import bg from '../../img/bg.jpg';
 
 const space = keyframes`
     0%{

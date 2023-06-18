@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-return-assign */
-import { useState, useRef, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+/* eslint-disable object-curly-newline */
+import { useState, useRef, useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from '../cards';
 import getProducts from '../../services/produtos';
 import axios from '../../services/axios';
@@ -11,45 +12,42 @@ import {
   ArrowLeft, ArrowRight, ContainerArrow, ContainerSelect,
 } from './styled';
 
-export default function List() {
-  const [products, setProducts] = useState();
+export default function List({ itemProps }) {
+  const products = useSelector((state) => state.products.produtos);
   const dispatch = useDispatch();
   const [scrollX, setScrollX] = useState(0);
   const [priceOrder, setPriceOrder] = useState('');
   const carrousel = useRef(0);
   const cardWidth = 162;
-  const containerWidth = products ? products.length * 157 : 0;
-
-  useEffect(() => {
-    async function getData() {
-      const response = await axios.get('/produtos?page=1&max=10&search=type&type=Masculino');
-      if (!priceOrder) setProducts(response.data.rows);
-      if (priceOrder === 'menor') setProducts(response.data.rows.sort((a, b) => a.price - b.price));
-      if (priceOrder === 'maior') setProducts(response.data.rows.sort((a, b) => b.price - a.price));
-    }
-    getData();
-    setPriceOrder(priceOrder);
-  }, [priceOrder]);
+  const listShoes = products.filter((item) => item.type === itemProps);
+  const listMemo = useMemo(() => {
+    let list = [6];
+    list = listShoes.slice(0, 10);
+    return list;
+  }, [products]);
+  const containerWidth = listMemo ? listMemo.length * 157 : 0;
 
   function handleClickRight() {
     let x = scrollX - cardWidth;
     if ((carrousel.current.offsetWidth - containerWidth) >= x) {
       x = (carrousel.current.offsetWidth - containerWidth);
     }
-    setScrollX(x);
+    if (listMemo.length >= 6) setScrollX(x);
   }
   function handleScrollLeft() {
     let x = scrollX + cardWidth;
     if (x > 0) {
       x = 0;
     }
-    setScrollX(x);
+    if (listMemo.length >= 6) setScrollX(x);
   }
+
   function validateSelect(props) {
     if (props === 'menor') return dispatch(actionProducts.orderPriceDown());
     if (props === 'maior') return dispatch(actionProducts.orderPriceUp());
     return '';
   }
+
   const SortByPrice = (e) => {
     e.preventDefault();
     const inputSelect = e.target.value;
@@ -81,7 +79,7 @@ export default function List() {
             <ContainerArrow>
               <ContainerList ref={carrousel}>
                 <ContainerImages directionX={scrollX}>
-                  {products.map((item) => (
+                  {listMemo.map((item) => (
                     <Card
                       product={item}
                       key={item.id}

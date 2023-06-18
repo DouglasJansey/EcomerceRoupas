@@ -20,6 +20,12 @@ export default function (state = initialState, action) {
       newState.produtos = action.payload;
       return newState;
     }
+    case types.TEAM_SEARCH: {
+      const newState = { ...state };
+      newState.type = '';
+      newState.team = action.payload;
+      return newState;
+    }
     case types.PRICE_DOWN: {
       const newState = { ...state };
       newState.produtos.rows = state.produtos.rows.sort((a, b) => a.price - b.price);
@@ -32,8 +38,8 @@ export default function (state = initialState, action) {
     }
     case types.FILTER_TYPE: {
       const newState = { ...state };
+      newState.team = '';
       newState.type = action.payload;
-      // newState.produtos.rows = state.produtos.rows.filter((item) => item.price > action.payload.value1);
       return newState;
     }
 

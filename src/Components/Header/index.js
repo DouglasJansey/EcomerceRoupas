@@ -67,9 +67,9 @@ export default function Header() {
     );
   }
   function handleMenuSearch(props) {
-    if (props !== 'Times' && props !== 'Ofertas') {
-      dispatch(showcaseAction.filterType(props));
-    }
+    (props === 'Ofertas') || (props === 'Times')
+      ? console.log(props)
+      : dispatch(showcaseAction.filterType(props));
     return props;
   }
   return (

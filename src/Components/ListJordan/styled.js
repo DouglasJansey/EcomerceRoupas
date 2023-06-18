@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled, { keyframes } from 'styled-components';
 import { BsCaretLeftFill } from 'react-icons/bs';
-import background from '../../img/backgroundShowCase.jpg';
 import {
   grayText, darkRedColor, yellowColor, darkBlueColor, lightGrayColor,
   darkGrayColor,

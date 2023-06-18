@@ -39,9 +39,9 @@ export const Container = styled.section`
 export const Register = styled.div`
     display: flex;
     max-width: 98%;
+    flex-wrap: wrap;
     height: auto;
     background-color: #fff;
-    overflow: hidden;
     padding: 5px;
     `;
 export const Label = styled.label`
@@ -73,8 +73,9 @@ export const Form = styled.form`
 `;
 export const LabelPic = styled.label`
         height: 55px;
-        width: 60%;
+        width: 100px;
         display:flex;
+        flex-wrap: wrap;
         font-weight: bold ;
         justify-content: center;
         align-items: center;
@@ -94,6 +95,7 @@ export const ContainerPic = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     height: auto;
     width: 100%;
     padding-left: 10px;
@@ -101,12 +103,20 @@ export const ContainerPic = styled.div`
     `;
 export const ContainerLabel = styled.div`
     display: flex;
-    flex-direction: column;
+    flex: none;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
+    overflow: hidden;
+    span{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
     `;
 export const ContainerImg = styled.div`
     display: flex;
@@ -141,7 +151,7 @@ export const ContainerCol = styled.div`
 
 `;
 export const ButtonSubmit = styled.button`
-    width: 350px;
+    width: 250px;
     height: 65px;
     font-weight: bold;
     border-style: none;

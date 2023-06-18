@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-return-assign */
 import { useState, useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from '../cards';
 import axios from '../../services/axios';
 import {
@@ -10,37 +10,28 @@ import {
 } from './styled';
 
 export default function List() {
-  const [products, setProducts] = useState();
+  const products = useSelector((state) => state.products.produtos);
   const dispatch = useDispatch();
   const [scrollX, setScrollX] = useState(0);
   const [priceOrder, setPriceOrder] = useState('');
   const carrousel = useRef(0);
   const cardWidth = 162;
   const containerWidth = products ? products.length * 157 : 0;
-  useEffect(() => {
-    async function getData() {
-      const response = await axios.get('/produtos?page=1&max=10&search=type&type=Tênis');
-      if (!priceOrder) setProducts(response.data.rows);
-      if (priceOrder === 'menor') setProducts(response.data.rows.sort((a, b) => a.price - b.price));
-      if (priceOrder === 'maior') setProducts(response.data.rows.sort((a, b) => b.price - a.price));
-    }
-    getData();
-    setPriceOrder(priceOrder);
-  }, [priceOrder]);
+  const listShoes = products.filter((item) => item.type === 'Tênis');
 
   function handleClickRight() {
     let x = scrollX - cardWidth;
     if ((carrousel.current.offsetWidth - containerWidth) >= x) {
       x = (carrousel.current.offsetWidth - containerWidth);
     }
-    setScrollX(x);
+    if (listShoes.length >= 6) setScrollX(x);
   }
   function handleScrollLeft() {
     let x = scrollX + cardWidth;
     if (x > 0) {
       x = 0;
     }
-    setScrollX(x);
+    if (listShoes.length >= 6) setScrollX(x);
   }
   function validateSelect(props) {
     return '';
@@ -76,7 +67,7 @@ export default function List() {
             <ContainerArrow>
               <ContainerList ref={carrousel}>
                 <ContainerImages directionX={scrollX}>
-                  {products.map((item) => (
+                  {listShoes.map((item) => (
                     <Card
                       product={item}
                       key={item.id}

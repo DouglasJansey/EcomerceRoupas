@@ -10,7 +10,6 @@ import {
   ImageWidth, Titulo,
 } from './styled';
 import banner2 from '../../img/nbaBanner2.gif';
-import jordan from '../../img/jordan.gif';
 
 export default function Banner() {
   return (

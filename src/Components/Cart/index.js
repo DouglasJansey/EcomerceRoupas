@@ -14,9 +14,7 @@ export default function Cart({ item }) {
   const dispatch = useDispatch();
   const [sizeProd, setSizeProd] = useState();
   const { cartItem } = item;
-  const { quantity } = item.subInfo;
-  const { subTotal } = item.subInfo;
-  const { size } = item.subInfo;
+  const { quantity, subTotal, size } = item.subInfo;
 
   function handleDeleteCart(e) {
     e.preventDefault();
@@ -55,11 +53,11 @@ export default function Cart({ item }) {
               </NameProduct>
             </NameConainer>
             <DescContainer>
-              <h5> Tipo: { cartItem.type}</h5>
+              <h5> Tipo: {cartItem.type}</h5>
               <h5>Cor: {cartItem.PhotoProducts[0].color ? cartItem.PhotoProducts[0].color : ' tradicional'} </h5>
               <h5>Time: {cartItem.name}</h5>
               <h5>Tamanho:
-                { cartItem.category !== 'Calçado'
+                {cartItem.category !== 'Calçado'
                   ? (
                     <select value={sizeProd} onChange={(e) => addSizeProduct(e)}>
                       <option hidden>{size || 'Tam'}</option>
@@ -102,7 +100,7 @@ export default function Cart({ item }) {
       <SubTotalContainer>
         <Title>Subtotal</Title>
         <ContainerItens>
-          { subTotal }
+          {subTotal}
         </ContainerItens>
       </SubTotalContainer>
       <ConainerButtons>

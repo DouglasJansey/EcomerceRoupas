@@ -11,28 +11,6 @@ const fadeIn = keyframes`
         transform: translateX(${window.screen.width})
     }
 `;
-export const ArrowRight = styled(BsCaretLeftFill)`
-font-size: 50px;
-color: #fff;
-position: absolute;
-transform: rotate(180deg);
-z-index: 10;
-right: 0;
-top: 0;
-bottom:0;
-margin: auto;
-`;
-export const ArrowLeft = styled(BsCaretLeftFill)`
-font-size: 50px;
-color: #fff;
-position: absolute;
-left: 0;
-top: 0;
-bottom:0;
-margin: auto;
-z-index: 10;
-
-`;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;

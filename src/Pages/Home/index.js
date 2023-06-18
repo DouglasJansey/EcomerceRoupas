@@ -4,19 +4,21 @@
 /* eslint-disable prefer-const */
 import { Container, Container2, ContainerBanner } from './styled';
 import List from '../../Components/List';
-import ListJordan from '../../Components/ListJordan';
 import Carrousel from '../../Components/carrousel';
 import Banner from '../../Components/Banner';
-import background1 from '../../img/nbaBanner.gif';
+import getProducts from '../../services/produtos';
+import BannerInfo from '../../Components/Banner/InfoProducts';
 
 export default function Home() {
+  getProducts();
   return (
     <Container>
       <Carrousel />
       <Container2>
-        <List />
+        <List itemProps="Masculino" />
         <Banner />
-        <ListJordan />
+        <BannerInfo />
+        <List itemProps="Tênis" />
       </Container2>
     </Container>
   );
