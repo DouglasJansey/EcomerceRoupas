@@ -22,14 +22,19 @@ import image4 from '../../../img/imagesInfo/tenisdebasquete66_480x480.webp';
 export default function Banner() {
   const listImages = [image1, image2, image3, image4];
   const [indexImg, setIndexImg] = useState(0);
-  const radionInput = useRef(null);
+  const [count, setCount] = useState(0);
+
   if (indexImg >= 4) setIndexImg(0);
 
+  function test(props) {
+    return 'checked';
+  }
+
+  console.log(count);
   useEffect(() => {
-    setTimeout(() => {
-      setIndexImg(indexImg + 1);
-    }, [5000]);
-  }, [indexImg]);
+    let valueCount = count;
+    setCount(valueCount);
+  }, [count]);
 
   function handleInputRadioChange(e) {
     if (indexImg !== e.target.value) {
@@ -59,15 +64,17 @@ export default function Banner() {
       <InputContainer>
         <div>
           {listImages.map((i, index) => (
-            <Input
-              key={index}
-              type="radio"
-              ref={radionInput}
-              name={index}
-              value={index}
-              onChange={(e) => handleInputRadioChange(e)}
-              checked={index === indexImg ? 'checked' : ''}
-            />
+            <label htmlFor={index}>
+              <Input
+                key={index}
+                type="radio"
+                name={index}
+                id={index}
+                value={index}
+                onChange={(e) => handleInputRadioChange(e)}
+                checked={index === indexImg ? test(index) : ''}
+              />
+            </label>
           ))}
         </div>
       </InputContainer>

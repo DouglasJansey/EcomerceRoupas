@@ -82,4 +82,5 @@ export const Input = styled.input`
     justify-content: center;
     align-items: center;
     margin-left: 5px;
+    cursor: pointer;
 `;
