@@ -2,33 +2,29 @@
 import styled, { keyframes } from 'styled-components';
 import bg from '../../../img/backgroundGrafite.jpg';
 
-const fadeIn = keyframes`
-    0%{
-        opacity: 0;
-        transform: translateX(400px)
-    }
-    100%{
-        opacity: 1;
-        transform: translateX(${window.screen.width})
-    }
-`;
 function containerActive(props) {
   const value = props + 1;
   const activateItem = {
-    1: `:nth-child(${value}){ opacity: 1; }`,
-    2: `:nth-child(${value}){ opacity: 1; }`,
-    3: `:nth-child(${value}){ opacity: 1; }`,
-    4: `:nth-child(${value}){ opacity: 1; }`,
+    1: `:nth-child(${value}){ img{opacity: 1;}; }`,
+    2: `:nth-child(${value}){ img{opacity: 1;}; }`,
+    3: `:nth-child(${value}){ img{opacity: 1;};}`,
+    4: `:nth-child(${value}){ img{opacity: 1;}; }`,
   };
-
   return value ? activateItem[value] : 'opacity: 0.5;';
+}
+function LabelActive(props) {
+  const value = props.checked;
+  const activateItem = {
+    checked: 'darkred;',
+  };
+  return value ? activateItem[value] : 'gray;';
 }
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  overflow: hidden;
+  height: 100%;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,51 +32,85 @@ export const Container = styled.div`
 export const ContainerImages = styled.div`
   display: flex;
   width: 80%;
-  height: 90%;
+  flex-wrap: wrap;
+  height: auto;
   justify-content: center;
+  align-items: center;
+  padding: 10px;
   `;
 export const ContainerLeft = styled.div`
-    background: #000;
-    height: 100%;
-    width: auto;
-    flex-wrap: wrap;
-`;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: auto;
+    @media(max-width: 780px) {
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+    `;
 export const ImageContainer = styled.div`
-        width: 140px;
-        height: 170px;
-        position: relative;
-        opacity: 0.5;
-        display: block;
+        width: 120px;
+        height: 120px;
+        flex: none;
+        overflow: hidden;
+        background: #000;
+        @media(max-width: 780px) {
+        display: flex;
+        width: 25%;
+        height: 40%;
+
+    }
         ${({ activate }) => containerActive(activate)};
         `;
 export const Image = styled.img`
     width: 100%;
     height: 100%;
+    opacity: 0.5;
 `;
 export const ContainerRight = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    div{
-        width: 600px;
+    flex: none;
+    width: 480px;
+    height: 100%;
+    @media(max-width: 800px) {
+        display: flex;
         height: 100%;
-        background: red;
+        width: 100%;
+    }
         img{
             width: 100%;
-            overflow: hidden;
+            height: 100%;
+            opacity: 1;
         }
-    }
 `;
 export const InputContainer = styled.div`
     display: flex;
     padding: 10px;
     justify-content: space-around;
     align-items: space-around;
+    width: 100%;
+    div{
+        display: flex;
+    }
+`;
+export const Label = styled.label`
+    display: flex;
+    padding: 5px;
+    justify-content: space-around;
+    align-items: space-around;
+    :before{
+        content:'';
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background: ${({ children }) => children ? LabelActive(children.props) : 'gray'};
+        border-radius: 100%;
+    }
 `;
 export const Input = styled.input`
-    justify-content: center;
-    align-items: center;
-    margin-left: 5px;
+    display: none;
     cursor: pointer;
 `;

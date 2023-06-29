@@ -12,7 +12,7 @@ import {
 import {
   Container, ContainerLeft, ContainerRight,
   ContainerImages, Image, InputContainer,
-  Input, ImageContainer,
+  Input, ImageContainer, Label,
 } from './styled';
 import image1 from '../../../img/imagesInfo/Sc152d5d9767645629bae6e85fded5b36t.webp';
 import image2 from '../../../img/imagesInfo/Sdc1736f6e6b241c3a12a1c843ec00046g.webp';
@@ -25,21 +25,20 @@ export default function Banner() {
   const [count, setCount] = useState(0);
 
   if (indexImg >= 4) setIndexImg(0);
-
   function test(props) {
     return 'checked';
   }
 
-  console.log(count);
   useEffect(() => {
-    let valueCount = count;
-    setCount(valueCount);
+    const currentValue = count;
+    setTimeout(() => {
+      count >= 3 ? setCount(0) : setCount(currentValue + 1);
+    }, [5000]);
   }, [count]);
-
   function handleInputRadioChange(e) {
     if (indexImg !== e.target.value) {
       const value = +e.target.value;
-      setIndexImg(value);
+      // setCount(value);
     }
   }
 
@@ -49,22 +48,20 @@ export default function Banner() {
         <ContainerImages>
           <ContainerLeft>
             {listImages.map((item, index) => (
-              <ImageContainer key={index} activate={indexImg}>
+              <ImageContainer key={index} activate={count}>
                 <Image src={item} alt="" />
               </ImageContainer>
             ))}
           </ContainerLeft>
           <ContainerRight>
-            <div>
-              <Image src={listImages[indexImg]} alt="" />
-            </div>
+            <Image src={listImages[count]} alt="" />
           </ContainerRight>
         </ContainerImages>
       </Container>
       <InputContainer>
         <div>
           {listImages.map((i, index) => (
-            <label htmlFor={index}>
+            <Label htmlFor={index} key={index} activeLabel={count}>
               <Input
                 key={index}
                 type="radio"
@@ -72,9 +69,9 @@ export default function Banner() {
                 id={index}
                 value={index}
                 onChange={(e) => handleInputRadioChange(e)}
-                checked={index === indexImg ? test(index) : ''}
+                checked={index === count ? 'checked' : ''}
               />
-            </label>
+            </Label>
           ))}
         </div>
       </InputContainer>
