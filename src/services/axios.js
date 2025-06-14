@@ -7,3 +7,4 @@ export default axios.create({
     'Access-Control-Allow-Origin': '*',
   },
 });
+

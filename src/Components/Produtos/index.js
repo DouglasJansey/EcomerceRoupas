@@ -23,9 +23,9 @@ export default function ShowCase() {
   const [height, setHeight] = useState('');
   const [width, setWidth] = useState('');
   const [length, setLength] = useState('');
-  const [price, setPrice] = useState('');
-  const [old_price, setOldPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [price, setPrice] = useState(0);
+  const [old_price, setOldPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   const [color, setColor] = useState('');
   let loading = false;
 
